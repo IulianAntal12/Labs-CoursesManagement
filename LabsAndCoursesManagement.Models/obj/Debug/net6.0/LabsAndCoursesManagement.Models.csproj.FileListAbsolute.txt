@@ -1,0 +1,12 @@
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.Models\bin\Debug\net6.0\LabsAndCoursesManagement.Models.deps.json
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.Models\bin\Debug\net6.0\LabsAndCoursesManagement.Models.dll
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.Models\bin\Debug\net6.0\LabsAndCoursesManagement.Models.pdb
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.Models\obj\Debug\net6.0\LabsAndCoursesManagement.Models.csproj.AssemblyReference.cache
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.Models\obj\Debug\net6.0\LabsAndCoursesManagement.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.Models\obj\Debug\net6.0\LabsAndCoursesManagement.Models.AssemblyInfoInputs.cache
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.Models\obj\Debug\net6.0\LabsAndCoursesManagement.Models.AssemblyInfo.cs
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.Models\obj\Debug\net6.0\LabsAndCoursesManagement.Models.csproj.CoreCompileInputs.cache
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.Models\obj\Debug\net6.0\LabsAndCoursesManagement.Models.dll
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.Models\obj\Debug\net6.0\refint\LabsAndCoursesManagement.Models.dll
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.Models\obj\Debug\net6.0\LabsAndCoursesManagement.Models.pdb
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.Models\obj\Debug\net6.0\ref\LabsAndCoursesManagement.Models.dll
