@@ -1,0 +1,17 @@
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.BusinessLogic\bin\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.deps.json
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.BusinessLogic\bin\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.dll
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.BusinessLogic\bin\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.pdb
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.BusinessLogic\bin\Debug\net6.0\LabsAndCoursesManagement.DataAccess.dll
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.BusinessLogic\bin\Debug\net6.0\LabsAndCoursesManagement.Models.dll
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.BusinessLogic\bin\Debug\net6.0\LabsAndCoursesManagement.DataAccess.pdb
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.BusinessLogic\bin\Debug\net6.0\LabsAndCoursesManagement.Models.pdb
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.BusinessLogic\obj\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.csproj.AssemblyReference.cache
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.BusinessLogic\obj\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.BusinessLogic\obj\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.AssemblyInfoInputs.cache
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.BusinessLogic\obj\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.AssemblyInfo.cs
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.BusinessLogic\obj\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.csproj.CoreCompileInputs.cache
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.BusinessLogic\obj\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.csproj.CopyComplete
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.BusinessLogic\obj\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.dll
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.BusinessLogic\obj\Debug\net6.0\refint\LabsAndCoursesManagement.BusinessLogic.dll
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.BusinessLogic\obj\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.pdb
+C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.BusinessLogic\obj\Debug\net6.0\ref\LabsAndCoursesManagement.BusinessLogic.dll

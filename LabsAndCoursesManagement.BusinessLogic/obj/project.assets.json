@@ -1,0 +1,108 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "LabsAndCoursesManagement.DataAccess/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "LabsAndCoursesManagement.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/LabsAndCoursesManagement.DataAccess.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LabsAndCoursesManagement.DataAccess.dll": {}
+        }
+      },
+      "LabsAndCoursesManagement.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/LabsAndCoursesManagement.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LabsAndCoursesManagement.Models.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "LabsAndCoursesManagement.DataAccess/1.0.0": {
+      "type": "project",
+      "path": "../LabsAndCoursesManagement.DataAccess/LabsAndCoursesManagement.DataAccess.csproj",
+      "msbuildProject": "../LabsAndCoursesManagement.DataAccess/LabsAndCoursesManagement.DataAccess.csproj"
+    },
+    "LabsAndCoursesManagement.Models/1.0.0": {
+      "type": "project",
+      "path": "../LabsAndCoursesManagement.Models/LabsAndCoursesManagement.Models.csproj",
+      "msbuildProject": "../LabsAndCoursesManagement.Models/LabsAndCoursesManagement.Models.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "LabsAndCoursesManagement.DataAccess >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\iantal\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.BusinessLogic\\LabsAndCoursesManagement.BusinessLogic.csproj",
+      "projectName": "LabsAndCoursesManagement.BusinessLogic",
+      "projectPath": "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.BusinessLogic\\LabsAndCoursesManagement.BusinessLogic.csproj",
+      "packagesPath": "C:\\Users\\iantal\\.nuget\\packages\\",
+      "outputPath": "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.BusinessLogic\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\iantal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {
+            "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.DataAccess\\LabsAndCoursesManagement.DataAccess.csproj": {
+              "projectPath": "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.DataAccess\\LabsAndCoursesManagement.DataAccess.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

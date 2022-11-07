@@ -1,0 +1,49 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "LabsAndCoursesManagement.BusinessLogic/1.0.0": {
+        "dependencies": {
+          "LabsAndCoursesManagement.DataAccess": "1.0.0"
+        },
+        "runtime": {
+          "LabsAndCoursesManagement.BusinessLogic.dll": {}
+        }
+      },
+      "LabsAndCoursesManagement.DataAccess/1.0.0": {
+        "dependencies": {
+          "LabsAndCoursesManagement.Models": "1.0.0"
+        },
+        "runtime": {
+          "LabsAndCoursesManagement.DataAccess.dll": {}
+        }
+      },
+      "LabsAndCoursesManagement.Models/1.0.0": {
+        "runtime": {
+          "LabsAndCoursesManagement.Models.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "LabsAndCoursesManagement.BusinessLogic/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "LabsAndCoursesManagement.DataAccess/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "LabsAndCoursesManagement.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
