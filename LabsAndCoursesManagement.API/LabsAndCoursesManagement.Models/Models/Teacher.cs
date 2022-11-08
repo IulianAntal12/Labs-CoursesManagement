@@ -16,10 +16,10 @@ namespace LabsAndCoursesManagement.Models.Models
 
         public string Cabinet { get; private set; }
 
-        //public Result<Teacher> Create(string name, string surname, string gender, string role, 
+        //public Result<Teacher> Create(string name, string surname, string gender, string role,
         //    string phoneNumber, string email, string cabinet)
         //{
 
-        //}  
+        //}
     }
 }

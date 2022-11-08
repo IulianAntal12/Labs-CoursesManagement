@@ -15,14 +15,9 @@ namespace LabsAndCoursesManagement.Models.Models
 
         public string EvaluationType { get; private set; }
 
-        public Result<Report> Create(Guid studentId, Guid teacherId, double value, string evaluationType)
-        {
-            if (!Enum.TryParse<PersonGender>(gender, out var personGender))
-            {
-                var expectedGenderValues = Enum.GetNames(typeof(PersonGender));
-                var textExpectedGenderValues = string.Join(", ", expectedGenderValues);
-                return Result<Person>.Failure($"The provided person gender '{gender}' is not one from the values: '{textExpectedGenderValues}'");
-            }
-        }
+        //public Result<Report> Create(Guid studentId, Guid teacherId, double value, string evaluationType)
+        //{
+            
+        //}
     }
 }

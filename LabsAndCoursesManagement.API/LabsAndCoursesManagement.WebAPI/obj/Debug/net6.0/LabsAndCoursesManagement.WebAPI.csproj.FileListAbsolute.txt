@@ -64,3 +64,13 @@ H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesMana
 H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\obj\Debug\net6.0\LabsAndCoursesManagement.WebAPI.pdb
 H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\obj\Debug\net6.0\LabsAndCoursesManagement.WebAPI.genruntimeconfig.cache
 H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\obj\Debug\net6.0\ref\LabsAndCoursesManagement.WebAPI.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
