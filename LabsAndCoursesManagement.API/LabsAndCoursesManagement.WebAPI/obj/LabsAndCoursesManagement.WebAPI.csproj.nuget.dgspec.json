@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.WebAPI\\LabsAndCoursesManagement.WebAPI.csproj": {}
+    "H:\\Anul 3\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.WebAPI\\LabsAndCoursesManagement.WebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.BusinessLogic\\LabsAndCoursesManagement.BusinessLogic.csproj": {
+    "H:\\Anul 3\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.BusinessLogic\\LabsAndCoursesManagement.BusinessLogic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.BusinessLogic\\LabsAndCoursesManagement.BusinessLogic.csproj",
+        "projectUniqueName": "H:\\Anul 3\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.BusinessLogic\\LabsAndCoursesManagement.BusinessLogic.csproj",
         "projectName": "LabsAndCoursesManagement.BusinessLogic",
-        "projectPath": "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.BusinessLogic\\LabsAndCoursesManagement.BusinessLogic.csproj",
-        "packagesPath": "C:\\Users\\iantal\\.nuget\\packages\\",
-        "outputPath": "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.BusinessLogic\\obj\\",
+        "projectPath": "H:\\Anul 3\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.BusinessLogic\\LabsAndCoursesManagement.BusinessLogic.csproj",
+        "packagesPath": "C:\\Users\\George Smoc\\.nuget\\packages\\",
+        "outputPath": "H:\\Anul 3\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.BusinessLogic\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\iantal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\George Smoc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.DataAccess\\LabsAndCoursesManagement.DataAccess.csproj": {
-                "projectPath": "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.DataAccess\\LabsAndCoursesManagement.DataAccess.csproj"
+              "H:\\Anul 3\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.DataAccess\\LabsAndCoursesManagement.DataAccess.csproj": {
+                "projectPath": "H:\\Anul 3\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.DataAccess\\LabsAndCoursesManagement.DataAccess.csproj"
               }
             }
           }
@@ -58,21 +58,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.DataAccess\\LabsAndCoursesManagement.DataAccess.csproj": {
+    "H:\\Anul 3\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.DataAccess\\LabsAndCoursesManagement.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.DataAccess\\LabsAndCoursesManagement.DataAccess.csproj",
+        "projectUniqueName": "H:\\Anul 3\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.DataAccess\\LabsAndCoursesManagement.DataAccess.csproj",
         "projectName": "LabsAndCoursesManagement.DataAccess",
-        "projectPath": "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.DataAccess\\LabsAndCoursesManagement.DataAccess.csproj",
-        "packagesPath": "C:\\Users\\iantal\\.nuget\\packages\\",
-        "outputPath": "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.DataAccess\\obj\\",
+        "projectPath": "H:\\Anul 3\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.DataAccess\\LabsAndCoursesManagement.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\George Smoc\\.nuget\\packages\\",
+        "outputPath": "H:\\Anul 3\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\iantal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\George Smoc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -86,8 +86,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.Models\\LabsAndCoursesManagement.Models.csproj": {
-                "projectPath": "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.Models\\LabsAndCoursesManagement.Models.csproj"
+              "H:\\Anul 3\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.Models\\LabsAndCoursesManagement.Models.csproj": {
+                "projectPath": "H:\\Anul 3\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.Models\\LabsAndCoursesManagement.Models.csproj"
               }
             }
           }
@@ -116,21 +116,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.Models\\LabsAndCoursesManagement.Models.csproj": {
+    "H:\\Anul 3\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.Models\\LabsAndCoursesManagement.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.Models\\LabsAndCoursesManagement.Models.csproj",
+        "projectUniqueName": "H:\\Anul 3\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.Models\\LabsAndCoursesManagement.Models.csproj",
         "projectName": "LabsAndCoursesManagement.Models",
-        "projectPath": "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.Models\\LabsAndCoursesManagement.Models.csproj",
-        "packagesPath": "C:\\Users\\iantal\\.nuget\\packages\\",
-        "outputPath": "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.Models\\obj\\",
+        "projectPath": "H:\\Anul 3\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.Models\\LabsAndCoursesManagement.Models.csproj",
+        "packagesPath": "C:\\Users\\George Smoc\\.nuget\\packages\\",
+        "outputPath": "H:\\Anul 3\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\iantal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\George Smoc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -170,21 +170,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.WebAPI\\LabsAndCoursesManagement.WebAPI.csproj": {
+    "H:\\Anul 3\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.WebAPI\\LabsAndCoursesManagement.WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.WebAPI\\LabsAndCoursesManagement.WebAPI.csproj",
+        "projectUniqueName": "H:\\Anul 3\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.WebAPI\\LabsAndCoursesManagement.WebAPI.csproj",
         "projectName": "LabsAndCoursesManagement.WebAPI",
-        "projectPath": "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.WebAPI\\LabsAndCoursesManagement.WebAPI.csproj",
-        "packagesPath": "C:\\Users\\iantal\\.nuget\\packages\\",
-        "outputPath": "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.WebAPI\\obj\\",
+        "projectPath": "H:\\Anul 3\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.WebAPI\\LabsAndCoursesManagement.WebAPI.csproj",
+        "packagesPath": "C:\\Users\\George Smoc\\.nuget\\packages\\",
+        "outputPath": "H:\\Anul 3\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\iantal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\George Smoc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -198,8 +198,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.BusinessLogic\\LabsAndCoursesManagement.BusinessLogic.csproj": {
-                "projectPath": "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.BusinessLogic\\LabsAndCoursesManagement.BusinessLogic.csproj"
+              "H:\\Anul 3\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.BusinessLogic\\LabsAndCoursesManagement.BusinessLogic.csproj": {
+                "projectPath": "H:\\Anul 3\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.BusinessLogic\\LabsAndCoursesManagement.BusinessLogic.csproj"
               }
             }
           }
@@ -237,7 +237,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }
