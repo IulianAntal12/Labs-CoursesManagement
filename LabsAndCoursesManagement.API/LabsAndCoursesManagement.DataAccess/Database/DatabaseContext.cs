@@ -1,24 +1,19 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using LabsAndCoursesManagement.Models.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace LabsAndCoursesManagement.DataAccess.Database
 {
     public class DatabaseContext : DbContext
     {
-        public DatabaseContext()
-        {
-
-        }
-
-        public DatabaseContext(DbContextOptions<DatabaseContext> options)
-            : base(options)
-        {
-
-        }
+        public DbSet<Lab> Labs;
+        public DbSet<Student> Students;
+        public DbSet<Teacher> Teachers;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            modelBuilder.Entity<Lab>().HasMany(p => p.Teachers).WithMany();
+            modelBuilder.Entity<Lab>().HasMany(p => p.Students).WithMany();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

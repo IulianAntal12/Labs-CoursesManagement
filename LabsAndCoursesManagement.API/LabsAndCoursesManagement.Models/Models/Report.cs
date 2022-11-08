@@ -1,6 +1,4 @@
-﻿using ShelterManagement.Business;
-
-namespace LabsAndCoursesManagement.Models.Models
+﻿namespace LabsAndCoursesManagement.Models.Models
 {
     public class Report
     {
