@@ -14,6 +14,8 @@
           "LabsAndCoursesManagement.BusinessLogic.dll": {}
         }
       },
+<<<<<<< HEAD
+=======
       "Azure.Core/1.24.0": {
         "dependencies": {
           "Microsoft.Bcl.AsyncInterfaces": "1.1.1",
@@ -122,6 +124,7 @@
           }
         }
       },
+>>>>>>> f55eb0e6d69b7445dbaffdbc5df022f03e0b22ae
       "Microsoft.EntityFrameworkCore/7.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Abstractions": "7.0.0",
@@ -146,6 +149,8 @@
         }
       },
       "Microsoft.EntityFrameworkCore.Analyzers/7.0.0": {},
+<<<<<<< HEAD
+=======
       "Microsoft.EntityFrameworkCore.Relational/7.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "7.0.0",
@@ -170,6 +175,7 @@
           }
         }
       },
+>>>>>>> f55eb0e6d69b7445dbaffdbc5df022f03e0b22ae
       "Microsoft.Extensions.Caching.Abstractions/7.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "7.0.0"
@@ -196,6 +202,8 @@
           }
         }
       },
+<<<<<<< HEAD
+=======
       "Microsoft.Extensions.Configuration.Abstractions/7.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "7.0.0"
@@ -207,6 +215,7 @@
           }
         }
       },
+>>>>>>> f55eb0e6d69b7445dbaffdbc5df022f03e0b22ae
       "Microsoft.Extensions.DependencyInjection/7.0.0": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0"
@@ -271,6 +280,13 @@
           }
         }
       },
+<<<<<<< HEAD
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
+      "LabsAndCoursesManagement.DataAccess/1.0.0": {
+        "dependencies": {
+          "LabsAndCoursesManagement.Models": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.0"
+=======
       "Microsoft.Identity.Client/4.45.0": {
         "dependencies": {
           "Microsoft.IdentityModel.Abstractions": "6.21.0"
@@ -615,6 +631,7 @@
           "LabsAndCoursesManagement.Models": "1.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.0"
+>>>>>>> f55eb0e6d69b7445dbaffdbc5df022f03e0b22ae
         },
         "runtime": {
           "LabsAndCoursesManagement.DataAccess.dll": {}
@@ -633,6 +650,8 @@
       "serviceable": false,
       "sha512": ""
     },
+<<<<<<< HEAD
+=======
     "Azure.Core/1.24.0": {
       "type": "package",
       "serviceable": true,
@@ -675,6 +694,7 @@
       "path": "microsoft.data.sqlclient.sni.runtime/5.0.1",
       "hashPath": "microsoft.data.sqlclient.sni.runtime.5.0.1.nupkg.sha512"
     },
+>>>>>>> f55eb0e6d69b7445dbaffdbc5df022f03e0b22ae
     "Microsoft.EntityFrameworkCore/7.0.0": {
       "type": "package",
       "serviceable": true,
@@ -696,6 +716,8 @@
       "path": "microsoft.entityframeworkcore.analyzers/7.0.0",
       "hashPath": "microsoft.entityframeworkcore.analyzers.7.0.0.nupkg.sha512"
     },
+<<<<<<< HEAD
+=======
     "Microsoft.EntityFrameworkCore.Relational/7.0.0": {
       "type": "package",
       "serviceable": true,
@@ -710,6 +732,7 @@
       "path": "microsoft.entityframeworkcore.sqlserver/7.0.0",
       "hashPath": "microsoft.entityframeworkcore.sqlserver.7.0.0.nupkg.sha512"
     },
+>>>>>>> f55eb0e6d69b7445dbaffdbc5df022f03e0b22ae
     "Microsoft.Extensions.Caching.Abstractions/7.0.0": {
       "type": "package",
       "serviceable": true,
@@ -724,6 +747,8 @@
       "path": "microsoft.extensions.caching.memory/7.0.0",
       "hashPath": "microsoft.extensions.caching.memory.7.0.0.nupkg.sha512"
     },
+<<<<<<< HEAD
+=======
     "Microsoft.Extensions.Configuration.Abstractions/7.0.0": {
       "type": "package",
       "serviceable": true,
@@ -731,6 +756,7 @@
       "path": "microsoft.extensions.configuration.abstractions/7.0.0",
       "hashPath": "microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512"
     },
+>>>>>>> f55eb0e6d69b7445dbaffdbc5df022f03e0b22ae
     "Microsoft.Extensions.DependencyInjection/7.0.0": {
       "type": "package",
       "serviceable": true,
@@ -773,6 +799,8 @@
       "path": "microsoft.extensions.primitives/7.0.0",
       "hashPath": "microsoft.extensions.primitives.7.0.0.nupkg.sha512"
     },
+<<<<<<< HEAD
+=======
     "Microsoft.Identity.Client/4.45.0": {
       "type": "package",
       "serviceable": true,
@@ -976,6 +1004,7 @@
       "path": "system.runtime.caching/5.0.0",
       "hashPath": "system.runtime.caching.5.0.0.nupkg.sha512"
     },
+>>>>>>> f55eb0e6d69b7445dbaffdbc5df022f03e0b22ae
     "System.Runtime.CompilerServices.Unsafe/6.0.0": {
       "type": "package",
       "serviceable": true,
@@ -983,6 +1012,8 @@
       "path": "system.runtime.compilerservices.unsafe/6.0.0",
       "hashPath": "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
     },
+<<<<<<< HEAD
+=======
     "System.Security.AccessControl/5.0.0": {
       "type": "package",
       "serviceable": true,
@@ -1067,6 +1098,7 @@
       "path": "system.windows.extensions/5.0.0",
       "hashPath": "system.windows.extensions.5.0.0.nupkg.sha512"
     },
+>>>>>>> f55eb0e6d69b7445dbaffdbc5df022f03e0b22ae
     "LabsAndCoursesManagement.DataAccess/1.0.0": {
       "type": "project",
       "serviceable": false,

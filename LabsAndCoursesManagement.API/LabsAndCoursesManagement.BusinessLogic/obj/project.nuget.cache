@@ -1,5 +1,23 @@
 {
   "version": 2,
+<<<<<<< HEAD
+  "dgSpecHash": "dj0Y6zJpfmbz8jc2VECMOZ4zF4yC7h6TrkEPfN1kFP1/KAFFP7U3R2NczUDDKqFoTC/ffj9qtEAdHhn6J79ZuQ==",
+  "success": true,
+  "projectFilePath": "H:\\Anul 3\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.BusinessLogic\\LabsAndCoursesManagement.BusinessLogic.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\George Smoc\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.0\\microsoft.entityframeworkcore.7.0.0.nupkg.sha512",
+    "C:\\Users\\George Smoc\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.0\\microsoft.entityframeworkcore.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\George Smoc\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.0\\microsoft.entityframeworkcore.analyzers.7.0.0.nupkg.sha512",
+    "C:\\Users\\George Smoc\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\George Smoc\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
+    "C:\\Users\\George Smoc\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
+    "C:\\Users\\George Smoc\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\George Smoc\\.nuget\\packages\\microsoft.extensions.logging\\7.0.0\\microsoft.extensions.logging.7.0.0.nupkg.sha512",
+    "C:\\Users\\George Smoc\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\George Smoc\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
+    "C:\\Users\\George Smoc\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
+    "C:\\Users\\George Smoc\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+=======
   "dgSpecHash": "1csR0a5fXKdTkSydoJa4pmenMkiN5arPaT3/XXMdxX2Y9FdzhGLKbKeCMZodvAnwWG88tNsSOQFRBRRtMBhx7g==",
   "success": true,
   "projectFilePath": "C:\\Facultate\\Labs-CoursesManagement\\LabsAndCoursesManagement.API\\LabsAndCoursesManagement.BusinessLogic\\LabsAndCoursesManagement.BusinessLogic.csproj",
@@ -66,6 +84,7 @@
     "C:\\Users\\iantal\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
     "C:\\Users\\iantal\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\iantal\\.nuget\\packages\\system.windows.extensions\\5.0.0\\system.windows.extensions.5.0.0.nupkg.sha512"
+>>>>>>> f55eb0e6d69b7445dbaffdbc5df022f03e0b22ae
   ],
   "logs": []
 }

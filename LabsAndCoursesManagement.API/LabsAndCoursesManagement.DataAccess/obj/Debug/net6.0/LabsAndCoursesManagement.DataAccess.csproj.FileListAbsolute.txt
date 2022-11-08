@@ -13,6 +13,23 @@ C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.DataAccess\obj\Debu
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.DataAccess\obj\Debug\net6.0\refint\LabsAndCoursesManagement.DataAccess.dll
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.DataAccess\obj\Debug\net6.0\LabsAndCoursesManagement.DataAccess.pdb
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.DataAccess\obj\Debug\net6.0\ref\LabsAndCoursesManagement.DataAccess.dll
+<<<<<<< HEAD
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\bin\Debug\net6.0\LabsAndCoursesManagement.DataAccess.deps.json
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\bin\Debug\net6.0\LabsAndCoursesManagement.DataAccess.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\bin\Debug\net6.0\LabsAndCoursesManagement.DataAccess.pdb
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\bin\Debug\net6.0\LabsAndCoursesManagement.Models.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\bin\Debug\net6.0\LabsAndCoursesManagement.Models.pdb
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\obj\Debug\net6.0\LabsAndCoursesManagement.DataAccess.csproj.AssemblyReference.cache
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\obj\Debug\net6.0\LabsAndCoursesManagement.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\obj\Debug\net6.0\LabsAndCoursesManagement.DataAccess.AssemblyInfoInputs.cache
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\obj\Debug\net6.0\LabsAndCoursesManagement.DataAccess.AssemblyInfo.cs
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\obj\Debug\net6.0\LabsAndCoursesManagement.DataAccess.csproj.CoreCompileInputs.cache
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\obj\Debug\net6.0\LabsAndCoursesManagement.DataAccess.csproj.CopyComplete
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\obj\Debug\net6.0\LabsAndCoursesManagement.DataAccess.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\obj\Debug\net6.0\refint\LabsAndCoursesManagement.DataAccess.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\obj\Debug\net6.0\LabsAndCoursesManagement.DataAccess.pdb
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\obj\Debug\net6.0\ref\LabsAndCoursesManagement.DataAccess.dll
+=======
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\bin\Debug\net6.0\LabsAndCoursesManagement.DataAccess.deps.json
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\bin\Debug\net6.0\LabsAndCoursesManagement.DataAccess.runtimeconfig.json
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\bin\Debug\net6.0\LabsAndCoursesManagement.DataAccess.dll
@@ -30,3 +47,4 @@ C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesM
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\obj\Debug\net6.0\LabsAndCoursesManagement.DataAccess.pdb
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\obj\Debug\net6.0\LabsAndCoursesManagement.DataAccess.genruntimeconfig.cache
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\obj\Debug\net6.0\ref\LabsAndCoursesManagement.DataAccess.dll
+>>>>>>> f55eb0e6d69b7445dbaffdbc5df022f03e0b22ae

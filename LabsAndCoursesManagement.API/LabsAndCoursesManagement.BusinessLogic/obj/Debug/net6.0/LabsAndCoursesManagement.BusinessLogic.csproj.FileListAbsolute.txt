@@ -15,6 +15,25 @@ C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.BusinessLogic\obj\D
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.BusinessLogic\obj\Debug\net6.0\refint\LabsAndCoursesManagement.BusinessLogic.dll
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.BusinessLogic\obj\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.pdb
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.BusinessLogic\obj\Debug\net6.0\ref\LabsAndCoursesManagement.BusinessLogic.dll
+<<<<<<< HEAD
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\bin\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.deps.json
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\bin\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\bin\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.pdb
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\bin\Debug\net6.0\LabsAndCoursesManagement.DataAccess.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\bin\Debug\net6.0\LabsAndCoursesManagement.Models.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\bin\Debug\net6.0\LabsAndCoursesManagement.DataAccess.pdb
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\bin\Debug\net6.0\LabsAndCoursesManagement.Models.pdb
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\obj\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.csproj.AssemblyReference.cache
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\obj\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.GeneratedMSBuildEditorConfig.editorconfig
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\obj\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.AssemblyInfoInputs.cache
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\obj\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.AssemblyInfo.cs
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\obj\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.csproj.CoreCompileInputs.cache
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\obj\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.csproj.CopyComplete
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\obj\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\obj\Debug\net6.0\refint\LabsAndCoursesManagement.BusinessLogic.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\obj\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.pdb
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\obj\Debug\net6.0\ref\LabsAndCoursesManagement.BusinessLogic.dll
+=======
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\bin\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.deps.json
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\bin\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.dll
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\bin\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.pdb
@@ -32,3 +51,4 @@ C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesM
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\obj\Debug\net6.0\refint\LabsAndCoursesManagement.BusinessLogic.dll
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\obj\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.pdb
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\obj\Debug\net6.0\ref\LabsAndCoursesManagement.BusinessLogic.dll
+>>>>>>> f55eb0e6d69b7445dbaffdbc5df022f03e0b22ae

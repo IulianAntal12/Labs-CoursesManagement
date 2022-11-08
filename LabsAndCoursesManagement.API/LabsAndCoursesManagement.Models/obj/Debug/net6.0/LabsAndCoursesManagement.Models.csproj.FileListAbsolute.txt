@@ -10,6 +10,20 @@ C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.Models\obj\Debug\ne
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.Models\obj\Debug\net6.0\refint\LabsAndCoursesManagement.Models.dll
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.Models\obj\Debug\net6.0\LabsAndCoursesManagement.Models.pdb
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.Models\obj\Debug\net6.0\ref\LabsAndCoursesManagement.Models.dll
+<<<<<<< HEAD
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.Models\bin\Debug\net6.0\LabsAndCoursesManagement.Models.deps.json
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.Models\bin\Debug\net6.0\LabsAndCoursesManagement.Models.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.Models\bin\Debug\net6.0\LabsAndCoursesManagement.Models.pdb
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.Models\obj\Debug\net6.0\LabsAndCoursesManagement.Models.csproj.AssemblyReference.cache
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.Models\obj\Debug\net6.0\LabsAndCoursesManagement.Models.GeneratedMSBuildEditorConfig.editorconfig
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.Models\obj\Debug\net6.0\LabsAndCoursesManagement.Models.AssemblyInfoInputs.cache
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.Models\obj\Debug\net6.0\LabsAndCoursesManagement.Models.AssemblyInfo.cs
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.Models\obj\Debug\net6.0\LabsAndCoursesManagement.Models.csproj.CoreCompileInputs.cache
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.Models\obj\Debug\net6.0\LabsAndCoursesManagement.Models.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.Models\obj\Debug\net6.0\refint\LabsAndCoursesManagement.Models.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.Models\obj\Debug\net6.0\LabsAndCoursesManagement.Models.pdb
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.Models\obj\Debug\net6.0\ref\LabsAndCoursesManagement.Models.dll
+=======
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.Models\bin\Debug\net6.0\LabsAndCoursesManagement.Models.deps.json
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.Models\bin\Debug\net6.0\LabsAndCoursesManagement.Models.dll
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.Models\bin\Debug\net6.0\LabsAndCoursesManagement.Models.pdb
@@ -22,3 +36,4 @@ C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesM
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.Models\obj\Debug\net6.0\refint\LabsAndCoursesManagement.Models.dll
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.Models\obj\Debug\net6.0\LabsAndCoursesManagement.Models.pdb
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.Models\obj\Debug\net6.0\ref\LabsAndCoursesManagement.Models.dll
+>>>>>>> f55eb0e6d69b7445dbaffdbc5df022f03e0b22ae
