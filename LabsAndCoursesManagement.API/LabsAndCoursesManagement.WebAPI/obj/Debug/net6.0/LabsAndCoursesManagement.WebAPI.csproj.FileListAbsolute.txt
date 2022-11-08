@@ -31,3 +31,36 @@ C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.WebAPI\obj\Debug\ne
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.WebAPI\obj\Debug\net6.0\LabsAndCoursesManagement.WebAPI.pdb
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.WebAPI\obj\Debug\net6.0\LabsAndCoursesManagement.WebAPI.genruntimeconfig.cache
 C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.WebAPI\obj\Debug\net6.0\ref\LabsAndCoursesManagement.WebAPI.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\appsettings.Development.json
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\appsettings.json
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\LabsAndCoursesManagement.WebAPI.exe
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\LabsAndCoursesManagement.WebAPI.deps.json
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\LabsAndCoursesManagement.WebAPI.runtimeconfig.json
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\LabsAndCoursesManagement.WebAPI.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\LabsAndCoursesManagement.WebAPI.pdb
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\Microsoft.OpenApi.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\LabsAndCoursesManagement.DataAccess.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\LabsAndCoursesManagement.Models.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\LabsAndCoursesManagement.BusinessLogic.pdb
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\LabsAndCoursesManagement.DataAccess.pdb
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\bin\Debug\net6.0\LabsAndCoursesManagement.Models.pdb
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\obj\Debug\net6.0\LabsAndCoursesManagement.WebAPI.csproj.AssemblyReference.cache
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\obj\Debug\net6.0\LabsAndCoursesManagement.WebAPI.GeneratedMSBuildEditorConfig.editorconfig
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\obj\Debug\net6.0\LabsAndCoursesManagement.WebAPI.AssemblyInfoInputs.cache
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\obj\Debug\net6.0\LabsAndCoursesManagement.WebAPI.AssemblyInfo.cs
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\obj\Debug\net6.0\LabsAndCoursesManagement.WebAPI.csproj.CoreCompileInputs.cache
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\obj\Debug\net6.0\LabsAndCoursesManagement.WebAPI.MvcApplicationPartsAssemblyInfo.cs
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\obj\Debug\net6.0\LabsAndCoursesManagement.WebAPI.MvcApplicationPartsAssemblyInfo.cache
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\obj\Debug\net6.0\staticwebassets.build.json
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\obj\Debug\net6.0\staticwebassets.development.json
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\obj\Debug\net6.0\scopedcss\bundle\LabsAndCoursesManagement.WebAPI.styles.css
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\obj\Debug\net6.0\LabsAndCoursesManagement.WebAPI.csproj.CopyComplete
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\obj\Debug\net6.0\LabsAndCoursesManagement.WebAPI.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\obj\Debug\net6.0\refint\LabsAndCoursesManagement.WebAPI.dll
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\obj\Debug\net6.0\LabsAndCoursesManagement.WebAPI.pdb
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\obj\Debug\net6.0\LabsAndCoursesManagement.WebAPI.genruntimeconfig.cache
+H:\Anul 3\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\obj\Debug\net6.0\ref\LabsAndCoursesManagement.WebAPI.dll

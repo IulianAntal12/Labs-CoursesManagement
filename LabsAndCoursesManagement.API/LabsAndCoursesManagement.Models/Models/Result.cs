@@ -6,27 +6,33 @@ using System.Threading.Tasks;
 
 namespace LabsAndCoursesManagement.Models.Models
 {
-    public class Result
+    public class Result<TEntity>
     {
+        public TEntity Entity { get; set; }
+
         public string Error { get; private set; }
+
         public bool IsSuccess { get; private set; }
+
         public bool IsFailure { get; private set; }
 
-        public static Result Success()
+        public static Result<TEntity> Success(TEntity entity)
         {
-            return new Result
+            return new Result<TEntity>
             {
+                Entity = entity,
                 IsSuccess = true
             };
         }
 
-        public static Result Failure(string error)
+        public static Result<TEntity> Failure(string error)
         {
-            return new Result
+            return new Result<TEntity>
             {
                 Error = error,
                 IsFailure = true
             };
         }
+
     }
 }
