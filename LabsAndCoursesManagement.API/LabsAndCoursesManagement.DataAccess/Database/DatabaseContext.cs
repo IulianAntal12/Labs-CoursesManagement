@@ -12,8 +12,8 @@ namespace LabsAndCoursesManagement.DataAccess.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Lab>().HasMany(p => p.Teachers).WithMany();
             modelBuilder.Entity<Lab>().HasMany(p => p.Students).WithMany();
+            modelBuilder.Entity<Teacher>().HasMany(t => t.Labs).WithMany();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

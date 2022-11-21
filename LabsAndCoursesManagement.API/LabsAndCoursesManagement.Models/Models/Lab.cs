@@ -21,8 +21,13 @@ namespace LabsAndCoursesManagement.Models.Models
 
         public DateInterval Duration { get; private set; }
 
-        public List<Student> Students { get; private set; }
+        public List<Student> Students { get; private set; } = new List<Student>(); 
 
-        public List<Teacher> Teachers { get; private set; }
+        public Guid TeacherId  { get; private set; }
+
+        public void EnrollTeacher(Teacher teacher)
+        {
+            TeacherId = teacher.Id;
+        }
     }
 }
