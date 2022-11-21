@@ -14,13 +14,13 @@
 
         public string Cabinet { get; private set; }
 
-        public List<Lab> Labs { get; private set; } = new List<Lab>();
+        public IEnumerable<Lab> Labs { get; private set; } = new List<Lab>();
 
         public void EnrollToLabs(List<Lab> labs)
         {
             labs.ForEach(lab =>
             {
-                Labs.Add(lab);
+                Labs.Append(lab);
                 lab.EnrollTeacher(this);
             });
         }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -10,24 +11,6 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Lab",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TenantId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Year = table.Column<int>(type: "int", nullable: false),
-                    Semester = table.Column<int>(type: "int", nullable: false),
-                    StartTime = table.Column<int>(type: "int", nullable: false),
-                    Duration = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Lab", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Student",
                 columns: table => new
@@ -64,6 +47,29 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Lab",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TeacherId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Group = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Year = table.Column<int>(type: "int", nullable: false),
+                    Semester = table.Column<int>(type: "int", nullable: false),
+                    TeacherId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Lab", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Lab_Teacher_TeacherId",
+                        column: x => x.TeacherId,
+                        principalTable: "Teacher",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "LabStudent",
                 columns: table => new
                 {
@@ -87,39 +93,15 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "LabTeacher",
-                columns: table => new
-                {
-                    LabId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TeachersId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_LabTeacher", x => new { x.LabId, x.TeachersId });
-                    table.ForeignKey(
-                        name: "FK_LabTeacher_Lab_LabId",
-                        column: x => x.LabId,
-                        principalTable: "Lab",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_LabTeacher_Teacher_TeachersId",
-                        column: x => x.TeachersId,
-                        principalTable: "Teacher",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
+            migrationBuilder.CreateIndex(
+                name: "IX_Lab_TeacherId",
+                table: "Lab",
+                column: "TeacherId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_LabStudent_StudentsId",
                 table: "LabStudent",
                 column: "StudentsId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_LabTeacher_TeachersId",
-                table: "LabTeacher",
-                column: "TeachersId");
         }
 
         /// <inheritdoc />
@@ -129,13 +111,10 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                 name: "LabStudent");
 
             migrationBuilder.DropTable(
-                name: "LabTeacher");
+                name: "Lab");
 
             migrationBuilder.DropTable(
                 name: "Student");
-
-            migrationBuilder.DropTable(
-                name: "Lab");
 
             migrationBuilder.DropTable(
                 name: "Teacher");
