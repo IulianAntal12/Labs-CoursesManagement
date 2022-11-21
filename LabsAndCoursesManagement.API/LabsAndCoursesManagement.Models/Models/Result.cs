@@ -19,6 +19,15 @@
             };
         }
 
+        public static Result<TEntity> SuccessNoEntity()
+        {
+            return new Result<TEntity>
+            {
+                IsSuccess = true
+            };
+        }
+
+
         public static Result<TEntity> Failure(string error)
         {
             return new Result<TEntity>
@@ -27,6 +36,5 @@
                 IsFailure = true
             };
         }
-
     }
 }
