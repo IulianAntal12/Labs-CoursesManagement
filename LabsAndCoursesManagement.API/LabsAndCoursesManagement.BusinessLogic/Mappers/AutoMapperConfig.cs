@@ -10,6 +10,7 @@ namespace LabsAndCoursesManagement.BusinessLogic.Mappers
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new TeacherMapper());
+                cfg.AddProfile(new LabMapper());
                 cfg.AddCollectionMappers();
             }
             );

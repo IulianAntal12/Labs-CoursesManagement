@@ -5,7 +5,7 @@ namespace LabsAndCoursesManagement.DataAccess.Repositories
 {
     public abstract class Repository<T> : IRepository<T> where T : class
     {
-        private readonly DatabaseContext context;
+        protected readonly DatabaseContext context;
 
         public Repository(DatabaseContext context)
         {
@@ -19,7 +19,7 @@ namespace LabsAndCoursesManagement.DataAccess.Repositories
             return entity;
         }
 
-        public async Task<IEnumerable<T>> All()
+        public virtual async Task<IEnumerable<T>> All()
         {
             CheckDatabaseContextStatus();
             return await context.Set<T>().ToListAsync();

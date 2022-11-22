@@ -36,7 +36,8 @@ namespace LabsAndCoursesManagement.BusinessLogic.Services
             }
 
             teacher.EnrollToLabs(jointTasks);
-            repository.SaveChanges();
+            await repository.Update(teacherId, teacher);
+            await repository.SaveChanges();
             return Result<Teacher>.SuccessNoEntity();
         }
 

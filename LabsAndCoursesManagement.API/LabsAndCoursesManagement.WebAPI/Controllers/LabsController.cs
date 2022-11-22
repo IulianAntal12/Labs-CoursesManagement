@@ -1,16 +1,16 @@
 ﻿using LabsAndCoursesManagement.BusinessLogic.Interfaces;
-using LabsAndCoursesManagement.WebAPI.Dtos;
+using LabsAndCoursesManagement.Models.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LabsAndCoursesManagement.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TeachersController : ControllerBase
+    public class LabsController : ControllerBase
     {
-        private readonly ITeacherService service;
+        private readonly ILabService service;
 
-        public TeachersController(ITeacherService service)
+        public LabsController(ILabService service)
         {
             this.service = service;
         }
@@ -21,10 +21,10 @@ namespace LabsAndCoursesManagement.WebAPI.Controllers
             return Ok((await service.GetAll()).Entity);
         }
 
-        [HttpGet("{teacherId:guid}")]
-        public async Task<IActionResult> GetById(Guid teacherId)
+        [HttpGet("{labId:guid}")]
+        public async Task<IActionResult> GetById(Guid labId)
         {
-            var result = await service.GetById(teacherId);
+            var result = await service.GetById(labId);
             if (result.IsFailure)
             {
                 return NotFound();
@@ -33,7 +33,7 @@ namespace LabsAndCoursesManagement.WebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreateTeacherDto dto)
+        public async Task<IActionResult> Create([FromBody] CreateLabDto dto)
         {
             var result = await service.Add(dto);
             if (result.IsFailure)
@@ -43,7 +43,7 @@ namespace LabsAndCoursesManagement.WebAPI.Controllers
             return Created(nameof(Get), result.Entity);
         }
 
-        [HttpDelete("{teacherId:guid}")]
+        [HttpDelete("{labId:guid}")]
         public async Task<IActionResult> DeleteById(Guid id)
         {
             var result = await service.Delete(id);
@@ -55,7 +55,7 @@ namespace LabsAndCoursesManagement.WebAPI.Controllers
         }
 
         [HttpPut("{teacherId:guid}")]
-        public async Task<IActionResult> Update(Guid teacherId, [FromBody] CreateTeacherDto dto)
+        public async Task<IActionResult> Update(Guid teacherId, [FromBody] CreateLabDto dto)
         {
             var result = await service.Update(teacherId, dto);
             if (result.IsFailure)
@@ -63,13 +63,6 @@ namespace LabsAndCoursesManagement.WebAPI.Controllers
                 return BadRequest(result.Error);
             }
             return Ok();
-        }
-
-        [HttpPut("{teacherId:guid}/enroll")]
-        public async Task<IActionResult> EnrollTeacherToLab(Guid teacherId, [FromBody] List<Guid> labIds)
-        {
-            var result = await service.EnrollTeacherToLabs(teacherId, labIds);
-            return Ok(result);
         }
     }
 }

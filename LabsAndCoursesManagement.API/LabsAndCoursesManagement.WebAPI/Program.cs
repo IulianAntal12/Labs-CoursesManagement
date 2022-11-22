@@ -17,6 +17,7 @@ builder.Services.AddScoped<DatabaseContext>();
 builder.Services.AddScoped<IRepository<Teacher>, TeacherRepository>();    
 builder.Services.AddScoped<ITeacherService, TeacherService>();
 builder.Services.AddScoped<IRepository<Lab>, LabRepository>();
+builder.Services.AddScoped<ILabService, LabService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
