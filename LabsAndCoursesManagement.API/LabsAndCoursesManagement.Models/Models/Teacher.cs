@@ -6,6 +6,7 @@
         {
             Id = Guid.NewGuid();
         }
+        public string Name { get; private set; }
         public string Role { get; private set; }
 
         public string PhoneNumber { get; private set; }

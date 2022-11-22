@@ -1,12 +1,8 @@
-﻿namespace LabsAndCoursesManagement.WebAPI.Dtos
+﻿namespace LabsAndCoursesManagement.Models.Dtos
 {
     public class CreateTeacherDto
     {
         public string Name { get;  set; }
-
-        public string Surname { get;  set; }
-
-        public string Gender { get;  set; }
 
         public string Role { get; set; }
 

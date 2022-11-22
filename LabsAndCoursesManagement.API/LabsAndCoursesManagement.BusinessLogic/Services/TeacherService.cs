@@ -2,7 +2,7 @@
 using LabsAndCoursesManagement.BusinessLogic.Interfaces;
 using LabsAndCoursesManagement.DataAccess.Repositories;
 using LabsAndCoursesManagement.Models.Models;
-using LabsAndCoursesManagement.WebAPI.Dtos;
+using LabsAndCoursesManagement.Models.Dtos;
 
 namespace LabsAndCoursesManagement.BusinessLogic.Services
 {
@@ -39,11 +39,6 @@ namespace LabsAndCoursesManagement.BusinessLogic.Services
             await repository.Update(teacherId, teacher);
             await repository.SaveChanges();
             return Result<Teacher>.SuccessNoEntity();
-        }
-
-        public void Update()
-        {
-
         }
     }
 }
