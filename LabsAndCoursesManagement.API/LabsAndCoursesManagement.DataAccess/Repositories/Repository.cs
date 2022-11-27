@@ -16,6 +16,7 @@ namespace LabsAndCoursesManagement.DataAccess.Repositories
         {
             CheckDatabaseContextStatus();
             await context.AddAsync(entity);
+            await SaveChanges();
             return entity;
         }
 

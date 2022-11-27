@@ -28,7 +28,7 @@ namespace LabsAndCoursesManagement.Tests
             //arrange
             var TeacherDto = new CreateTeacherDto()
             {
-                Name = "TestName",
+                FullName = "TestName",
                 Cabinet = "111",
                 Email = "a@a.a",
                 PhoneNumber = "0711111111",
@@ -49,7 +49,7 @@ namespace LabsAndCoursesManagement.Tests
             //arrange
             var TeacherDto = new CreateTeacherDto()
             {
-                Name = "TestName",
+                FullName = "TestName",
                 Cabinet = "111",
                 Email = "a@a.a",
                 PhoneNumber = "0711111111",
@@ -71,7 +71,7 @@ namespace LabsAndCoursesManagement.Tests
             //arrange
             var TeacherDto = new CreateTeacherDto()
             {
-                Name = "TestName",
+                FullName = "TestName",
                 Cabinet = "111",
                 Email = "a@a.a",
                 PhoneNumber = "0711111111",
@@ -92,7 +92,7 @@ namespace LabsAndCoursesManagement.Tests
             //arrange
             var TeacherDto = new CreateTeacherDto()
             {
-                Name = "TestName",
+                FullName = "TestName",
                 Cabinet = "111",
                 Email = "a@a.a",
                 PhoneNumber = "0711111111",
@@ -115,7 +115,7 @@ namespace LabsAndCoursesManagement.Tests
             //arrange
             var TeacherDto = new CreateTeacherDto()
             {
-                Name = "TestName",
+                FullName = "TestName",
                 Cabinet = "111",
                 Email = "a@a.a",
                 PhoneNumber = "0711111111",

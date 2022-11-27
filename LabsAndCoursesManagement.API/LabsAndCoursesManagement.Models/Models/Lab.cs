@@ -4,14 +4,10 @@
     {
         public Lab()
         {
-            Id = new Guid();
+            Id = Guid.NewGuid();
         }
 
         public Guid Id { get; private set; }
-
-        public virtual Teacher Teacher { get; private set; }
-
-        public Guid TeacherId { get; private set; }
 
         public string Name { get; private set; }
 
@@ -23,12 +19,15 @@
 
         public int Semester { get; private set; }
 
-        public List<Student> Students { get; private set; } = new List<Student>(); 
+        public Teacher Teacher { get; private set; }
+
+        public Guid TeacherId { get; private set; }
+
+        //public List<Student> Students { get; private set; } = new List<Student>();
 
         public void EnrollTeacher(Teacher teacher)
         {
             Teacher = teacher;
-            TeacherId = teacher.Id;
         }
     }
 }

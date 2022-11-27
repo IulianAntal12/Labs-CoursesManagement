@@ -1,21 +1,19 @@
 ﻿namespace LabsAndCoursesManagement.Models.Models
 {
-    public class Teacher : Person
+    public class Teacher
     {
         public Teacher()
         {
             Id = Guid.NewGuid();
         }
-        public string Name { get; private set; }
-        public string Role { get; private set; }
 
-        public string PhoneNumber { get; private set; }
-
+        public Guid Id { get; protected set; }
+        public string FullName { get; protected set; }
         public string Email { get; private set; }
-
+        public string Role { get; private set; }
+        public string PhoneNumber { get; private set; }
         public string Cabinet { get; private set; }
-
-        public IEnumerable<Lab> Labs { get; private set; } = new List<Lab>();
+        public List<Lab> Labs { get; private set; } = new List<Lab>();
 
         public void EnrollToLabs(List<Lab> labs)
         {
