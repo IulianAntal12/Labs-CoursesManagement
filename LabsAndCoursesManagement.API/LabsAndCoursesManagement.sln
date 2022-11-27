@@ -1,17 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31025.194
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33103.201
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabsAndCoursesManagement.WebAPI", "LabsAndCoursesManagement.WebAPI\LabsAndCoursesManagement.WebAPI.csproj", "{F435010C-D887-430C-8179-4440774F5351}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LabsAndCoursesManagement.WebAPI", "LabsAndCoursesManagement.WebAPI\LabsAndCoursesManagement.WebAPI.csproj", "{F435010C-D887-430C-8179-4440774F5351}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabsAndCoursesManagement.BusinessLogic", "LabsAndCoursesManagement.BusinessLogic\LabsAndCoursesManagement.BusinessLogic.csproj", "{EC698A39-AB4B-4017-A91F-12288022A32A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LabsAndCoursesManagement.BusinessLogic", "LabsAndCoursesManagement.BusinessLogic\LabsAndCoursesManagement.BusinessLogic.csproj", "{EC698A39-AB4B-4017-A91F-12288022A32A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabsAndCoursesManagement.DataAccess", "LabsAndCoursesManagement.DataAccess\LabsAndCoursesManagement.DataAccess.csproj", "{754720D3-2269-4592-A361-69B0FCAFFAF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LabsAndCoursesManagement.DataAccess", "LabsAndCoursesManagement.DataAccess\LabsAndCoursesManagement.DataAccess.csproj", "{754720D3-2269-4592-A361-69B0FCAFFAF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabsAndCoursesManagement.Models", "LabsAndCoursesManagement.Models\LabsAndCoursesManagement.Models.csproj", "{21AEE5AD-CBC3-45C7-9BF9-112418DD8CCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LabsAndCoursesManagement.Models", "LabsAndCoursesManagement.Models\LabsAndCoursesManagement.Models.csproj", "{21AEE5AD-CBC3-45C7-9BF9-112418DD8CCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabsAndCoursesManagement.Tests", "LabsAndCoursesManagement.Tests\LabsAndCoursesManagement.Tests.csproj", "{94EC5D19-2E3C-44BF-B1C0-6D06C1A6AF64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LabsAndCoursesManagement.Tests", "LabsAndCoursesManagement.Tests\LabsAndCoursesManagement.Tests.csproj", "{94EC5D19-2E3C-44BF-B1C0-6D06C1A6AF64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabsAndCoursesManagement.API.IntegrationTests", "LabsAndCoursesManagement.API.IntegrationTests\LabsAndCoursesManagement.API.IntegrationTests.csproj", "{4A70B18B-5F56-45E1-AEFA-AEB213CFC7A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{94EC5D19-2E3C-44BF-B1C0-6D06C1A6AF64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94EC5D19-2E3C-44BF-B1C0-6D06C1A6AF64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94EC5D19-2E3C-44BF-B1C0-6D06C1A6AF64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A70B18B-5F56-45E1-AEFA-AEB213CFC7A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A70B18B-5F56-45E1-AEFA-AEB213CFC7A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A70B18B-5F56-45E1-AEFA-AEB213CFC7A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A70B18B-5F56-45E1-AEFA-AEB213CFC7A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

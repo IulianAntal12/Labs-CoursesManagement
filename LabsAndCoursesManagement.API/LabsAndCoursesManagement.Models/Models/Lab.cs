@@ -23,11 +23,16 @@
 
         public Guid TeacherId { get; private set; }
 
-        //public List<Student> Students { get; private set; } = new List<Student>();
+        public List<Student> Students { get; private set; } = new List<Student>();
 
         public void EnrollTeacher(Teacher teacher)
         {
             Teacher = teacher;
+        }
+
+        public void EnrollStudent(Student student)
+        {
+            Students.Add(student);
         }
     }
 }

@@ -24,24 +24,13 @@
             });
         }
 
-        //public Result<Teacher> Validate()
-        //{
-        //    if (Name == null)
-        //    {
-        //        return Result<Teacher>.Failure("Name must not be null");
-        //    }
-
-        //    if (Surname == null)
-        //    {
-        //        return Result<Teacher>.Failure("Surname must not be null");
-        //    }
-
-        //    if (Gender == null)
-        //    {
-        //        return Result<Teacher>.Failure("Gender must not be null");
-        //    }
-
-        //    Regex  validatePhoneNumber = new Regex("") 
-        //}
+        public Result<Teacher> Validate()
+        {
+            if (FullName == null)
+            {
+                return Result<Teacher>.Failure("Name must not be null");
+            } 
+            return Result<Teacher>.Success(this);
+       }
     }
 }

@@ -4,6 +4,7 @@ using LabsAndCoursesManagement.DataAccess.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LabsAndCoursesManagement.DataAccess.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20221127164842_UpdateDatabase")]
+    partial class UpdateDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,21 +24,6 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("LabStudent", b =>
-                {
-                    b.Property<Guid>("LabsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("StudentsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("LabsId", "StudentsId");
-
-                    b.HasIndex("StudentsId");
-
-                    b.ToTable("LabStudent");
-                });
 
             modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.Lab", b =>
                 {
@@ -93,10 +81,15 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("LabId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<int>("Year")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("LabId");
 
                     b.ToTable("Students");
                 });
@@ -132,21 +125,6 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                     b.ToTable("Teachers");
                 });
 
-            modelBuilder.Entity("LabStudent", b =>
-                {
-                    b.HasOne("LabsAndCoursesManagement.Models.Models.Lab", null)
-                        .WithMany()
-                        .HasForeignKey("LabsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LabsAndCoursesManagement.Models.Models.Student", null)
-                        .WithMany()
-                        .HasForeignKey("StudentsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.Lab", b =>
                 {
                     b.HasOne("LabsAndCoursesManagement.Models.Models.Teacher", "Teacher")
@@ -156,6 +134,18 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Teacher");
+                });
+
+            modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.Student", b =>
+                {
+                    b.HasOne("LabsAndCoursesManagement.Models.Models.Lab", null)
+                        .WithMany("Students")
+                        .HasForeignKey("LabId");
+                });
+
+            modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.Lab", b =>
+                {
+                    b.Navigation("Students");
                 });
 
             modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.Teacher", b =>

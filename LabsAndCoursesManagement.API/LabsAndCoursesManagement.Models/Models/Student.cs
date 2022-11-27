@@ -17,5 +17,16 @@
         public string IdentificationNumber { get; private set; }
 
         public string Group { get; private set; }
+
+        public List<Lab> Labs { get; private set; } =  new List<Lab>();
+
+        public void EnrollToLabs(List<Lab> labs)
+        {
+            labs.ForEach(lab =>
+            {
+                Labs.Append(lab);
+                lab.EnrollStudent(this);
+            });
+        }
     }
 }

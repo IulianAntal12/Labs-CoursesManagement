@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualBasic;
-
-namespace LabsAndCoursesManagement.Models.Models
+﻿namespace LabsAndCoursesManagement.Models.Models
 {
     public class Course
     {
