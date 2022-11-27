@@ -11,6 +11,7 @@ namespace LabsAndCoursesManagement.BusinessLogic.Mappers
             {
                 cfg.AddProfile(new TeacherMapper());
                 cfg.AddProfile(new LabMapper());
+                cfg.AddProfile(new StudentMapper());
                 cfg.AddCollectionMappers();
             }
             );

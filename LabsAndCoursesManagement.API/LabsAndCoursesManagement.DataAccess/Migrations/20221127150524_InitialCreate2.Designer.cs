@@ -4,6 +4,7 @@ using LabsAndCoursesManagement.DataAccess.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LabsAndCoursesManagement.DataAccess.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20221127150524_InitialCreate2")]
+    partial class InitialCreate2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,21 +24,6 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("LabStudent", b =>
-                {
-                    b.Property<Guid>("LabsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("StudentsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("LabsId", "StudentsId");
-
-                    b.HasIndex("StudentsId");
-
-                    b.ToTable("LabStudent");
-                });
 
             modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.Lab", b =>
                 {
@@ -68,37 +56,7 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
 
                     b.HasIndex("TeacherId");
 
-                    b.ToTable("Labs");
-                });
-
-            modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.Student", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Group")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("IdentificationNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Year")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Students");
+                    b.ToTable("Lab");
                 });
 
             modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.Teacher", b =>
@@ -129,22 +87,7 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Teachers");
-                });
-
-            modelBuilder.Entity("LabStudent", b =>
-                {
-                    b.HasOne("LabsAndCoursesManagement.Models.Models.Lab", null)
-                        .WithMany()
-                        .HasForeignKey("LabsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LabsAndCoursesManagement.Models.Models.Student", null)
-                        .WithMany()
-                        .HasForeignKey("StudentsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.ToTable("Teacher");
                 });
 
             modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.Lab", b =>

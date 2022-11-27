@@ -9,7 +9,6 @@ namespace LabsAndCoursesManagement.BusinessLogic.Interfaces
     {
         public LabService(IRepository<Lab> repository) : base(repository)
         {
-
         }
     }
 }

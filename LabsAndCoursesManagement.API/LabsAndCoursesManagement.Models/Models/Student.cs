@@ -1,34 +1,32 @@
-﻿using ShelterManagement.Business;
-
-namespace LabsAndCoursesManagement.Models.Models
+﻿namespace LabsAndCoursesManagement.Models.Models
 {
-    public class Student: Person
+    public class Student
     {
+        public Student()
+        {
+            Id = Guid.NewGuid();
+        }
+        public Guid Id { get; protected set; }
+
+        public string FullName { get; protected set; }
+
+        public string Email { get; private set; }
+
         public int Year { get; private set; }
 
         public string IdentificationNumber { get; private set; }
 
         public string Group { get; private set; }
 
+        public List<Lab> Labs { get; private set; } =  new List<Lab>();
 
-        public Result<Student> Create(string name, string surname, string gender, int year, string group)
+        public void EnrollToLabs(List<Lab> labs)
         {
-            if (!Enum.TryParse<PersonGender>(gender, out var personGender))
+            labs.ForEach(lab =>
             {
-                var expectedGenderValues = Enum.GetNames(typeof(PersonGender));
-                var textExpectedGenderValues = string.Join(", ", expectedGenderValues);
-                return Result<Student>.Failure($"The provided person gender '{gender}' is not one from the values: '{textExpectedGenderValues}'");
-            }
-
-            var student = new Student
-            {
-                Id = Guid.NewGuid(),
-                Name = name,
-                Surname = surname,
-                Gender = gender,
-            };
-
-            return Result<Student>.Success(student);
+                Labs.Append(lab);
+                lab.EnrollStudent(this);
+            });
         }
     }
 }

@@ -14,7 +14,8 @@ namespace LabsAndCoursesManagement.DataAccess.Repositories.GenericRepositories
         public async override Task<IEnumerable<Teacher>> All()
         {
             CheckDatabaseContextStatus();
-            return await context.Teachers.Include(s => s.Labs).ToListAsync();
+            return await context.Teachers.Include(s => s.Labs)
+                .ToListAsync();
         }
     }
 }

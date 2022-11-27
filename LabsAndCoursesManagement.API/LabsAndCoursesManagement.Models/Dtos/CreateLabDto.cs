@@ -11,5 +11,7 @@
         public int Year { get; set; }
 
         public int Semester { get; set; }
+
+        public Guid TeacherId { get; set; }
     }
 }
