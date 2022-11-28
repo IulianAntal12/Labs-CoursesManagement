@@ -396,3 +396,5 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/LabsAndCoursesManagement.API/.vs/LabsAndCoursesManagement/v17/.suo
+/LabsAndCoursesManagement.API/.vs/LabsAndCoursesManagement/DesignTimeBuild/.dtbcache.v2
