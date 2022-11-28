@@ -5,7 +5,7 @@ namespace LabsAndCoursesManagement.DataAccess.Repositories
 {
     public abstract class Repository<T> : IRepository<T> where T : class
     {
-        private readonly DatabaseContext context;
+        protected readonly DatabaseContext context;
 
         public Repository(DatabaseContext context)
         {

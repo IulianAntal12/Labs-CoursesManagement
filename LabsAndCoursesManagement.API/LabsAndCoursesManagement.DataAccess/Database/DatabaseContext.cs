@@ -9,11 +9,13 @@ namespace LabsAndCoursesManagement.DataAccess.Database
         public DbSet<Lab> Labs;
         public DbSet<Student> Students;
         public DbSet<Teacher> Teachers;
-
+        public DbSet<User> Users => Set<User>();
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Lab>().HasMany(p => p.Students).WithMany();
             modelBuilder.Entity<Teacher>().HasMany(t => t.Labs).WithMany();
+            modelBuilder.Entity<User>().HasOne(u => u.Student).WithOne().HasForeignKey<User>(u => u.StudentID);
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

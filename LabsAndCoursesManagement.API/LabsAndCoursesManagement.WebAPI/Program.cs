@@ -20,6 +20,7 @@ builder.Services.AddScoped<DatabaseContext>();
 builder.Services.AddScoped<IRepository<Teacher>, TeacherRepository>();
 builder.Services.AddScoped<ITeacherService, TeacherService>();
 builder.Services.AddScoped<IRepository<Lab>, LabRepository>();
+builder.Services.AddScoped<IRepository<User>, UserRepository>();
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
