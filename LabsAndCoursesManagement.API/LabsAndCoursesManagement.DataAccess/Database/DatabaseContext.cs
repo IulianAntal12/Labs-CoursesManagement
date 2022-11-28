@@ -9,11 +9,13 @@ namespace LabsAndCoursesManagement.DataAccess.Database
         public DbSet<Lab> Labs => Set<Lab>();
         public DbSet<Student> Students => Set<Student>();
         public DbSet<Teacher> Teachers => Set<Teacher>();
+        public DbSet<User> Users => Set<User>();
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options): base(options)
         {
             this.Database.EnsureCreated();
         }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Lab>()
@@ -24,7 +26,13 @@ namespace LabsAndCoursesManagement.DataAccess.Database
                 .HasOne(lab => lab.Teacher)
                 .WithMany(teacher => teacher.Labs)
                 .HasForeignKey(lab => lab.TeacherId);
+            
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.Student)
+                .WithOne()
+                .HasForeignKey<User>(u => u.StudentID);
         }
+        
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
 

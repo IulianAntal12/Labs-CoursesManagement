@@ -1,9 +1,12 @@
+using System.Text;
 using LabsAndCoursesManagement.BusinessLogic.Interfaces;
 using LabsAndCoursesManagement.BusinessLogic.Services;
 using LabsAndCoursesManagement.DataAccess.Database;
 using LabsAndCoursesManagement.DataAccess.Repositories;
 using LabsAndCoursesManagement.DataAccess.Repositories.GenericRepositories;
 using LabsAndCoursesManagement.Models.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,8 +21,6 @@ builder.Services.AddScoped<DatabaseContext>();
 builder.Services.AddScoped<IRepository<Teacher>, TeacherRepository>();
 builder.Services.AddScoped<IRepository<Lab>, LabRepository>();
 builder.Services.AddScoped<IRepository<Student>, StudentRepository>();
-
-
 builder.Services.AddScoped<ITeacherService, TeacherService>();
 builder.Services.AddScoped<IStudentService, StudentService>();
 builder.Services.AddScoped<ILabService, LabService>();
@@ -35,6 +36,28 @@ builder.Services.AddDbContext<DatabaseContext>(
     .LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name }, LogLevel.Information)
         .EnableSensitiveDataLogging()
     );
+    
+builder.Services.AddScoped<IRepository<User>, UserRepository>();
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(o =>
+{
+    o.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidIssuer = builder.Configuration["JWT:Issuer"],
+        ValidAudience = builder.Configuration["JWT:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT.Key"])),
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = false, // TODO: change that later
+        ValidateIssuerSigningKey = true
+    };
+});
+
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -46,12 +69,13 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors(x => x
-           .AllowAnyOrigin()
-           .AllowAnyMethod()
-           .AllowAnyHeader());
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader());
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
