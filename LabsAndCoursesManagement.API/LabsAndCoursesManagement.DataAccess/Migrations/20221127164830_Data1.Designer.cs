@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LabsAndCoursesManagement.DataAccess.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20221121115001_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20221127164830_Data1")]
+    partial class Data1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,36 +25,6 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("LabStudent", b =>
-                {
-                    b.Property<Guid>("LabId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("StudentsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("LabId", "StudentsId");
-
-                    b.HasIndex("StudentsId");
-
-                    b.ToTable("LabStudent");
-                });
-
-            modelBuilder.Entity("LabTeacher", b =>
-                {
-                    b.Property<Guid>("LabId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("TeachersId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("LabId", "TeachersId");
-
-                    b.HasIndex("TeachersId");
-
-                    b.ToTable("LabTeacher");
-                });
-
             modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.Lab", b =>
                 {
                     b.Property<Guid>("Id")
@@ -65,8 +35,9 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Duration")
-                        .HasColumnType("int");
+                    b.Property<string>("Group")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -75,10 +46,7 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                     b.Property<int>("Semester")
                         .HasColumnType("int");
 
-                    b.Property<int>("StartTime")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("TenantId")
+                    b.Property<Guid>("TeacherId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Year")
@@ -86,7 +54,9 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Lab");
+                    b.HasIndex("TeacherId");
+
+                    b.ToTable("Labs");
                 });
 
             modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.Student", b =>
@@ -95,7 +65,11 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Gender")
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -107,20 +81,17 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid?>("LabId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Year")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Student");
+                    b.HasIndex("LabId");
+
+                    b.ToTable("Students");
                 });
 
             modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.Teacher", b =>
@@ -137,11 +108,7 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
+                    b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -153,43 +120,37 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
-                    b.ToTable("Teacher");
+                    b.ToTable("Teachers");
                 });
 
-            modelBuilder.Entity("LabStudent", b =>
+            modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.Lab", b =>
                 {
-                    b.HasOne("LabsAndCoursesManagement.Models.Models.Lab", null)
-                        .WithMany()
-                        .HasForeignKey("LabId")
+                    b.HasOne("LabsAndCoursesManagement.Models.Models.Teacher", "Teacher")
+                        .WithMany("Labs")
+                        .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("LabsAndCoursesManagement.Models.Models.Student", null)
-                        .WithMany()
-                        .HasForeignKey("StudentsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Teacher");
                 });
 
-            modelBuilder.Entity("LabTeacher", b =>
+            modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.Student", b =>
                 {
                     b.HasOne("LabsAndCoursesManagement.Models.Models.Lab", null)
-                        .WithMany()
-                        .HasForeignKey("LabId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("Students")
+                        .HasForeignKey("LabId");
+                });
 
-                    b.HasOne("LabsAndCoursesManagement.Models.Models.Teacher", null)
-                        .WithMany()
-                        .HasForeignKey("TeachersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+            modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.Lab", b =>
+                {
+                    b.Navigation("Students");
+                });
+
+            modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.Teacher", b =>
+                {
+                    b.Navigation("Labs");
                 });
 #pragma warning restore 612, 618
         }

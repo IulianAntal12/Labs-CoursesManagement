@@ -27,7 +27,6 @@
             };
         }
 
-
         public static Result<TEntity> Failure(string error)
         {
             return new Result<TEntity>

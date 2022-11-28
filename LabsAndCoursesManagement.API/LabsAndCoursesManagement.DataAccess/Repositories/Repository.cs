@@ -16,10 +16,11 @@ namespace LabsAndCoursesManagement.DataAccess.Repositories
         {
             CheckDatabaseContextStatus();
             await context.AddAsync(entity);
+            await SaveChanges();
             return entity;
         }
 
-        public async Task<IEnumerable<T>> All()
+        public virtual async Task<IEnumerable<T>> All()
         {
             CheckDatabaseContextStatus();
             return await context.Set<T>().ToListAsync();

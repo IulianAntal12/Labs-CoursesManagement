@@ -7,6 +7,7 @@ using LabsAndCoursesManagement.DataAccess.Repositories.GenericRepositories;
 using LabsAndCoursesManagement.Models.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,8 +19,24 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<DatabaseContext>();
 builder.Services.AddScoped<IRepository<Teacher>, TeacherRepository>();
-builder.Services.AddScoped<ITeacherService, TeacherService>();
 builder.Services.AddScoped<IRepository<Lab>, LabRepository>();
+builder.Services.AddScoped<IRepository<Student>, StudentRepository>();
+builder.Services.AddScoped<ITeacherService, TeacherService>();
+builder.Services.AddScoped<IStudentService, StudentService>();
+builder.Services.AddScoped<ILabService, LabService>();
+
+builder.Services.AddControllers().AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
+
+builder.Services.AddDbContext<DatabaseContext>(
+    options => options.UseSqlServer(
+        builder.Configuration.GetConnectionString("LabsAndCoursesDb"),
+    b => b.MigrationsAssembly(typeof(DatabaseContext).Assembly.FullName))
+    .LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name }, LogLevel.Information)
+        .EnableSensitiveDataLogging()
+    );
+    
 builder.Services.AddScoped<IRepository<User>, UserRepository>();
 builder.Services.AddAuthentication(options =>
 {
@@ -39,6 +56,7 @@ builder.Services.AddAuthentication(options =>
         ValidateIssuerSigningKey = true
     };
 });
+
 builder.Services.AddAuthorization();
 
 var app = builder.Build();

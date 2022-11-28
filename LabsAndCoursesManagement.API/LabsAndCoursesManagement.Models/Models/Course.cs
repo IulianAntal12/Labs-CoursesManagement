@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualBasic;
-
-namespace LabsAndCoursesManagement.Models.Models
+﻿namespace LabsAndCoursesManagement.Models.Models
 {
     public class Course
     {
@@ -13,10 +11,6 @@ namespace LabsAndCoursesManagement.Models.Models
 
         public int Semester { get; private set; }
 
-        public DateTime StartTime { get; private set; }
-
-        public DateInterval Duration { get; private set; } 
-
-        public List<Student> Students { get; private set; }
+        public ICollection<Student> Students { get; private set; }
     }
 }

@@ -1,15 +1,17 @@
-﻿using Microsoft.VisualBasic;
-
-namespace LabsAndCoursesManagement.Models.Models
+﻿namespace LabsAndCoursesManagement.Models.Models
 {
     public class Lab
     {
+        public Lab()
+        {
+            Id = Guid.NewGuid();
+        }
 
         public Guid Id { get; private set; }
 
-        public Guid TenantId { get; private set; }
-
         public string Name { get; private set; }
+
+        public string Group { get; private set; }
 
         public string Description { get; private set; }
 
@@ -17,17 +19,20 @@ namespace LabsAndCoursesManagement.Models.Models
 
         public int Semester { get; private set; }
 
-        public int StartTime { get; private set; }
+        public Teacher Teacher { get; private set; }
 
-        public DateInterval Duration { get; private set; }
+        public Guid TeacherId { get; private set; }
 
-        public List<Student> Students { get; private set; } = new List<Student>(); 
-
-        public Guid TeacherId  { get; private set; }
+        public List<Student> Students { get; private set; } = new List<Student>();
 
         public void EnrollTeacher(Teacher teacher)
         {
-            TeacherId = teacher.Id;
+            Teacher = teacher;
+        }
+
+        public void EnrollStudent(Student student)
+        {
+            Students.Add(student);
         }
     }
 }

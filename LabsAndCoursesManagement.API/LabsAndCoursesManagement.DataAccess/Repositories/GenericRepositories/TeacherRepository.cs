@@ -1,5 +1,6 @@
 ﻿using LabsAndCoursesManagement.DataAccess.Database;
 using LabsAndCoursesManagement.Models.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace LabsAndCoursesManagement.DataAccess.Repositories.GenericRepositories
 {
@@ -8,6 +9,13 @@ namespace LabsAndCoursesManagement.DataAccess.Repositories.GenericRepositories
         public TeacherRepository(DatabaseContext context) : base(context)
         {
 
+        }
+
+        public async override Task<IEnumerable<Teacher>> All()
+        {
+            CheckDatabaseContextStatus();
+            return await context.Teachers.Include(s => s.Labs)
+                .ToListAsync();
         }
     }
 }

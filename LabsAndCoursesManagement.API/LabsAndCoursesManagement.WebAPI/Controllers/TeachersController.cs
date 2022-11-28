@@ -1,5 +1,5 @@
 ﻿using LabsAndCoursesManagement.BusinessLogic.Interfaces;
-using LabsAndCoursesManagement.WebAPI.Dtos;
+using LabsAndCoursesManagement.Models.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LabsAndCoursesManagement.WebAPI.Controllers
@@ -65,11 +65,11 @@ namespace LabsAndCoursesManagement.WebAPI.Controllers
             return Ok();
         }
 
-        //[HttpPut("{teacherId:guid}/enroll")]
-        //public IActionResult EnrollTeacherToLab(Guid teacherId, [FromBody] List<Guid> labIds)
-        //{
-        //    var result = service.EnrollTeacherToLabs(teacherId, labIds);
-        //    return Ok(result);
-        //}
+        [HttpPut("{teacherId:guid}/enroll")]
+        public async Task<IActionResult> EnrollTeacherToLab(Guid teacherId, [FromBody] List<Guid> labIds)
+        {
+            var result = await service.EnrollTeacherToLabs(teacherId, labIds);
+            return Ok(result);
+        }
     }
 }
