@@ -4,6 +4,8 @@ import { HeaderComponent } from './header/header.component';
 import { NavigationMenuComponent } from './header/navigation-menu/navigation-menu.component';
 import { NavigationMenuContentComponent } from './header/navigation-menu/navigation-menu-content/navigation-menu-content.component';
 import { SharedModule } from '../shared/shared.module';
+import { HomepageComponent } from './homepage/homepage.component';
+import { FeaturesModule } from '../features/features.module';
 
 
 
@@ -11,14 +13,17 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     HeaderComponent,
     NavigationMenuComponent,
-    NavigationMenuContentComponent
+    NavigationMenuContentComponent,
+    HomepageComponent
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    FeaturesModule
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    HomepageComponent
   ]
 })
 export class LayoutModule { }
