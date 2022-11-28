@@ -7,7 +7,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./login-form.component.scss']
 })
 export class LoginFormComponent implements OnInit {
-  hide: boolean = true;
+  hide = true;
   loginFormGroup: FormGroup;
   constructor(private formBuilder: FormBuilder) { }
 
