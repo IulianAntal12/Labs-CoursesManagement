@@ -46,12 +46,14 @@ import {OverlayModule} from '@angular/cdk/overlay';
 import {CdkMenuModule} from '@angular/cdk/menu';
 import {DialogModule} from '@angular/cdk/dialog';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [],
   imports: [
   ],
   exports: [
+    RouterModule,
     A11yModule,
     CdkAccordionModule,
     ClipboardModule,

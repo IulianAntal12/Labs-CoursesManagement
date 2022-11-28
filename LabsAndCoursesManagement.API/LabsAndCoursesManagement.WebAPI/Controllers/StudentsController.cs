@@ -66,9 +66,9 @@ namespace LabsAndCoursesManagement.WebAPI.Controllers
         }
 
         [HttpPut("{studentId:guid}/enroll")]
-        public async Task<IActionResult> EnrollStudentToLabs(Guid teacherId, [FromBody] List<Guid> labIds)
+        public async Task<IActionResult> EnrollStudentToLabs(Guid studentId, [FromBody] List<Guid> labIds)
         {
-            var result = await service.EnrollStudentToLabs(teacherId, labIds);
+            var result = await service.EnrollStudentToLabs(studentId, labIds);
             return Ok(result);
         }
     }

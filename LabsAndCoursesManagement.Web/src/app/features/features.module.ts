@@ -16,7 +16,7 @@ import { CatalogTabComponent } from './catalog/catalog-tab/catalog-tab.component
   ],
   imports: [
     CommonModule,
-    SharedModule,
+    SharedModule
   ],
   exports:[
     RegisterFormComponent,

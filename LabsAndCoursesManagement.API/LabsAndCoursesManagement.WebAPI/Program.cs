@@ -38,7 +38,7 @@ builder.Services.AddDbContext<DatabaseContext>(
     );
     
 builder.Services.AddScoped<IRepository<User>, UserRepository>();
-builder.Services.AddAuthentication(options =>
+/*builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -55,7 +55,7 @@ builder.Services.AddAuthentication(options =>
         ValidateLifetime = false, // TODO: change that later
         ValidateIssuerSigningKey = true
     };
-});
+});*/
 
 builder.Services.AddAuthorization();
 

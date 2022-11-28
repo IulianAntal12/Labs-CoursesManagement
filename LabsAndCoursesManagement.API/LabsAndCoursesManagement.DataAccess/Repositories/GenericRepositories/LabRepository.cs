@@ -26,6 +26,7 @@ namespace LabsAndCoursesManagement.DataAccess.Repositories.GenericRepositories
         {
             return await context.Labs
                 .Include(lab => lab.Students)
+                .Include(lab => lab.Teacher)
                 .ToListAsync();  
         }
     }

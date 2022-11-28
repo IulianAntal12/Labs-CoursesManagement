@@ -132,6 +132,43 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                     b.ToTable("Teachers");
                 });
 
+            modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.User", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Group")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("StudentID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Year")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("StudentID")
+                        .IsUnique();
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("LabStudent", b =>
                 {
                     b.HasOne("LabsAndCoursesManagement.Models.Models.Lab", null)
@@ -156,6 +193,17 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Teacher");
+                });
+
+            modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.User", b =>
+                {
+                    b.HasOne("LabsAndCoursesManagement.Models.Models.Student", "Student")
+                        .WithOne()
+                        .HasForeignKey("LabsAndCoursesManagement.Models.Models.User", "StudentID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.Teacher", b =>
