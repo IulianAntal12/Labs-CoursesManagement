@@ -1,1 +1,22 @@
-<p>login-form works!</p>
+<form class="form-container" [formGroup]="loginFormGroup" (submit)="submit()">
+    <p>Login</p>
+<mat-form-field appearance="fill">
+    <mat-label>Enter your email:</mat-label>
+    <input matInput placeholder="example@example.com" formControlName="email" required maxlength="50">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" hintLabel="Min. 10 chars">
+    <mat-label>Enter your password:</mat-label>
+    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <button color="primary" mat-button class="submit-btn" inputmode="submit">Login<mat-icon style="margin-left: 4px;">send</mat-icon></button>
+
+  </form>
+  <div class="register-container">
+    <p>You don't have an account yet?</p>
+    <button color="accent" mat-button class="register-btn" (click)="goToRegister()">Register now to join your class!</button>
+  </div>
