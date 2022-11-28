@@ -20,7 +20,8 @@ import { CatalogTabComponent } from './catalog/catalog-tab/catalog-tab.component
   ],
   exports:[
     RegisterFormComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    CatalogComponent
   ]
 })
 export class FeaturesModule { }
