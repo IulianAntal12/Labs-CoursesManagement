@@ -5,6 +5,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { SharedModule } from '../shared/shared.module';
 import { CatalogComponent } from './catalog/catalog.component';
 import { CatalogTabComponent } from './catalog/catalog-tab/catalog-tab.component';
+import { TeachersComponent } from './teachers/teachers.component';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { CatalogTabComponent } from './catalog/catalog-tab/catalog-tab.component
     RegisterFormComponent,
     LoginFormComponent,
     CatalogComponent,
-    CatalogTabComponent
+    CatalogTabComponent,
+    TeachersComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { CatalogTabComponent } from './catalog/catalog-tab/catalog-tab.component
   exports:[
     RegisterFormComponent,
     LoginFormComponent,
-    CatalogComponent
+    CatalogComponent,
+    TeachersComponent
   ]
 })
 export class FeaturesModule { }
