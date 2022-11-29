@@ -38,7 +38,7 @@ builder.Services.AddDbContext<DatabaseContext>(
     );
     
 builder.Services.AddScoped<IRepository<User>, UserRepository>();
-/*builder.Services.AddAuthentication(options =>
+builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -47,16 +47,16 @@ builder.Services.AddScoped<IRepository<User>, UserRepository>();
 {
     o.TokenValidationParameters = new TokenValidationParameters
     {
-        ValidIssuer = builder.Configuration["JWT:Issuer"],
-        ValidAudience = builder.Configuration["JWT:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT.Key"])),
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey
+            (Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
         ValidateIssuer = true,
         ValidateAudience = true,
-        ValidateLifetime = false, // TODO: change that later
+        ValidateLifetime = false,
         ValidateIssuerSigningKey = true
     };
-});*/
-
+});
 builder.Services.AddAuthorization();
 
 var app = builder.Build();

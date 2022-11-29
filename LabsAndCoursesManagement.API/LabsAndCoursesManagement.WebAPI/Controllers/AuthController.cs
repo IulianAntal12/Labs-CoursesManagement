@@ -1,3 +1,4 @@
+using LabsAndCoursesManagement.BusinessLogic.Filters;
 using LabsAndCoursesManagement.BusinessLogic.Interfaces;
 using LabsAndCoursesManagement.WebAPI.Dtos;
 using Microsoft.AspNetCore.Authorization;
@@ -12,8 +13,7 @@ public class AuthController : ControllerBase
     private readonly ILogger<AuthController> _logger;
     private readonly IAuthorizationService _authorizationService;
     private readonly IUserService _userService;
-
-
+    
     public AuthController(ILogger<AuthController> logger, IAuthorizationService authorizationService,
         IUserService userService)
     {
@@ -22,15 +22,12 @@ public class AuthController : ControllerBase
         _userService = userService;
     }
 
+    
+    //TODO:
     [HttpPost]
-    public async Task<IActionResult> RegisterUser([FromBody] UserRegistrationDTO userRegistrationDto)
+    [ServiceFilter(typeof(ValidationFilterAttribute))]
+    public async Task<IActionResult> RegisterUser([FromBody] UserRegistrationDto userRegistrationDto)
     {
-        var response = await _userService.RegisterUserAsync(userRegistrationDto);
-        if (response.IsFailure)
-        {
-            return StatusCode(409, response.Error);
-        }
-
-        return StatusCode(201, response.Entity);
+        return Ok();
     }
 }

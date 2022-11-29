@@ -2,10 +2,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LabsAndCoursesManagement.WebAPI.Dtos;
 
-public class UserRegistrationDTO
+public class UserRegistrationDto
 {
     public string Email { get; set; }
-
     public string Password { get; set; }
 
     public string FullName { get; set; }

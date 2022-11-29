@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LabsAndCoursesManagement.BusinessLogic.Services;
 
-public class UserService : BaseService<User, UserRegistrationDTO>, IUserService
+public class UserService : BaseService<User, UserRegistrationDto>, IUserService
 {
 
     private readonly IUserRepository userRepository;
@@ -21,7 +21,7 @@ public class UserService : BaseService<User, UserRegistrationDTO>, IUserService
         this.userRepository = userRepository;
     }
 
-    public async Task<Result<User>> RegisterUserAsync(UserRegistrationDTO userRegistrationDto)
+    public async Task<Result<User>> RegisterUserAsync(UserRegistrationDto userRegistrationDto)
     {
         var user = mapper.Map<User>(userRegistrationDto);
         var userFromDb = await userRepository.GetByEmail(userRegistrationDto.Email);

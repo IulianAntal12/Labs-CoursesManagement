@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace LabsAndCoursesManagement.BusinessLogic.Interfaces;
 
-public interface IUserService : IBaseService<User, UserRegistrationDTO>
+public interface IUserService : IBaseService<User, UserRegistrationDto>
 {
-    Task<Result<User>> RegisterUserAsync(UserRegistrationDTO userRegistration);
+    Task<Result<User>> RegisterUserAsync(UserRegistrationDto userRegistration);
 }
