@@ -398,3 +398,10 @@ FodyWeavers.xsd
 *.sln.iml
 /LabsAndCoursesManagement.API/.vs/LabsAndCoursesManagement/v17/.suo
 /LabsAndCoursesManagement.API/.vs/LabsAndCoursesManagement/DesignTimeBuild/.dtbcache.v2
+
+# Rider
+# Rider auto-generates .iml files, and contentModel.xml
+**/.idea/**/*.iml
+**/.idea/**/contentModel.xml
+**/.idea/**/modules.xml
+
