@@ -10,7 +10,7 @@ namespace LabsAndCoursesManagement.DataAccess.Repositories.GenericRepositories
         { }
         public override async Task<Lab?> Add(Lab entity)
         {
-            var teacher = await context.Teachers.FindAsync(entity.TeacherId);
+            var teacher = await context.Students.FindAsync(entity.TeacherId);
             if (teacher == null)
             {
                 return null;

@@ -1,4 +1,4 @@
-﻿using LabsAndCoursesManagement.Models.Models;
+﻿using LabsAndCoursesManagement.Models.Helpers;
 
 namespace LabsAndCoursesManagement.BusinessLogic.Base
 {

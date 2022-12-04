@@ -27,7 +27,7 @@ namespace LabsAndCoursesManagement.WebAPI.Controllers
             var result = await service.GetById(labId);
             if (result.IsFailure)
             {
-                return NotFound();
+                return StatusCode((int)result.StatusCode, result.Error);
             }
             return Ok(result.Entity);
         }
@@ -38,15 +38,15 @@ namespace LabsAndCoursesManagement.WebAPI.Controllers
             var result = await service.Add(dto);
             if (result.IsFailure)
             {
-                return BadRequest(result.Error);
+                return StatusCode((int)result.StatusCode, result.Error);
             }
             return Created(nameof(Get), result.Entity);
         }
 
         [HttpDelete("{labId:guid}")]
-        public async Task<IActionResult> DeleteById(Guid id)
+        public async Task<IActionResult> DeleteById(Guid labId)
         {
-            var result = await service.Delete(id);
+            var result = await service.Delete(labId);
             if (result.IsFailure)
             {
                 return BadRequest(result.Error);
@@ -54,10 +54,10 @@ namespace LabsAndCoursesManagement.WebAPI.Controllers
             return Ok();
         }
 
-        [HttpPut("{teacherId:guid}")]
-        public async Task<IActionResult> Update(Guid teacherId, [FromBody] CreateLabDto dto)
+        [HttpPut("{labId:guid}")]
+        public async Task<IActionResult> Update(Guid labId, [FromBody] CreateLabDto dto)
         {
-            var result = await service.Update(teacherId, dto);
+            var result = await service.Update(labId, dto);
             if (result.IsFailure)
             {
                 return BadRequest(result.Error);

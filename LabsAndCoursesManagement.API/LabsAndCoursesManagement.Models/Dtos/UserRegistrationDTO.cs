@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace LabsAndCoursesManagement.WebAPI.Dtos;
 
 public class UserRegistrationDTO

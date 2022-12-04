@@ -3,10 +3,10 @@ using LabsAndCoursesManagement.BusinessLogic.Base;
 using LabsAndCoursesManagement.BusinessLogic.Interfaces;
 using LabsAndCoursesManagement.DataAccess.Repositories;
 using LabsAndCoursesManagement.DataAccess.Repositories.GenericRepositories;
+using LabsAndCoursesManagement.Models.Helpers;
 using LabsAndCoursesManagement.Models.Models;
 using LabsAndCoursesManagement.WebAPI.Dtos;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace LabsAndCoursesManagement.BusinessLogic.Services;
 
@@ -28,7 +28,7 @@ public class UserService : BaseService<User, UserRegistrationDTO>, IUserService
         
         if (userFromDb != null)
         {
-            return Result<User>.Failure("User already registered");
+            return Result<User>.Failure(HttpStatusCode.Conflict, "User has laready been registered");
         }
 
         var createdUser = mapper.Map(userRegistrationDto, user); 

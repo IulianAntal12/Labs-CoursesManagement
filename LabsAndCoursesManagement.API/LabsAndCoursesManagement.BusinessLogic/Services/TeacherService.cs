@@ -3,6 +3,8 @@ using LabsAndCoursesManagement.BusinessLogic.Interfaces;
 using LabsAndCoursesManagement.DataAccess.Repositories;
 using LabsAndCoursesManagement.Models.Models;
 using LabsAndCoursesManagement.Models.Dtos;
+using LabsAndCoursesManagement.Models.Helpers;
+using System.Net;
 
 namespace LabsAndCoursesManagement.BusinessLogic.Services
 {
@@ -26,13 +28,13 @@ namespace LabsAndCoursesManagement.BusinessLogic.Services
 
             if (jointTasks.Any(lab => lab == null)) 
             {
-                return Result<Teacher>.Failure("Cannot enroll teacher to the specified labs");
+                return Result<Teacher>.Failure(HttpStatusCode.BadRequest, "Cannot find all the specified labs");
             }
             
             var teacher = await repository.Get(teacherId);
             if (teacher == null) 
             {
-                return Result<Teacher>.Failure("Teacher with specified id cannot be found");
+                return Result<Teacher>.Failure(HttpStatusCode.NotFound, "Cannot find the specified teacher");
             }
 
             teacher.EnrollToLabs(jointTasks);

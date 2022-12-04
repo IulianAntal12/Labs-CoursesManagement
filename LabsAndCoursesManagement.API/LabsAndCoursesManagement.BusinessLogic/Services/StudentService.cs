@@ -1,9 +1,10 @@
 ﻿using LabsAndCoursesManagement.BusinessLogic.Base;
 using LabsAndCoursesManagement.BusinessLogic.Interfaces;
 using LabsAndCoursesManagement.DataAccess.Repositories;
-using LabsAndCoursesManagement.DataAccess.Repositories.GenericRepositories;
 using LabsAndCoursesManagement.Models.Dtos;
+using LabsAndCoursesManagement.Models.Helpers;
 using LabsAndCoursesManagement.Models.Models;
+using System.Net;
 
 namespace LabsAndCoursesManagement.BusinessLogic.Services
 {
@@ -27,13 +28,13 @@ namespace LabsAndCoursesManagement.BusinessLogic.Services
 
             if (jointTasks.Any(lab => lab == null))
             {
-                return Result<Student>.Failure("Cannot enroll student to the specified labs");
+                return Result<Student>.Failure(HttpStatusCode.BadRequest, "Cannot find all the specified labs");
             }
 
             var student = await repository.Get(studentId);
             if (student == null)
             {
-                return Result<Student>.Failure("Student with specified id cannot be found");
+                return Result<Student>.Failure(HttpStatusCode.NotFound, "Cannot find the specified student");
             }
 
             student.EnrollToLabs(jointTasks);

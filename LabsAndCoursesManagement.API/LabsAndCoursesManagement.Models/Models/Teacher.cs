@@ -7,8 +7,8 @@
             Id = Guid.NewGuid();
         }
 
-        public Guid Id { get; protected set; }
-        public string FullName { get; protected set; }
+        public Guid Id { get; private set; }
+        public string FullName { get; private set; }
         public string Email { get; private set; }
         public string Role { get; private set; }
         public string PhoneNumber { get; private set; }
@@ -23,14 +23,5 @@
                 lab.EnrollTeacher(this);
             });
         }
-
-        public Result<Teacher> Validate()
-        {
-            if (FullName == null)
-            {
-                return Result<Teacher>.Failure("Name must not be null");
-            } 
-            return Result<Teacher>.Success(this);
-       }
     }
 }

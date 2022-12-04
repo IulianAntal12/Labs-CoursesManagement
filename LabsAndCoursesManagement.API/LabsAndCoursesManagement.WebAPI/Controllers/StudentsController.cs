@@ -44,9 +44,9 @@ namespace LabsAndCoursesManagement.WebAPI.Controllers
         }
 
         [HttpDelete("{teacherId:guid}")]
-        public async Task<IActionResult> DeleteById(Guid id)
+        public async Task<IActionResult> DeleteById(Guid teacherId)
         {
-            var result = await service.Delete(id);
+            var result = await service.Delete(teacherId);
             if (result.IsFailure)
             {
                 return BadRequest(result.Error);
@@ -55,14 +55,14 @@ namespace LabsAndCoursesManagement.WebAPI.Controllers
         }
 
         [HttpPut("{studentId:guid}")]
-        public async Task<IActionResult> Update(Guid teacherId, [FromBody] CreateStudentDto dto)
+        public async Task<IActionResult> Update(Guid studentId, [FromBody] CreateStudentDto dto)
         {
-            var result = await service.Update(teacherId, dto);
+            var result = await service.Update(studentId, dto);
             if (result.IsFailure)
             {
-                return BadRequest(result.Error);
+                return StatusCode((int) result.StatusCode, result.Error);
             }
-            return Ok();
+            return NoContent();
         }
 
         [HttpPut("{studentId:guid}/enroll")]

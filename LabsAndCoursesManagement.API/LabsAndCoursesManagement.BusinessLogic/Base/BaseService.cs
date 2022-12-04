@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using LabsAndCoursesManagement.BusinessLogic.Mappers;
 using LabsAndCoursesManagement.DataAccess.Repositories;
-using LabsAndCoursesManagement.Models.Models;
+using LabsAndCoursesManagement.Models.Helpers;
+using System.Net;
 
 namespace LabsAndCoursesManagement.BusinessLogic.Base
 {
@@ -21,7 +22,9 @@ namespace LabsAndCoursesManagement.BusinessLogic.Base
         {
             T entity = mapper.Map<T>(dto);
             var result = await repository.Add(entity);
+
             await repository.SaveChanges();
+            var data = await repository.All();
             return Result<T>.Success(result);
         }
 
@@ -30,7 +33,7 @@ namespace LabsAndCoursesManagement.BusinessLogic.Base
             var entity = await repository.Get(id);
             if (entity == null)
             {
-                return Result<T>.Failure(NOT_FOUND);
+                return Result<T>.Failure(HttpStatusCode.NotFound, "Cannot find entity to be deleted");
             }
             await repository.Delete(entity);
             return Result<T>.SuccessNoEntity();
@@ -47,7 +50,7 @@ namespace LabsAndCoursesManagement.BusinessLogic.Base
             var entity = await repository.Get(id);
             if (entity == null)
             {
-                return Result<T>.Failure(NOT_FOUND);
+                return Result<T>.Failure(HttpStatusCode.NotFound, "Cannot find entity specified by id");
             }
             return Result<T>.Success(entity);
         }
@@ -58,7 +61,7 @@ namespace LabsAndCoursesManagement.BusinessLogic.Base
             var response = await repository.Update(id, entity);
             if (response == null)
             {
-                return Result<T>.Failure("Entity not found");
+                return Result<T>.Failure(HttpStatusCode.NotFound, "Cannot find entity specified by id");
             }
             return Result<T>.Success(response);
         }

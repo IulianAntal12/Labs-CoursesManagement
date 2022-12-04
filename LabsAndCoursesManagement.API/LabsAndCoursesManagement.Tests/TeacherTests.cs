@@ -26,7 +26,7 @@ namespace LabsAndCoursesManagement.Tests
         public void AddTeacher_NotNullEntity_IsSuccessShouldBeTrue()
         {
             //arrange
-            var TeacherDto = new CreateTeacherDto()
+            var teacherDto = new CreateTeacherDto()
             {
                 FullName = "TestName",
                 Cabinet = "111",
@@ -36,7 +36,7 @@ namespace LabsAndCoursesManagement.Tests
             };
 
             //act
-            var result = teacherService.Add(TeacherDto);
+            var result = teacherService.Add(teacherDto);
 
 
             //assert
@@ -59,7 +59,7 @@ namespace LabsAndCoursesManagement.Tests
 
             //act
             teacherRepositoryMoq.Setup(x => x.Get(Teacher.Id)).Returns(Task.FromResult(Teacher));
-            var result = teacherService.Delete(Teacher.Id);
+            var result = teacherService.Delete((Guid)Teacher.Id);
 
             //assert
             Assert.That(result.Result.IsSuccess, Is.True);
@@ -80,7 +80,7 @@ namespace LabsAndCoursesManagement.Tests
             var Teacher = mapper.Map<Teacher>(TeacherDto);
 
             //act
-            var result = teacherService.Delete(Teacher.Id);
+            var result = teacherService.Delete((Guid)Teacher.Id);
 
             //assert
             Assert.That(result.Result.IsSuccess, Is.False);
@@ -125,7 +125,7 @@ namespace LabsAndCoursesManagement.Tests
 
             //act
             teacherRepositoryMoq.Setup(x => x.Get(Teacher.Id)).Returns(Task.FromResult(Teacher));
-            var result = teacherService.GetById(Teacher.Id);
+            var result = teacherService.GetById((Guid)Teacher.Id);
 
             //assert
             Assert.That(result.Result.IsSuccess, Is.True);

@@ -1,8 +1,12 @@
-﻿namespace LabsAndCoursesManagement.Models.Models
+﻿using System.Net;
+
+namespace LabsAndCoursesManagement.Models.Helpers
 {
     public class Result<TEntity>
     {
         public TEntity Entity { get; set; }
+
+        public HttpStatusCode StatusCode { get; private set; }
 
         public string Error { get; private set; }
 
@@ -27,11 +31,12 @@
             };
         }
 
-        public static Result<TEntity> Failure(string error)
+        public static Result<TEntity> Failure(HttpStatusCode statusCode, string error)
         {
             return new Result<TEntity>
             {
                 Error = error,
+                StatusCode = statusCode,
                 IsFailure = true
             };
         }

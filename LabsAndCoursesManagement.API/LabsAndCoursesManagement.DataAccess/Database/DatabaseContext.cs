@@ -1,6 +1,5 @@
 ﻿using LabsAndCoursesManagement.Models.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 namespace LabsAndCoursesManagement.DataAccess.Database
 {

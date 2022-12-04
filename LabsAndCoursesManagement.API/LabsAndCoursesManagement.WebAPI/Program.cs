@@ -1,12 +1,9 @@
-using System.Text;
 using LabsAndCoursesManagement.BusinessLogic.Interfaces;
 using LabsAndCoursesManagement.BusinessLogic.Services;
 using LabsAndCoursesManagement.DataAccess.Database;
 using LabsAndCoursesManagement.DataAccess.Repositories;
 using LabsAndCoursesManagement.DataAccess.Repositories.GenericRepositories;
 using LabsAndCoursesManagement.Models.Models;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -81,3 +78,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+public partial class Program { }

@@ -16,6 +16,6 @@ public class User
     
     public Guid StudentID { get; private set; }
 
-    public Student Student { get; private set; }
+    public Teacher Student { get; private set; }
     
 }

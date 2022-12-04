@@ -1,5 +1,6 @@
 ﻿using LabsAndCoursesManagement.DataAccess.Database;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace LabsAndCoursesManagement.DataAccess.Repositories
 {
@@ -48,12 +49,23 @@ namespace LabsAndCoursesManagement.DataAccess.Repositories
         public virtual async Task<T?> Update(Guid key, T entity)
         {
             CheckDatabaseContextStatus();
+            var data = context.Set<T>().ToList();   
             var toBeUpdated = await context.Set<T>()
                                            .FindAsync(key);
+            
             if (toBeUpdated == null)
             {
                 return null;
             }
+
+            Type entityType = typeof(T);
+            MethodInfo keyMethodInfo = entityType.GetMethod("set_Id", BindingFlags.NonPublic | BindingFlags.Instance);
+            if (keyMethodInfo == null)
+            {
+                return null;
+            }
+
+            keyMethodInfo.Invoke(entity, new object[] { key });
             context.Entry(toBeUpdated)
                 .CurrentValues
                 .SetValues(entity);

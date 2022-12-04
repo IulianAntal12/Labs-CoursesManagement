@@ -11,6 +11,6 @@
 
         public int Semester { get; private set; }
 
-        public ICollection<Student> Students { get; private set; }
+        public ICollection<Teacher> Students { get; private set; }
     }
 }
