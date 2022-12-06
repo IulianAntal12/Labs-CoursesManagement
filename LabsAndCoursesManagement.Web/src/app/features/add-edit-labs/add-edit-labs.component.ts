@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatAccordion } from '@angular/material/expansion';
+import { LabDto } from 'src/app/core/models/lab-dto.model';
 import { Lab } from 'src/app/core/models/lab.model';
 import { LabsService } from 'src/app/core/services/labs.service';
 
@@ -14,6 +15,7 @@ export class AddEditLabsComponent implements OnInit {
   labs: Lab[] = [];
   formGroupArray: FormGroup[] = [];
   addFormGroup: FormGroup;
+  labDto: LabDto;
   constructor(private readonly service: LabsService) {}
 
   ngOnInit(): void {
@@ -33,14 +35,23 @@ export class AddEditLabsComponent implements OnInit {
       description: new FormControl(''),
       year: new FormControl(''),
       semester: new FormControl(''),
-      teacher: new FormControl('')
-    })
+    });
   }
 
   submitEdit(index: number): void {
-    console.log("test update")
+    this.labDto = this.formGroupArray[index].getRawValue();
+    this.service.updateLab(this.labs[index].id, this.labDto).subscribe((lab: Lab) => this.labs[index] = lab);
   }
   submitAdd(): void {
-    console.log("test add")
+    console.log(this.addFormGroup.getRawValue());
+    this.labDto = this.addFormGroup.getRawValue();
+    this.service
+      .createLab(this.labDto)
+      .subscribe((lab: Lab) => console.log(lab));
+  }
+
+  deleteLab(lab: Lab): void {
+    this.service.deleteLab(lab.id).subscribe();
+    delete this.labs[this.labs.indexOf(lab)];
   }
 }
