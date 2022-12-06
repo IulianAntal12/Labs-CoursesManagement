@@ -5,11 +5,11 @@ using LabsAndCoursesManagement.Models.Models;
 
 namespace LabsAndCoursesManagement.Tests
 {
-    public class TeacherTests
+    public class StudentTests
     {
         private IMapper mapper;
-        private CreateTeacherDto teacherDto;
-        private Teacher teacher;
+        private CreateStudentDto studentDto;
+        private Student student;
         private CreateLabDto labDto;
         private Lab lab;
         private List<Lab> labs;
@@ -18,14 +18,15 @@ namespace LabsAndCoursesManagement.Tests
         public void Setup()
         {
             mapper = new AutoMapperBuilder().Build();
-            teacherDto = new CreateTeacherDto {
-                FullName= "Test",
-                Email= "Test",
-                Role = "Test",
-                Cabinet= "Test",
-                PhoneNumber= "Test",
+            studentDto = new CreateStudentDto
+            {
+                FullName = "Test",
+                Email = "Test",
+                Year = 3,
+                IdentificationNumber = "Test",
+                Group= "B4",
             };
-            teacher = mapper.Map<Teacher>(teacherDto);
+            student = mapper.Map<Student>(studentDto);
             labDto = new CreateLabDto
             {
                 Description = "Test",
@@ -42,14 +43,14 @@ namespace LabsAndCoursesManagement.Tests
         }
 
         [Test]
-        public void EnrollToLabs_TeacherShouldHaveOneLab_AndLabShouldHaveTeacherId()
+        public void EnrollToLabs_StudentShouldHaveOneLab_AndLabShouldHaveTheStudent()
         {
-            teacher.EnrollToLabs(labs);
+            student.EnrollToLabs(labs);
 
             Assert.Multiple(() =>
             {
-                Assert.That(teacher.Labs, Has.Count.EqualTo(1));
-                Assert.That(teacher.Id, Is.EqualTo(lab.TeacherId));
+                Assert.That(student.Labs, Has.Count.EqualTo(1));
+                Assert.That(lab.Students, Does.Contain(student));
             });
         }
     }

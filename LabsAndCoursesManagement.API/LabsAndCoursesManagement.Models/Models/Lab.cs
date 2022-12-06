@@ -28,6 +28,7 @@
         public void EnrollTeacher(Teacher teacher)
         {
             Teacher = teacher;
+            TeacherId = teacher.Id;
         }
 
         public void EnrollStudent(Student student)

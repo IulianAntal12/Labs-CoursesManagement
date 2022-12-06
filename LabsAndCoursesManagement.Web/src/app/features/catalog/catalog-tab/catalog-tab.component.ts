@@ -1,7 +1,5 @@
-import { AfterViewInit, Component, inject, Input, OnInit } from '@angular/core';
-import { Lab } from 'src/app/core/models/lab.model';
+import { Component, Input, OnInit } from '@angular/core';
 import { Student } from 'src/app/core/models/student.model';
-import { LabsService } from 'src/app/core/services/labs.service';
 
 @Component({
   selector: 'app-catalog-tab',

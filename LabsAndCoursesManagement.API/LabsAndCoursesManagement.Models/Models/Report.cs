@@ -13,9 +13,5 @@
 
         public string EvaluationType { get; private set; }
 
-        //public Result<Report> Create(Guid studentId, Guid teacherId, double value, string evaluationType)
-        //{
-            
-        //}
     }
 }
