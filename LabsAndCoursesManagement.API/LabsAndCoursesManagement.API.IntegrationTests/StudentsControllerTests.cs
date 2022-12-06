@@ -4,7 +4,6 @@ using LabsAndCoursesManagement.DataAccess.Database;
 using LabsAndCoursesManagement.Models.Dtos;
 using LabsAndCoursesManagement.Models.Models;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json.Linq;
 using System.Net.Http.Json;
 
 namespace LabsAndCoursesManagement.API.IntegrationTests

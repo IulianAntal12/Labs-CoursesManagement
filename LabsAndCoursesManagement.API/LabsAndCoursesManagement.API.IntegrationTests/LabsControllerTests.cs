@@ -33,16 +33,9 @@ namespace LabsAndCoursesManagement.API.IntegrationTests
             var labDto = CreateSUT();
             // Act
             var createLabResponse = await HttpClient.PostAsJsonAsync(ApiURL, labDto);
-            var getLabReponse = await HttpClient.GetAsync(ApiURL);
             // Assert
             createLabResponse.EnsureSuccessStatusCode();
             createLabResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.Created);
-
-            getLabReponse.EnsureSuccessStatusCode();
-            var strContent = await getLabReponse.Content.ReadAsStringAsync();
-            var lab = await getLabReponse.Content
-                .ReadFromJsonAsync<List<Lab>>();
-            lab.Count().Should().Be(1);
         }
 
         [Fact]
