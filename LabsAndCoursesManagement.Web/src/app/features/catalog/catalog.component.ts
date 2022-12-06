@@ -5,16 +5,15 @@ import { LabsService } from 'src/app/core/services/labs.service';
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
-  styleUrls: ['./catalog.component.scss']
+  styleUrls: ['./catalog.component.scss'],
 })
-export class CatalogComponent implements OnInit{
+export class CatalogComponent implements OnInit {
   labs: Lab[] = [];
-  constructor(private readonly labsService: LabsService) {
-
-  }
+  constructor(private readonly labsService: LabsService) {}
+  
   ngOnInit(): void {
     this.labsService.getLabs().subscribe((data: Lab[]) => {
-      for(const lab of data){
+      for (const lab of data) {
         this.labs.push(lab);
       }
     });

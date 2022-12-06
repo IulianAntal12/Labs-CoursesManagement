@@ -1,18 +1,15 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { Teacher } from "../models/teacher.model";
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Teacher } from '../models/teacher.model';
+import { BaseService } from './base.service';
 
 @Injectable({
-    providedIn: 'root'
-  })
-  export class TeachersService {
-    readonly apiUrl: string = 'https://localhost:7085/api/Teachers';
-
-    constructor(private readonly httpClient: HttpClient) {
-    }
-    
-    public getTeachers(): Observable<Teacher[]> {
-        return this.httpClient.get<Teacher[]>(this.apiUrl);
+  providedIn: 'root',
+})
+export class TeachersService {
+  readonly endpoint: string = 'Teachers';
+  constructor(private readonly baseService: BaseService) {}
+  public getTeachers(): Observable<Teacher[]> {
+    return this.baseService.get(`${this.endpoint}`);
   }
 }

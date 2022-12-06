@@ -24,7 +24,7 @@
         {
             labs.ForEach(lab =>
             {
-                Labs.Append(lab);
+                Labs.Add(lab);
                 lab.EnrollStudent(this);
             });
         }
