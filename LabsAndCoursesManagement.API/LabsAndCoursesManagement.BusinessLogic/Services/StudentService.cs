@@ -1,5 +1,7 @@
-﻿using LabsAndCoursesManagement.BusinessLogic.Base;
+﻿using FluentValidation;
+using LabsAndCoursesManagement.BusinessLogic.Base;
 using LabsAndCoursesManagement.BusinessLogic.Interfaces;
+using LabsAndCoursesManagement.BusinessLogic.Services.Validators;
 using LabsAndCoursesManagement.DataAccess.Repositories;
 using LabsAndCoursesManagement.Models.Dtos;
 using LabsAndCoursesManagement.Models.Helpers;
@@ -12,7 +14,8 @@ namespace LabsAndCoursesManagement.BusinessLogic.Services
     {
         private readonly IRepository<Lab> labRepository;
 
-        public StudentService(IRepository<Student> repository, IRepository<Lab> labRepository) : base(repository)
+        public StudentService(IRepository<Student> repository, IRepository<Lab> labRepository, IValidator<Student> validator) 
+            : base(repository, validator)
         {
             this.labRepository = labRepository;
         }

@@ -1,5 +1,7 @@
+using FluentValidation;
 using LabsAndCoursesManagement.BusinessLogic.Interfaces;
 using LabsAndCoursesManagement.BusinessLogic.Services;
+using LabsAndCoursesManagement.BusinessLogic.Services.Validators;
 using LabsAndCoursesManagement.DataAccess.Database;
 using LabsAndCoursesManagement.DataAccess.Repositories;
 using LabsAndCoursesManagement.DataAccess.Repositories.GenericRepositories;
@@ -14,6 +16,17 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+//builder.Services.AddScoped<AbstractValidator<Teacher>, TeacherValidator>();
+//builder.Services.AddScoped<AbstractValidator<Course>, CourseValidator>();
+//builder.Services.AddScoped<AbstractValidator<Lab>, LabValidator>();
+//builder.Services.AddScoped<AbstractValidator<Student>, StudentValidator>();
+builder.Services.AddScoped<IValidator<Teacher>, TeacherValidator>();
+builder.Services.AddScoped<IValidator<Course>, CourseValidator>();
+builder.Services.AddScoped<IValidator<Lab>, LabValidator>();
+builder.Services.AddScoped<IValidator<Student>, StudentValidator>();
+builder.Services.AddScoped<IValidator<User>, UserValidator>();
+
+
 builder.Services.AddScoped<DatabaseContext>();
 builder.Services.AddScoped<IRepository<Teacher>, TeacherRepository>();
 builder.Services.AddScoped<IRepository<Lab>, LabRepository>();
@@ -33,7 +46,7 @@ builder.Services.AddDbContext<DatabaseContext>(
     .LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name }, LogLevel.Information)
         .EnableSensitiveDataLogging()
     );
-    
+
 builder.Services.AddScoped<IRepository<User>, UserRepository>();
 /*builder.Services.AddAuthentication(options =>
 {
@@ -54,7 +67,7 @@ builder.Services.AddScoped<IRepository<User>, UserRepository>();
     };
 });*/
 
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization();    
 
 var app = builder.Build();
 
@@ -66,7 +79,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors(x => x
-    .AllowAnyOrigin()
+    .WithOrigins("*")
     .AllowAnyMethod()
     .AllowAnyHeader());
 

@@ -1,4 +1,6 @@
-﻿using LabsAndCoursesManagement.BusinessLogic.Base;
+﻿using FluentValidation;
+using LabsAndCoursesManagement.BusinessLogic.Base;
+using LabsAndCoursesManagement.BusinessLogic.Services.Validators;
 using LabsAndCoursesManagement.DataAccess.Repositories;
 using LabsAndCoursesManagement.Models.Dtos;
 using LabsAndCoursesManagement.Models.Helpers;
@@ -11,7 +13,8 @@ namespace LabsAndCoursesManagement.BusinessLogic.Interfaces
     {
         private readonly IRepository<Teacher> teacherRepository;
 
-        public LabService(IRepository<Lab> repository, IRepository<Teacher> teacherRepository) : base(repository)
+        public LabService(IRepository<Lab> repository, IRepository<Teacher> teacherRepository, IValidator<Lab> validator) 
+            : base(repository, validator)
         {
             this.teacherRepository = teacherRepository;
         }
@@ -19,6 +22,11 @@ namespace LabsAndCoursesManagement.BusinessLogic.Interfaces
         public async Task<Result<Lab>> Update(Guid id, CreateLabDto dto)
         {
             var entity = mapper.Map<Lab>(dto);
+            var validationResult = await validator.ValidateAsync(entity);
+            if (!validationResult.IsValid)
+            {
+                return Result<Lab>.Failure(HttpStatusCode.UnprocessableEntity, validationResult.Errors[0].ErrorMessage);
+            }
 
             var teacher = await teacherRepository.Get(entity.TeacherId);
             if (teacher == null)
