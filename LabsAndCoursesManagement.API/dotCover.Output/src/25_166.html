@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\Services\UserService.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using AutoMapper;
+using LabsAndCoursesManagement.BusinessLogic.Base;
+using LabsAndCoursesManagement.BusinessLogic.Interfaces;
+using LabsAndCoursesManagement.DataAccess.Repositories;
+using LabsAndCoursesManagement.DataAccess.Repositories.GenericRepositories;
+using LabsAndCoursesManagement.Models.Helpers;
+using LabsAndCoursesManagement.Models.Models;
+using LabsAndCoursesManagement.WebAPI.Dtos;
+using System.Net;
+
+namespace LabsAndCoursesManagement.BusinessLogic.Services;
+
+public class UserService : BaseService&lt;User, UserRegistrationDTO&gt;, IUserService
+{
+
+    private readonly IUserRepository userRepository;
+    private readonly IMapper mapper;
+
+    public UserService(IRepository&lt;User&gt; repository, IUserRepository userRepository) : base(repository)
+    {
+        this.userRepository = userRepository;
+    }
+
+    public async Task&lt;Result&lt;User&gt;&gt; RegisterUserAsync(UserRegistrationDTO userRegistrationDto)
+    {
+        var user = mapper.Map&lt;User&gt;(userRegistrationDto);
+        var userFromDb = await userRepository.GetByEmail(userRegistrationDto.Email);
+        
+        if (userFromDb != null)
+        {
+            return Result&lt;User&gt;.Failure(HttpStatusCode.Conflict, &quot;User has laready been registered&quot;);
+        }
+
+        var createdUser = mapper.Map(userRegistrationDto, user); 
+        
+        await userRepository.Add(createdUser);
+        await userRepository.SaveChanges();
+
+        return Result&lt;User&gt;.Success(createdUser);
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[19,88,19,104,0],[20,5,20,6,0],[21,9,21,46,0],[22,5,22,6,0],[25,5,25,6,0],[26,9,26,58,0],[27,9,27,85,0],[29,9,29,32,0],[30,9,30,10,0],[31,13,31,102,0],[34,9,34,65,0],[36,9,36,47,0],[37,9,37,44,0],[39,9,39,50,0],[40,5,40,6,0]]);
+    </script>
+  </body>
+</html>

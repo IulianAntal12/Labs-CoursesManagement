@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.API.IntegrationTests\TeachersControllerTests.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using FluentAssertions;
+using LabsAndCoursesManagement.API.IntegrationTests.Setup;
+using LabsAndCoursesManagement.DataAccess.Database;
+using LabsAndCoursesManagement.Models.Dtos;
+using LabsAndCoursesManagement.Models.Models;
+using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json.Linq;
+using System.Net.Http.Json;
+
+namespace SM.API.IntegrationTests
+{
+    public class TeachersControllerTests : BaseIntegrationTests
+            
+    {
+        private const string ApiURL = &quot;/api/Teachers&quot;;
+        private const string ID = &quot;id&quot;;
+        private Guid teacherId;
+
+        public TeachersControllerTests(CustomWebApplicationFactory&lt;Program&gt; factory) : base(factory)
+        {
+            using (var scope = factory.Services.CreateScope())
+            {
+                var scopedServices = scope.ServiceProvider;
+                var db = scopedServices.GetRequiredService&lt;DatabaseContext&gt;();
+                teacherId = Utilities.SeedTeachers(db);
+            }
+        }
+
+        [Fact]
+        public async void When_CreatedTeacher_Then_ShouldReturnTeacherInTheGetRequest()
+        {
+            // Arrange
+            var teacherDto = CreateSUT();
+            // Act
+            var createTeacherResponse = await HttpClient.PostAsJsonAsync(ApiURL, teacherDto);
+            var getTeacherResult = await HttpClient.GetAsync(ApiURL);
+            // Assert
+            createTeacherResponse.EnsureSuccessStatusCode();
+            createTeacherResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.Created);
+
+            getTeacherResult.EnsureSuccessStatusCode();
+            var teachers = await getTeacherResult.Content
+                .ReadFromJsonAsync&lt;List&lt;Teacher&gt;&gt;();
+        }
+
+        [Fact]
+        public async void When_DeletedTeacher_Then_ShouldReturnOk()
+        {
+            // Arrange
+            var teacherDto = CreateSUT();
+            // Act
+            var createTeacherResponse = await HttpClient.PostAsJsonAsync(ApiURL, teacherDto);
+            var data = await createTeacherResponse.Content.ReadAsStringAsync();
+            var container = JToken.Parse(data);
+            Guid guid = Guid.Parse(container[ID].ToString());
+            string ApiDeleteURL = $&quot;{ApiURL}/{container[ID].ToString()}&quot;;
+            var deleteTeacherResult = await HttpClient.DeleteAsync(ApiDeleteURL);
+            // Assert
+            createTeacherResponse.EnsureSuccessStatusCode();
+            createTeacherResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.Created);
+
+            deleteTeacherResult.EnsureSuccessStatusCode();
+            deleteTeacherResult.StatusCode.Should().Be(System.Net.HttpStatusCode.OK);
+        }
+
+        [Fact]
+        public async void When_UpdatedTeacher_Then_ShouldReturnNoContent()
+        {
+            // Arrange
+            var teacherDto = CreateSUT();
+            // Act
+            var createTeacherResponse = await HttpClient.PostAsJsonAsync(ApiURL, teacherDto);
+            var data = await createTeacherResponse.Content.ReadAsStringAsync();
+            var container = JToken.Parse(data);
+            Guid guid = Guid.Parse(container[ID].ToString());
+            
+
+            string ApiUpdateURL = $&quot;{ApiURL}/{guid.ToString()}&quot;;
+            teacherDto.Email = &quot;new email&quot;;
+            var updateTeacherResult = await HttpClient.PutAsJsonAsync(ApiUpdateURL, teacherDto);
+            // Assert
+            createTeacherResponse.EnsureSuccessStatusCode();
+            createTeacherResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.Created);
+
+            updateTeacherResult.EnsureSuccessStatusCode();
+            updateTeacherResult.StatusCode.Should().Be(System.Net.HttpStatusCode.NoContent);
+        }
+
+        [Fact]
+        public async void When_GetAllTeachers_Then_ShouldReturnTeachersInResponse()
+        {
+            // Arrange
+            // Act
+            var getAllTeachersResponse = await HttpClient.GetAsync(ApiURL);
+            // Assert
+            getAllTeachersResponse.EnsureSuccessStatusCode();
+            getAllTeachersResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.OK);
+
+            var teachers = await getAllTeachersResponse.Content
+                .ReadFromJsonAsync&lt;List&lt;Teacher&gt;&gt;();
+            teachers.Should().NotBeEmpty();
+        }
+
+        private static CreateTeacherDto CreateSUT()
+        {
+            return new CreateTeacherDto
+            {
+                FullName = &quot;Mr.Cinnamon&quot;,
+                Email = &quot;cinnamon@gmail.com&quot;,
+                Role = &quot;Lecturer&quot;,
+                PhoneNumber = &quot;0756789456&quot;,
+                Cabinet = &quot;C210&quot;
+            };
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[19,88,19,101,1],[20,9,20,10,1],[21,20,21,62,1],[22,13,22,14,1],[23,17,23,60,1],[24,17,24,79,1],[25,17,25,56,1],[26,13,26,14,1],[27,9,27,10,1],[31,9,31,10,1],[33,13,33,42,1],[35,13,35,94,1],[36,13,36,70,1],[38,13,38,61,1],[39,13,39,93,1],[41,13,41,56,1],[42,13,43,53,1],[44,9,44,10,1],[48,9,48,10,1],[50,13,50,42,1],[52,13,52,94,1],[53,13,53,80,1],[54,13,54,48,1],[55,13,55,62,1],[56,13,56,74,1],[57,13,57,82,1],[59,13,59,61,1],[60,13,60,93,1],[62,13,62,59,1],[63,13,63,86,1],[64,9,64,10,1],[68,9,68,10,1],[70,13,70,42,1],[72,13,72,94,1],[73,13,73,80,1],[74,13,74,48,1],[75,13,75,62,1],[78,13,78,65,1],[79,13,79,44,1],[80,13,80,97,1],[82,13,82,61,1],[83,13,83,93,1],[85,13,85,59,1],[86,13,86,93,1],[87,9,87,10,1],[91,9,91,10,1],[94,13,94,76,1],[96,13,96,62,1],[97,13,97,89,1],[99,13,100,53,1],[101,13,101,44,1],[102,9,102,10,1],[105,9,105,10,1],[106,13,113,15,1],[114,9,114,10,1]]);
+    </script>
+  </body>
+</html>

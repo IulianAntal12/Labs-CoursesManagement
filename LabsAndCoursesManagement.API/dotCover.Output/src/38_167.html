@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\Repositories\GenericRepositories\TeacherRepository.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using LabsAndCoursesManagement.DataAccess.Database;
+using LabsAndCoursesManagement.Models.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace LabsAndCoursesManagement.DataAccess.Repositories.GenericRepositories
+{
+    public class TeacherRepository: Repository&lt;Teacher&gt;
+    {
+        public TeacherRepository(DatabaseContext context) : base(context)
+        {
+
+        }
+
+        public async override Task&lt;IEnumerable&lt;Teacher&gt;&gt; All()
+        {
+            CheckDatabaseContextStatus();
+            return await context.Teachers.Include(s =&gt; s.Labs)
+                .ToListAsync();
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[9,61,9,74,1],[10,9,10,10,1],[12,9,12,10,1],[15,9,15,10,1],[16,13,16,42,1],[17,13,18,32,1],[19,9,19,10,1]]);
+    </script>
+  </body>
+</html>

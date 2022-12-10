@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\Services\TeacherService.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using LabsAndCoursesManagement.BusinessLogic.Base;
+using LabsAndCoursesManagement.BusinessLogic.Interfaces;
+using LabsAndCoursesManagement.DataAccess.Repositories;
+using LabsAndCoursesManagement.Models.Models;
+using LabsAndCoursesManagement.Models.Dtos;
+using LabsAndCoursesManagement.Models.Helpers;
+using System.Net;
+
+namespace LabsAndCoursesManagement.BusinessLogic.Services
+{
+    public class TeacherService : BaseService&lt;Teacher, CreateTeacherDto&gt;, ITeacherService
+    {
+        private readonly IRepository&lt;Lab&gt; labRepository;
+
+        public TeacherService(IRepository&lt;Teacher&gt; repository, IRepository&lt;Lab&gt; labRepository) : base(repository)
+        {
+            this.labRepository = labRepository;
+        }
+
+        public async Task&lt;Result&lt;Teacher&gt;&gt; EnrollTeacherToLabs(Guid teacherId, List&lt;Guid&gt; labIds)
+        {
+            var labTasks = labIds
+                .Select(async(labId) =&gt; await labRepository.Get(labId))
+                .ToList();
+
+            var jointTasks = (await Task.WhenAll(labTasks))
+                .ToList();
+
+            if (jointTasks.Any(lab =&gt; lab == null)) 
+            {
+                return Result&lt;Teacher&gt;.Failure(HttpStatusCode.BadRequest, &quot;Cannot find all the specified labs&quot;);
+            }
+            
+            var teacher = await repository.Get(teacherId);
+            if (teacher == null) 
+            {
+                return Result&lt;Teacher&gt;.Failure(HttpStatusCode.NotFound, &quot;Cannot find the specified teacher&quot;);
+            }
+
+            teacher.EnrollToLabs(jointTasks);
+            await repository.Update(teacherId, teacher);
+            await repository.SaveChanges();
+            return Result&lt;Teacher&gt;.SuccessNoEntity();
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[15,98,15,114,1],[16,9,16,10,1],[17,13,17,48,1],[18,9,18,10,1],[21,9,21,10,0],[22,13,23,41,0],[23,41,23,71,0],[23,71,24,27,0],[26,13,27,27,0],[29,13,29,39,0],[29,39,29,50,0],[29,50,29,52,0],[30,13,30,14,0],[31,17,31,113,0],[34,13,34,59,0],[35,13,35,33,0],[36,13,36,14,0],[37,17,37,110,0],[40,13,40,46,0],[41,13,41,57,0],[42,13,42,44,0],[43,13,43,54,0],[44,9,44,10,0]]);
+    </script>
+  </body>
+</html>

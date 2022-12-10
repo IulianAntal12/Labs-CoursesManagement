@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.API.IntegrationTests\LabsControllerTests.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using FluentAssertions;
+using LabsAndCoursesManagement.API.IntegrationTests.Setup;
+using LabsAndCoursesManagement.DataAccess.Database;
+using LabsAndCoursesManagement.Models.Dtos;
+using LabsAndCoursesManagement.Models.Models;
+using Microsoft.Extensions.DependencyInjection;
+using System.Net.Http.Json;
+
+namespace LabsAndCoursesManagement.API.IntegrationTests
+{
+    public class LabsControllerTests : BaseIntegrationTests
+    {
+        private readonly string ApiURL = &quot;/api/labs&quot;;
+
+        private readonly Guid teacherId;
+        private readonly List&lt;Guid&gt; labIds;
+
+        public LabsControllerTests(CustomWebApplicationFactory&lt;Program&gt; factory) : base(factory)
+        {
+            using (var scope = factory.Services.CreateScope())
+            {
+                var scopedServices = scope.ServiceProvider;
+                var db = scopedServices.GetRequiredService&lt;DatabaseContext&gt;();
+                teacherId = Utilities.SeedTeachers(db);
+                labIds = Utilities.SeedLabs(db);
+            }
+        }
+
+        [Fact]
+        public async void When_CreatedLab_Then_ShouldReturnLabInTheGetRequest()
+        {
+            // Arrange
+            var labDto = CreateSUT();
+            // Act
+            var createLabResponse = await HttpClient.PostAsJsonAsync(ApiURL, labDto);
+            // Assert
+            createLabResponse.EnsureSuccessStatusCode();
+            createLabResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.Created);
+        }
+
+        [Fact]
+        public async void When_DeletedLab_Then_ShouldReturnOk()
+        {
+            //Arrange
+            string ApiDeleteURL = $&quot;{ApiURL}/{labIds[0]}&quot;;
+            // Act
+            var deleteLabResponse = await HttpClient.DeleteAsync(ApiDeleteURL);
+            // Assert
+            deleteLabResponse.EnsureSuccessStatusCode();
+        }
+
+        [Fact]
+        public async void When_UpdatedLab_Then_ShouldReturnNoContent()
+        {
+            //Arrange
+            var labDto = CreateSUT();
+            string ApiUpdateURL = $&quot;{ApiURL}/{labIds[1]}&quot;;
+            // Act
+            var updateLabResponse = await HttpClient.PutAsJsonAsync(ApiUpdateURL, labDto);
+            // Assert
+            updateLabResponse.EnsureSuccessStatusCode();
+        }
+
+        [Fact]
+        public async void When_UpdatedLabWithBadTeacherId_Then_ShouldReturnBadRequest()
+        {
+            //Arrange
+            var labDto = CreateSUT();
+            labDto.TeacherId = Guid.NewGuid();
+            string ApiUpdateURL = $&quot;{ApiURL}/{labIds[1]}&quot;;
+            // Act
+            var updateLabResponse = await HttpClient.PutAsJsonAsync(ApiUpdateURL, labDto);
+            // Assert
+            updateLabResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
+        }
+
+
+        private CreateLabDto CreateSUT()
+        {
+            return new CreateLabDto
+            {
+                Name = &quot;FAI Lab&quot;,
+                Group = &quot;B4&quot;,
+                Description = &quot;Applied maths&quot;,
+                Semester = 2,
+                Year = 2,
+                TeacherId = teacherId
+            };
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[13,9,13,54,1],[18,84,18,97,1],[19,9,19,10,1],[20,20,20,62,1],[21,13,21,14,1],[22,17,22,60,1],[23,17,23,79,1],[24,17,24,56,1],[25,17,25,49,1],[26,13,26,14,1],[27,9,27,10,1],[31,9,31,10,1],[33,13,33,38,1],[35,13,35,86,1],[37,13,37,57,1],[38,13,38,89,1],[39,9,39,10,1],[43,9,43,10,1],[45,13,45,59,1],[47,13,47,80,1],[49,13,49,57,1],[50,9,50,10,1],[54,9,54,10,1],[56,13,56,38,1],[57,13,57,59,1],[59,13,59,91,1],[61,13,61,57,1],[62,9,62,10,1],[66,9,66,10,1],[68,13,68,38,1],[69,13,69,47,1],[70,13,70,59,1],[72,13,72,91,1],[74,13,74,92,1],[75,9,75,10,1],[79,9,79,10,1],[80,13,88,15,1],[89,9,89,10,1]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\Base\BaseService.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using AutoMapper;
+using LabsAndCoursesManagement.BusinessLogic.Mappers;
+using LabsAndCoursesManagement.DataAccess.Repositories;
+using LabsAndCoursesManagement.Models.Helpers;
+using System.Net;
+
+namespace LabsAndCoursesManagement.BusinessLogic.Base
+{
+    public class BaseService&lt;T, TDto&gt; : IBaseService&lt;T, TDto&gt; where T : class
+        where TDto : class
+    {
+        private const string NOT_FOUND = &quot;Object not found&quot;;
+        protected readonly IMapper mapper;
+        protected readonly IRepository&lt;T&gt; repository;
+
+        public BaseService(IRepository&lt;T&gt; repository)
+        {
+            this.mapper = new AutoMapperBuilder().Build();
+            this.repository = repository;
+        }
+        public async Task&lt;Result&lt;T&gt;&gt; Add(TDto dto)
+        {
+            T entity = mapper.Map&lt;T&gt;(dto);
+            var result = await repository.Add(entity);
+
+            await repository.SaveChanges();
+            var data = await repository.All();
+            return Result&lt;T&gt;.Success(result);
+        }
+
+        public async Task&lt;Result&lt;T&gt;&gt; Delete(Guid id)
+        {
+            var entity = await repository.Get(id);
+            if (entity == null)
+            {
+                return Result&lt;T&gt;.Failure(HttpStatusCode.NotFound, &quot;Cannot find entity to be deleted&quot;);
+            }
+            await repository.Delete(entity);
+            return Result&lt;T&gt;.SuccessNoEntity();
+        }
+
+        public async Task&lt;Result&lt;IEnumerable&lt;T&gt;&gt;&gt; GetAll()
+        {
+            var data = await repository.All();
+            return Result&lt;IEnumerable&lt;T&gt;&gt;.Success(data);
+        }
+
+        public async Task&lt;Result&lt;T&gt;&gt; GetById(Guid id)
+        {
+            var entity = await repository.Get(id);
+            if (entity == null)
+            {
+                return Result&lt;T&gt;.Failure(HttpStatusCode.NotFound, &quot;Cannot find entity specified by id&quot;);
+            }
+            return Result&lt;T&gt;.Success(entity);
+        }
+
+        public async Task&lt;Result&lt;T&gt;&gt; Update(Guid id, TDto dto)
+        {
+            var entity = mapper.Map&lt;T&gt;(dto);
+            var response = await repository.Update(id, entity);
+            if (response == null)
+            {
+                return Result&lt;T&gt;.Failure(HttpStatusCode.NotFound, &quot;Cannot find entity specified by id&quot;);
+            }
+            return Result&lt;T&gt;.Success(response);
+        }
+
+        public Task&lt;Result&lt;T&gt;&gt; Validate(T entity)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[16,9,16,54,1],[17,9,17,10,1],[18,13,18,59,1],[19,13,19,42,1],[20,9,20,10,1],[22,9,22,10,1],[23,13,23,43,1],[24,13,24,55,1],[26,13,26,44,1],[27,13,27,47,1],[28,13,28,46,1],[29,9,29,10,1],[32,9,32,10,1],[33,13,33,51,1],[34,13,34,32,1],[35,13,35,14,1],[36,17,36,103,1],[38,13,38,45,1],[39,13,39,48,1],[40,9,40,10,1],[43,9,43,10,1],[44,13,44,47,1],[45,13,45,57,1],[46,9,46,10,1],[49,9,49,10,1],[50,13,50,51,1],[51,13,51,32,1],[52,13,52,14,1],[53,17,53,105,1],[55,13,55,46,1],[56,9,56,10,1],[59,9,59,10,1],[60,13,60,45,1],[61,13,61,64,1],[62,13,62,34,1],[63,13,63,14,0],[64,17,64,105,0],[66,13,66,48,1],[67,9,67,10,1],[70,9,70,10,0],[71,13,71,49,0]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.API.IntegrationTests\Setup\CustomWebApplicationFactory.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using LabsAndCoursesManagement.DataAccess.Database;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using System.Data.Common;
+
+namespace LabsAndCoursesManagement.API.IntegrationTests.Setup
+{
+    public class CustomWebApplicationFactory&lt;TStartup&gt;
+        : WebApplicationFactory&lt;TStartup&gt; where TStartup : class
+    {
+        protected override void ConfigureWebHost(IWebHostBuilder builder)
+        {
+            builder.ConfigureServices(services =&gt;
+            {
+                var dbContextDescriptor = services.SingleOrDefault(
+                    d =&gt; d.ServiceType ==
+                        typeof(DbContextOptions&lt;DatabaseContext&gt;));
+
+                services.Remove(dbContextDescriptor);
+              
+                var dbConnectionDescriptor = services.SingleOrDefault(
+                    d =&gt; d.ServiceType ==
+                        typeof(DbConnection));
+
+                services.Remove(dbConnectionDescriptor);
+
+                services.AddSingleton&lt;DbConnection&gt;(container =&gt;
+                {
+                    var connection = new SqliteConnection(&quot;DataSource=:memory:&quot;);
+                    connection.Open();
+
+                    return connection;
+                });
+
+                services.AddDbContext&lt;DatabaseContext&gt;((container, options) =&gt;
+                {
+                    var connection = container.GetRequiredService&lt;DbConnection&gt;();
+                    options.UseSqlite(connection);
+                });
+            });
+           
+            builder.UseEnvironment(&quot;Development&quot;);
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[15,9,15,10,1],[16,13,17,13,1],[17,13,17,14,1],[17,14,18,17,1],[18,17,19,26,1],[19,26,20,66,1],[20,66,20,68,1],[20,68,22,17,1],[22,17,22,54,1],[22,54,24,17,1],[24,17,25,26,1],[25,26,26,45,1],[26,45,26,47,1],[26,47,28,17,1],[28,17,28,57,1],[28,57,30,17,1],[30,17,31,17,1],[31,17,31,18,1],[31,18,32,21,1],[32,21,32,82,1],[32,82,33,21,1],[33,21,33,39,1],[33,39,35,21,1],[35,21,35,39,1],[35,39,36,17,1],[36,17,36,18,1],[36,18,36,20,1],[36,20,38,17,1],[38,17,39,17,1],[39,17,39,18,1],[39,18,40,21,1],[40,21,40,83,1],[40,83,41,21,1],[41,21,41,51,1],[41,51,42,17,1],[42,17,42,18,1],[42,18,42,20,1],[42,20,43,13,1],[43,13,43,14,1],[43,14,43,16,1],[45,13,45,51,1],[46,9,46,10,1]]);
+    </script>
+  </body>
+</html>
