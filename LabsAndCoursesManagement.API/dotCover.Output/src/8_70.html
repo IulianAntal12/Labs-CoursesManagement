@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\Controllers\AuthController.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using LabsAndCoursesManagement.BusinessLogic.Interfaces;
+using LabsAndCoursesManagement.WebAPI.Dtos;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
+namespace LabsAndCoursesManagement.WebAPI.Controllers;
+
+[Route(&quot;api/[controller]&quot;)]
+[ApiController]
+public class AuthController : ControllerBase
+{
+    private readonly ILogger&lt;AuthController&gt; _logger;
+    private readonly IAuthorizationService _authorizationService;
+    private readonly IUserService _userService;
+
+
+    public AuthController(ILogger&lt;AuthController&gt; logger, IAuthorizationService authorizationService,
+        IUserService userService)
+    {
+        _logger = logger;
+        _authorizationService = authorizationService;
+        _userService = userService;
+    }
+
+    [HttpPost]
+    public async Task&lt;IActionResult&gt; RegisterUser([FromBody] UserRegistrationDTO userRegistrationDto)
+    {
+        var response = await _userService.RegisterUserAsync(userRegistrationDto);
+        if (response.IsFailure)
+        {
+            return StatusCode(409, response.Error);
+        }
+
+        return StatusCode(201, response.Entity);
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[17,5,18,34,0],[19,5,19,6,0],[20,9,20,26,0],[21,9,21,54,0],[22,9,22,36,0],[23,5,23,6,0],[27,5,27,6,0],[28,9,28,82,0],[29,9,29,32,0],[30,9,30,10,0],[31,13,31,52,0],[34,9,34,49,0],[35,5,35,6,0]]);
+    </script>
+  </body>
+</html>
