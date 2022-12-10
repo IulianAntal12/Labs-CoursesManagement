@@ -2,7 +2,6 @@
 using LabsAndCoursesManagement.API.IntegrationTests.Setup;
 using LabsAndCoursesManagement.DataAccess.Database;
 using LabsAndCoursesManagement.Models.Dtos;
-using LabsAndCoursesManagement.Models.Models;
 using Microsoft.Extensions.DependencyInjection;
 using System.Net.Http.Json;
 

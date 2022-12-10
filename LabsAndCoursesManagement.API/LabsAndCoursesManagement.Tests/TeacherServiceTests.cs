@@ -1,6 +1,9 @@
 using AutoMapper;
+using FluentAssertions;
+using FluentValidation;
 using LabsAndCoursesManagement.BusinessLogic.Mappers;
 using LabsAndCoursesManagement.BusinessLogic.Services;
+using LabsAndCoursesManagement.BusinessLogic.Services.Validators;
 using LabsAndCoursesManagement.DataAccess.Repositories;
 using LabsAndCoursesManagement.Models.Dtos;
 using LabsAndCoursesManagement.Models.Models;
@@ -12,13 +15,15 @@ namespace LabsAndCoursesManagement.Tests
     {
         private readonly Mock<IRepository<Teacher>> teacherRepositoryMoq = new();
         private readonly Mock<IRepository<Lab>> labRepositoryMoq = new();
+        private readonly TeacherValidator validator = new();
         private TeacherService teacherService;
+       
         private IMapper mapper; 
 
         [SetUp]
         public void Setup()
         {
-            teacherService = new TeacherService(teacherRepositoryMoq.Object, labRepositoryMoq.Object);
+            teacherService = new TeacherService(teacherRepositoryMoq.Object, labRepositoryMoq.Object, validator);
             mapper = new AutoMapperBuilder().Build();
         }
 
@@ -28,7 +33,7 @@ namespace LabsAndCoursesManagement.Tests
             //arrange
             var teacherDto = new CreateTeacherDto()
             {
-                FullName = "TestName",
+                FullName = "Test Name",
                 Cabinet = "111",
                 Email = "a@a.a",
                 PhoneNumber = "0711111111",
@@ -139,6 +144,50 @@ namespace LabsAndCoursesManagement.Tests
 
             //assert
             Assert.That(result.Result.IsSuccess, Is.False);
+        }
+
+        [Test]
+        public void AddTeacher_NotValidEntity_IsFailureShouldBeTrue()
+        {
+            //arrange
+            var teacherDto = new CreateTeacherDto()
+            {
+                FullName = "TestName",
+                Cabinet = "111",
+                Email = "a@a.a",
+                PhoneNumber = "0711111111",
+                Role = "Assistant"
+            };
+
+            //act
+            var result = teacherService.Add(teacherDto);
+
+
+            //assert
+            result.Result.IsFailure.Should().BeTrue();
+            result.Result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        }
+
+
+        [Test]
+        public void UpdateTeacher_NotValidEntity_IsFailureShouldBeTrue()
+        {
+            //arrange
+            var teacherDto = new CreateTeacherDto()
+            {
+                FullName = "TestName",
+                Cabinet = "111",
+                Email = "a@a.a",
+                PhoneNumber = "0711111111",
+                Role = "Assistant"
+            };
+
+            //act
+            var result = teacherService.Update(Guid.NewGuid(), teacherDto);
+
+            //assert
+            result.Result.IsFailure.Should().BeTrue();
+            result.Result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
         }
     }
 }

@@ -1,4 +1,5 @@
 using AutoMapper;
+using FluentValidation;
 using LabsAndCoursesManagement.BusinessLogic.Base;
 using LabsAndCoursesManagement.BusinessLogic.Interfaces;
 using LabsAndCoursesManagement.DataAccess.Repositories;
@@ -16,7 +17,8 @@ public class UserService : BaseService<User, UserRegistrationDTO>, IUserService
     private readonly IUserRepository userRepository;
     private readonly IMapper mapper;
 
-    public UserService(IRepository<User> repository, IUserRepository userRepository) : base(repository)
+    public UserService(IRepository<User> repository, IUserRepository userRepository, IValidator<User> validator) 
+        : base(repository, validator)
     {
         this.userRepository = userRepository;
     }

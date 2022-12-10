@@ -5,6 +5,8 @@ using LabsAndCoursesManagement.Models.Models;
 using LabsAndCoursesManagement.Models.Dtos;
 using LabsAndCoursesManagement.Models.Helpers;
 using System.Net;
+using LabsAndCoursesManagement.BusinessLogic.Services.Validators;
+using FluentValidation;
 
 namespace LabsAndCoursesManagement.BusinessLogic.Services
 {
@@ -12,7 +14,8 @@ namespace LabsAndCoursesManagement.BusinessLogic.Services
     {
         private readonly IRepository<Lab> labRepository;
 
-        public TeacherService(IRepository<Teacher> repository, IRepository<Lab> labRepository) : base(repository)
+        public TeacherService(IRepository<Teacher> repository, IRepository<Lab> labRepository, IValidator<Teacher> validator) 
+            : base(repository, validator)
         {
             this.labRepository = labRepository;
         }
