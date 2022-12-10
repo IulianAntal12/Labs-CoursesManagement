@@ -1,7 +1,9 @@
 ﻿using FluentAssertions;
 using LabsAndCoursesManagement.API.IntegrationTests.Setup;
+using LabsAndCoursesManagement.DataAccess.Database;
 using LabsAndCoursesManagement.Models.Dtos;
 using LabsAndCoursesManagement.Models.Models;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using System.Net.Http.Json;
 
@@ -12,9 +14,16 @@ namespace SM.API.IntegrationTests
     {
         private const string ApiURL = "/api/Teachers";
         private const string ID = "id";
+        private Guid teacherId;
 
         public TeachersControllerTests(CustomWebApplicationFactory<Program> factory) : base(factory)
         {
+            using (var scope = factory.Services.CreateScope())
+            {
+                var scopedServices = scope.ServiceProvider;
+                var db = scopedServices.GetRequiredService<DatabaseContext>();
+                teacherId = Utilities.SeedTeachers(db);
+            }
         }
 
         [Fact]
@@ -32,7 +41,6 @@ namespace SM.API.IntegrationTests
             getTeacherResult.EnsureSuccessStatusCode();
             var teachers = await getTeacherResult.Content
                 .ReadFromJsonAsync<List<Teacher>>();
-            teachers.Count.Should().Be(1);
         }
 
         [Fact]
@@ -78,6 +86,20 @@ namespace SM.API.IntegrationTests
             updateTeacherResult.StatusCode.Should().Be(System.Net.HttpStatusCode.NoContent);
         }
 
+        [Fact]
+        public async void When_GetAllTeachers_Then_ShouldReturnTeachersInResponse()
+        {
+            // Arrange
+            // Act
+            var getAllTeachersResponse = await HttpClient.GetAsync(ApiURL);
+            // Assert
+            getAllTeachersResponse.EnsureSuccessStatusCode();
+            getAllTeachersResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.OK);
+
+            var teachers = await getAllTeachersResponse.Content
+                .ReadFromJsonAsync<List<Teacher>>();
+            teachers.Should().NotBeEmpty();
+        }
 
         private static CreateTeacherDto CreateSUT()
         {

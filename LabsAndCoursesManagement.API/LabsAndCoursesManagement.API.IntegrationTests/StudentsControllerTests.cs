@@ -40,7 +40,6 @@ namespace LabsAndCoursesManagement.API.IntegrationTests
             getStudentResult.EnsureSuccessStatusCode();
             var students = await getStudentResult.Content
                 .ReadFromJsonAsync<List<Teacher>>();
-            students.Count.Should().Be(1 + studentIds.Count());
         }
 
         [Fact]
