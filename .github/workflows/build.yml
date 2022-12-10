@@ -44,6 +44,6 @@ jobs:
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"IulianAntal12_Labs-CoursesManagement" /o:"iulianantal12" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.dotcover.reportsPaths="C:\Facultate\Labs-CoursesManagement\TestResults\DotnetCoverage.coveragexml"
           dotnet build "C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.sln"
-          dotnet test --collect "Code Coverage" --results-directory "C:\Facultate\Labs-CoursesManagement\TestResults"
+          dotnet test "C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.sln" --collect "Code Coverage" --results-directory "C:\Facultate\Labs-CoursesManagement\TestResults"
           CodeCoverage.exe analyze /output:"C:\Facultate\Labs-CoursesManagement\TestResults\DotnetCoverage.coveragexml"
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
