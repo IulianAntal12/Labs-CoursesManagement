@@ -10,31 +10,29 @@ namespace LabsAndCoursesManagement.BusinessLogic.Base
     public class BaseService<T, TDto> : IBaseService<T, TDto> where T : class
         where TDto : class
     {
-        private const string NOT_FOUND = "Object not found";
         protected readonly IMapper mapper;
         protected readonly IRepository<T> repository;
         protected readonly IValidator<T> validator;
 
-        public BaseService(IRepository<T> repository, IValidator<T> validator)
+        public BaseService(IRepository<T> repository, IValidator<T?> validator)
         {
             mapper = new AutoMapperBuilder().Build();
             this.repository = repository;
             this.validator = validator;
         }
-        public async Task<Result<T>> Add(TDto dto)
+        public async Task<Result<T?>> Add(TDto dto)
         {
             T entity = mapper.Map<T>(dto);
             var validationResult = await validator.ValidateAsync(entity);
             if (!validationResult.IsValid) 
             {
-                return Result<T>.Failure(HttpStatusCode.UnprocessableEntity, validationResult.Errors[0].ErrorMessage);
+                return Result<T?>.Failure(HttpStatusCode.UnprocessableEntity, validationResult.Errors[0].ErrorMessage);
             }
 
             var result = await repository.Add(entity);
 
             await repository.SaveChanges();
-            var data = await repository.All();
-            return Result<T>.Success(result);
+            return Result<T?>.Success(result);
         }
 
         public async Task<Result<T>> Delete(Guid id)
@@ -79,11 +77,6 @@ namespace LabsAndCoursesManagement.BusinessLogic.Base
                 return Result<T>.Failure(HttpStatusCode.NotFound, "Cannot find entity specified by id");
             }
             return Result<T>.Success(response);
-        }
-
-        public Task<Result<T>> Validate(T entity)
-        {
-            throw new NotImplementedException();
         }
     }
 }

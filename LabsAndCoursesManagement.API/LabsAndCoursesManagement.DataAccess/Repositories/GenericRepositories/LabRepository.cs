@@ -16,7 +16,7 @@ namespace LabsAndCoursesManagement.DataAccess.Repositories.GenericRepositories
                 return null;
             }
             
-            teacher.EnrollToLabs(new List<Lab>() { entity });
+            teacher.EnrollToLabs(new List<Lab?>() { entity });
             await context.AddAsync(entity);
             await SaveChanges();
             return entity;

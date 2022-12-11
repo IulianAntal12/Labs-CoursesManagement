@@ -9,7 +9,7 @@ namespace LabsAndCoursesManagement.BusinessLogic.Services
 {
     public class CourseService : BaseService<Course, CreateCourseDto>, ICourseService
     {
-        public CourseService(IRepository<Course> repository, IValidator<Course> validator) : base(repository, validator)
+        public CourseService(IRepository<Course> repository, IValidator<Course?> validator) : base(repository, validator)
         {
         }
     }
