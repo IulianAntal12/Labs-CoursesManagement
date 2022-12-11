@@ -12,7 +12,7 @@ namespace LabsAndCoursesManagement.Tests
         private Student student;
         private CreateLabDto labDto;
         private Lab lab;
-        private List<Lab> labs;
+        private List<Lab?> labs;
 
         [SetUp]
         public void Setup()
@@ -36,7 +36,7 @@ namespace LabsAndCoursesManagement.Tests
                 Group = "B4"
             };
             lab = mapper.Map<Lab>(labDto);
-            labs = new List<Lab>
+            labs = new List<Lab?>
             {
                 lab
             };

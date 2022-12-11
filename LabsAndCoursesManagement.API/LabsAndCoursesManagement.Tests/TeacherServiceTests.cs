@@ -63,8 +63,8 @@ namespace LabsAndCoursesManagement.Tests
             var Teacher = mapper.Map<Teacher>(TeacherDto);
 
             //act
-            teacherRepositoryMoq.Setup(x => x.Get(Teacher.Id)).Returns(Task.FromResult(Teacher));
-            var result = teacherService.Delete((Guid)Teacher.Id);
+            Moq.Language.Flow.IReturnsResult<IRepository<Teacher>> returnsResult = teacherRepositoryMoq.Setup(x => x.Get(Teacher.Id)).Returns(Task.FromResult(Teacher));
+            var result = teacherService.Delete(Teacher.Id);
 
             //assert
             Assert.That(result.Result.IsSuccess, Is.True);
@@ -85,7 +85,7 @@ namespace LabsAndCoursesManagement.Tests
             var Teacher = mapper.Map<Teacher>(TeacherDto);
 
             //act
-            var result = teacherService.Delete((Guid)Teacher.Id);
+            var result = teacherService.Delete(Teacher.Id);
 
             //assert
             Assert.That(result.Result.IsSuccess, Is.False);
@@ -111,7 +111,7 @@ namespace LabsAndCoursesManagement.Tests
             var result = teacherService.GetAll();
 
             //assert
-            Assert.That(Teachers.AsEnumerable<Teacher>, Is.EqualTo(result.Result.Entity));
+            Assert.That(Teachers.AsEnumerable<Teacher?>, Is.EqualTo(result.Result.Entity));
         }
 
         [Test]

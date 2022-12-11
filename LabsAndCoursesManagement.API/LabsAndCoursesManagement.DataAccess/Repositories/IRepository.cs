@@ -2,7 +2,7 @@
 {
     public interface IRepository<T> where T : class
     {
-        public Task<T> Add(T entity);
+        public Task<T?> Add(T entity);
         public Task<IEnumerable<T>> All();
         public void CheckDatabaseContextStatus();
         public Task Delete(T entity);

@@ -13,7 +13,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LabsAndCoursesManagement.Mo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LabsAndCoursesManagement.Tests", "LabsAndCoursesManagement.Tests\LabsAndCoursesManagement.Tests.csproj", "{94EC5D19-2E3C-44BF-B1C0-6D06C1A6AF64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabsAndCoursesManagement.API.IntegrationTests", "LabsAndCoursesManagement.API.IntegrationTests\LabsAndCoursesManagement.API.IntegrationTests.csproj", "{4A70B18B-5F56-45E1-AEFA-AEB213CFC7A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LabsAndCoursesManagement.API.IntegrationTests", "LabsAndCoursesManagement.API.IntegrationTests\LabsAndCoursesManagement.API.IntegrationTests.csproj", "{4A70B18B-5F56-45E1-AEFA-AEB213CFC7A5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{68D498AC-D655-4121-A3AA-D704DF21B774}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
