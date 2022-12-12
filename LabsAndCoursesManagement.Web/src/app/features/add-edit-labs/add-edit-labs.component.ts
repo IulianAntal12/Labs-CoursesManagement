@@ -25,6 +25,7 @@ export class AddEditLabsComponent implements OnInit {
   }
 
   public getLabs() {
+    this.labs = [];
     this.service.getLabs().subscribe((data: Lab[]) => {
       for (const lab of data) {
         this.labs.push(lab);
