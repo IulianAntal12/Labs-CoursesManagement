@@ -6,5 +6,5 @@ export interface LabDto {
     description: string;
     year: number;
     semester: number;
-    teacherId: Guid;
+    teacherId: string;
   }

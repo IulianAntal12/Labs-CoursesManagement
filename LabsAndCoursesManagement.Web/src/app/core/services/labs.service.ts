@@ -14,11 +14,11 @@ export class LabsService {
   constructor(private readonly baseService: BaseService) {}
 
   public getLabs(): Observable<Lab[]> {
-    return this.baseService.get(`${this.endpoint}`);
+    return this.baseService.get<Lab[]>(`${this.endpoint}`);
   }
 
   public createLab(labDto: LabDto): Observable<Lab> {
-    return this.baseService.add(`${this.endpoint}`, labDto);
+    return this.baseService.add<Lab, LabDto>(`${this.endpoint}`, labDto);
   }
 
   public deleteLab(id: Guid) {
@@ -26,6 +26,6 @@ export class LabsService {
   }
 
   public updateLab(id: Guid, labDto: LabDto): Observable<Lab> {
-    return this.baseService.update(`${this.endpoint}`, id, labDto);
+    return this.baseService.update<Lab, LabDto>(`${this.endpoint}`, id, labDto);
   }
 }

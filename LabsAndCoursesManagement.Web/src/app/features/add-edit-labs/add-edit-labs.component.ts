@@ -20,13 +20,17 @@ export class AddEditLabsComponent implements OnInit {
   constructor(private readonly service: LabsService) {}
 
   ngOnInit(): void {
+    this.getLabs();
+    this.addFormGroup = this.initializeFormGroup();
+  }
+
+  public getLabs() {
     this.service.getLabs().subscribe((data: Lab[]) => {
       for (const lab of data) {
         this.labs.push(lab);
         this.formGroupArray.push(this.initializeFormGroup());
       }
     });
-    this.addFormGroup = this.initializeFormGroup();
   }
 
   initializeFormGroup(): FormGroup {
@@ -41,14 +45,23 @@ export class AddEditLabsComponent implements OnInit {
 
   submitEdit(index: number): void {
     this.labDto = this.formGroupArray[index].getRawValue();
-    this.labDto.teacherId = Guid.parse('179dd456-8d56-4993-821a-b09e596cc7ed');
-    this.service.updateLab(this.labs[index].id, this.labDto).subscribe((lab: Lab) => this.labs[index] = lab);
+    console.log(this.formGroupArray[index].getRawValue());
+    this.labDto.teacherId = '179dd456-8d56-4993-821a-b09e596cc7ed';
+    this.service
+      .updateLab(this.labs[index].id, this.labDto)
+      .subscribe((lab: Lab) =>{
+        console.log(lab);
+        this.labs[index] = lab;
+      } );
   }
   submitAdd(): void {
     this.labDto = this.addFormGroup.getRawValue();
-    this.service
-      .createLab(this.labDto)
-      .subscribe((lab: Lab) => console.log(lab));
+    this.labDto.teacherId = '179dd456-8d56-4993-821a-b09e596cc7ed';
+    console.log(this.addFormGroup.getRawValue());
+    this.service.createLab(this.labDto).subscribe((lab: Lab) => {
+      console.log(lab);
+      this.labs.push(lab);
+    });
   }
 
   deleteLab(lab: Lab): void {
