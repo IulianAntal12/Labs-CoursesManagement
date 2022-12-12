@@ -167,7 +167,7 @@ namespace LabsAndCoursesManagement.Tests
             return new CreateLabDto
             {
                 Name = "New Name",
-                Group = "B4",
+                Group = "A3",
                 Description = "Description",
                 Semester = 1,
                 Year = 1,
