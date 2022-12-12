@@ -60,7 +60,7 @@ namespace LabsAndCoursesManagement.API.IntegrationTests
             var updateStudentResult = await HttpClient.PutAsJsonAsync(ApiUpdateURL, studentDto);
             // Assert
             updateStudentResult.EnsureSuccessStatusCode();
-            updateStudentResult.StatusCode.Should().Be(System.Net.HttpStatusCode.NoContent);
+            updateStudentResult.StatusCode.Should().Be(System.Net.HttpStatusCode.OK);
         }
 
 

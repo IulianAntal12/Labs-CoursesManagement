@@ -75,7 +75,7 @@ namespace SM.API.IntegrationTests
             createTeacherResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.Created);
 
             updateTeacherResult.EnsureSuccessStatusCode();
-            updateTeacherResult.StatusCode.Should().Be(System.Net.HttpStatusCode.NoContent);
+            updateTeacherResult.StatusCode.Should().Be(System.Net.HttpStatusCode.OK);
         }
 
         [Fact]

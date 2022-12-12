@@ -69,7 +69,7 @@ namespace LabsAndCoursesManagement.Tests
         }
 
         [Test]
-        public async Task When_AddedNewLabWithGroupNotMatchingRegex_Then_ShouldHaveUnprocessableEntityAsResponse()
+        public async Task When_AddedNewLabWithGroupNotMatchingRegex_Then_ShouldHaveIsFailureTrueInResponse()
         {
             // Arrange
             var lab = CreateSUT();
@@ -77,11 +77,11 @@ namespace LabsAndCoursesManagement.Tests
             // Act
             var response = await service.Add(lab);
             // Assert
-            response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+            response.IsFailure.Should().BeTrue();
         }
 
         [Test]
-        public async Task When_AddedNewLabWithEmptyDescription_Then_ShouldHaveUnprocessableEntityAsResponse()
+        public async Task When_AddedNewLabWithEmptyDescription_Then_ShouldHaveIsSuccessTrueInResponse()
         {
             // Arrange
             var lab = CreateSUT();
@@ -89,7 +89,7 @@ namespace LabsAndCoursesManagement.Tests
             // Act
             var response = await service.Add(lab);
             // Assert
-            response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+            response.IsSuccess.Should().BeTrue();
         }
 
         [Test]
