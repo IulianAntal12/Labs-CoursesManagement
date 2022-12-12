@@ -393,3 +393,4 @@ FodyWeavers.xsd
 *.sln.iml
 /LabsAndCoursesManagement.API/.vs/LabsAndCoursesManagement/v17/.suo
 /LabsAndCoursesManagement.API/.vs/LabsAndCoursesManagement/DesignTimeBuild/.dtbcache.v2
+/LabsAndCoursesManagement.API/.vs/LabsAndCoursesManagement/v17/TestStore/0/testlog.manifest
