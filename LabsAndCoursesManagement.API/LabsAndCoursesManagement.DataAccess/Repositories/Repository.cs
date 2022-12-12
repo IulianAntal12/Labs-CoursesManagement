@@ -70,7 +70,7 @@ namespace LabsAndCoursesManagement.DataAccess.Repositories
                 .SetValues(entity);
 
             await SaveChanges();
-            return toBeUpdated;
+            return entity;
         }
         public virtual void CheckDatabaseContextStatus()
         {
