@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatAccordion } from '@angular/material/expansion';
-import { Guid } from 'guid-typescript';
 import { LabDto } from 'src/app/core/models/lab-dto.model';
 import { Lab } from 'src/app/core/models/lab.model';
 import { LabsService } from 'src/app/core/services/labs.service';
@@ -26,6 +25,7 @@ export class AddEditLabsComponent implements OnInit {
 
   public getLabs() {
     this.labs = [];
+    this.formGroupArray = [];
     this.service.getLabs().subscribe((data: Lab[]) => {
       for (const lab of data) {
         this.labs.push(lab);
@@ -36,11 +36,11 @@ export class AddEditLabsComponent implements OnInit {
 
   initializeFormGroup(): FormGroup {
     return new FormGroup({
-      name: new FormControl(''),
-      group: new FormControl(''),
-      description: new FormControl(''),
-      year: new FormControl(''),
-      semester: new FormControl(''),
+      name: new FormControl('', Validators.required),
+      group: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
+      year: new FormControl('', Validators.required),
+      semester: new FormControl('', Validators.required),
     });
   }
 
@@ -57,16 +57,19 @@ export class AddEditLabsComponent implements OnInit {
   }
   submitAdd(): void {
     this.labDto = this.addFormGroup.getRawValue();
-    this.labDto.teacherId = '179dd456-8d56-4993-821a-b09e596cc7ed';
+    this.labDto.teacherId ='179dd456-8d56-4993-821a-b09e596cc7ed';
     console.log(this.addFormGroup.getRawValue());
     this.service.createLab(this.labDto).subscribe((lab: Lab) => {
       console.log(lab);
       this.labs.push(lab);
+      this.formGroupArray.push(this.initializeFormGroup());
     });
   }
 
   deleteLab(lab: Lab): void {
     this.service.deleteLab(lab.id).subscribe();
-    delete this.labs[this.labs.indexOf(lab)];
+    let index = this.labs.indexOf(lab);
+    this.labs.splice(index, 1);
+    this.formGroupArray.splice(index, 1);
   }
 }
