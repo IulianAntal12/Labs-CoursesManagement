@@ -59,7 +59,7 @@ namespace LabsAndCoursesManagement.API.IntegrationTests
             var updateLabResponse = await HttpClient.PutAsJsonAsync(ApiUpdateURL, labDto);
             // Assert
             updateLabResponse.EnsureSuccessStatusCode();
-            updateLabResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.NoContent);
+            updateLabResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.OK);
         }
 
         [Fact]
@@ -72,7 +72,7 @@ namespace LabsAndCoursesManagement.API.IntegrationTests
             // Act
             var updateLabResponse = await HttpClient.PutAsJsonAsync(ApiUpdateURL, labDto);
             // Assert
-            updateLabResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
+            updateLabResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
         }
 
 
