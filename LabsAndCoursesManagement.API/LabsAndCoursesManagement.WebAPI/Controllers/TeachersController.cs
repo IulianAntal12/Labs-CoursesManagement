@@ -27,7 +27,7 @@ namespace LabsAndCoursesManagement.WebAPI.Controllers
             var result = await service.GetById(teacherId);
             if (result.IsFailure)
             {
-                return NotFound();
+                return StatusCode((int)result.StatusCode, result.Error);
             }
             return Ok(result.Entity);
         }
@@ -38,7 +38,7 @@ namespace LabsAndCoursesManagement.WebAPI.Controllers
             var result = await service.Add(dto);
             if (result.IsFailure)
             {
-                return BadRequest(result.Error);
+                return StatusCode((int)result.StatusCode, result.Error);
             }
             return Created(nameof(Get), result.Entity);
         }
@@ -49,7 +49,7 @@ namespace LabsAndCoursesManagement.WebAPI.Controllers
             var result = await service.Delete(teacherId);
             if (result.IsFailure)
             {
-                return BadRequest(result.Error);
+                return StatusCode((int)result.StatusCode, result.Error);
             }
             return Ok();
         }
@@ -60,9 +60,9 @@ namespace LabsAndCoursesManagement.WebAPI.Controllers
             var result = await service.Update(teacherId, dto);
             if (result.IsFailure)
             {
-                return UnprocessableEntity(result.Error);
+                return StatusCode((int)result.StatusCode, result.Error);
             }
-            return NoContent();
+            return Ok(result.Entity);
         }
 
         [HttpPut("{teacherId:guid}/enroll")]

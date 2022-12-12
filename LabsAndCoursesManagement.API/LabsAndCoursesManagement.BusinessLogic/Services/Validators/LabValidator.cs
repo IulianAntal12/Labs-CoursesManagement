@@ -21,6 +21,8 @@ namespace LabsAndCoursesManagement.BusinessLogic.Services.Validators
             RuleFor(x => x.Semester)
                 .NotEmpty()
                 .LessThan(3);
+            RuleFor(x => x.TeacherId)
+                .NotEmpty();
         }
     }
 }
