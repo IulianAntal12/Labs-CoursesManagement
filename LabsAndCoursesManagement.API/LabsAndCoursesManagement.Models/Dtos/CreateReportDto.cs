@@ -1,9 +1,7 @@
-﻿namespace LabsAndCoursesManagement.Models.Models
+﻿namespace LabsAndCoursesManagement.Models.Dtos
 {
-    public class Report
+    public class CreateReportDto
     {
-        public Guid Id { get; private set; }
-
         public Guid StudentId { get; private set; }
 
         public Guid TeacherId { get; private set; }
