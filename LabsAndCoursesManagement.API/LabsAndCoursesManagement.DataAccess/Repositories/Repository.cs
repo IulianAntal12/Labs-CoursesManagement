@@ -13,7 +13,7 @@ namespace LabsAndCoursesManagement.DataAccess.Repositories
             this.context = context;
         }
 
-        public virtual async Task<T> Add(T entity)
+        public virtual async Task<T?> Add(T entity)
         {
             CheckDatabaseContextStatus();
             await context.AddAsync(entity);
@@ -49,7 +49,6 @@ namespace LabsAndCoursesManagement.DataAccess.Repositories
         public virtual async Task<T?> Update(Guid key, T entity)
         {
             CheckDatabaseContextStatus();
-            var data = context.Set<T>().ToList();   
             var toBeUpdated = await context.Set<T>()
                                            .FindAsync(key);
             
@@ -59,7 +58,7 @@ namespace LabsAndCoursesManagement.DataAccess.Repositories
             }
 
             Type entityType = typeof(T);
-            MethodInfo keyMethodInfo = entityType.GetMethod("set_Id", BindingFlags.NonPublic | BindingFlags.Instance);
+            MethodInfo? keyMethodInfo = entityType.GetMethod("set_Id", BindingFlags.NonPublic | BindingFlags.Instance);
             if (keyMethodInfo == null)
             {
                 return null;

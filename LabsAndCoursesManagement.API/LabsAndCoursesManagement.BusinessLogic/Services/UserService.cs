@@ -15,9 +15,8 @@ public class UserService : BaseService<User, UserRegistrationDTO>, IUserService
 {
 
     private readonly IUserRepository userRepository;
-    private readonly IMapper mapper;
 
-    public UserService(IRepository<User> repository, IUserRepository userRepository, IValidator<User> validator) 
+    public UserService(IRepository<User> repository, IUserRepository userRepository, IValidator<User?> validator) 
         : base(repository, validator)
     {
         this.userRepository = userRepository;

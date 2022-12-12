@@ -13,7 +13,7 @@ namespace LabsAndCoursesManagement.BusinessLogic.Services
     {
         private readonly IRepository<Lab> labRepository;
 
-        public StudentService(IRepository<Student> repository, IRepository<Lab> labRepository, IValidator<Student> validator) 
+        public StudentService(IRepository<Student> repository, IRepository<Lab> labRepository, IValidator<Student?> validator) 
             : base(repository, validator)
         {
             this.labRepository = labRepository;

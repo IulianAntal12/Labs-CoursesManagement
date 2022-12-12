@@ -42,8 +42,8 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"IulianAntal12_Labs-CoursesManagement" /o:"iulianantal12" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.dotcover.reportsPaths="C:\Facultate\Labs-CoursesManagement\TestResults\DotnetCoverage.coveragexml"
-          dotnet build "C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.sln"
-          dotnet test "C:\Facultate\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.sln" --collect "Code Coverage" --results-directory "C:\Facultate\Labs-CoursesManagement\TestResults"
-          CodeCoverage.exe analyze /output:"C:\Facultate\Labs-CoursesManagement\TestResults\DotnetCoverage.coveragexml"
+          dotnet tool install --global dotnet-coverage 
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"IulianAntal12_Labs-CoursesManagement" /o:"iulianantal12" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=./LabsAndCoursesManagement.API/coverage.xml
+          dotnet build ./LabsAndCoursesManagement.API/LabsAndCoursesManagement.sln --no-incremental
+          dotnet-coverage collect 'dotnet test ./LabsAndCoursesManagement.API' -f xml  -o 'coverage.xml' D:\a\Labs-CoursesManagement\Labs-CoursesManagement\LabsAndCoursesManagement.API
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"

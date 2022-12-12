@@ -15,12 +15,15 @@
         public string Cabinet { get; private set; }
         public List<Lab> Labs { get; private set; } = new List<Lab>();
 
-        public void EnrollToLabs(List<Lab> labs)
+        public void EnrollToLabs(List<Lab?> labs)
         {
             labs.ForEach(lab =>
             {
-                Labs.Add(lab);
-                lab.EnrollTeacher(this);
+                if (lab != null)
+                {
+                    Labs.Add(lab);
+                    lab.EnrollTeacher(this);
+                }
             });
         }
     }

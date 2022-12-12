@@ -12,13 +12,13 @@ namespace LabsAndCoursesManagement.BusinessLogic.Interfaces
     {
         private readonly IRepository<Teacher> teacherRepository;
 
-        public LabService(IRepository<Lab> repository, IRepository<Teacher> teacherRepository, IValidator<Lab> validator) 
+        public LabService(IRepository<Lab> repository, IRepository<Teacher> teacherRepository, IValidator<Lab?> validator) 
             : base(repository, validator)
         {
             this.teacherRepository = teacherRepository;
         }
 
-        public async Task<Result<Lab>> Update(Guid id, CreateLabDto dto)
+        public new async Task<Result<Lab>> Update(Guid id, CreateLabDto dto)
         {
             var entity = mapper.Map<Lab>(dto);
             var validationResult = await validator.ValidateAsync(entity);

@@ -14,16 +14,12 @@ namespace SM.API.IntegrationTests
     {
         private const string ApiURL = "/api/Teachers";
         private const string ID = "id";
-        private Guid teacherId;
 
         public TeachersControllerTests(CustomWebApplicationFactory<Program> factory) : base(factory)
         {
-            using (var scope = factory.Services.CreateScope())
-            {
-                var scopedServices = scope.ServiceProvider;
-                var db = scopedServices.GetRequiredService<DatabaseContext>();
-                teacherId = Utilities.SeedTeachers(db);
-            }
+            using var scope = factory.Services.CreateScope();
+            var scopedServices = scope.ServiceProvider;
+            var db = scopedServices.GetRequiredService<DatabaseContext>();
         }
 
         [Fact]
@@ -39,8 +35,6 @@ namespace SM.API.IntegrationTests
             createTeacherResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.Created);
 
             getTeacherResult.EnsureSuccessStatusCode();
-            var teachers = await getTeacherResult.Content
-                .ReadFromJsonAsync<List<Teacher>>();
         }
 
         [Fact]
@@ -52,8 +46,7 @@ namespace SM.API.IntegrationTests
             var createTeacherResponse = await HttpClient.PostAsJsonAsync(ApiURL, teacherDto);
             var data = await createTeacherResponse.Content.ReadAsStringAsync();
             var container = JToken.Parse(data);
-            Guid guid = Guid.Parse(container[ID].ToString());
-            string ApiDeleteURL = $"{ApiURL}/{container[ID].ToString()}";
+            string ApiDeleteURL = $"{ApiURL}/{container[ID]}";
             var deleteTeacherResult = await HttpClient.DeleteAsync(ApiDeleteURL);
             // Assert
             createTeacherResponse.EnsureSuccessStatusCode();
@@ -72,10 +65,9 @@ namespace SM.API.IntegrationTests
             var createTeacherResponse = await HttpClient.PostAsJsonAsync(ApiURL, teacherDto);
             var data = await createTeacherResponse.Content.ReadAsStringAsync();
             var container = JToken.Parse(data);
-            Guid guid = Guid.Parse(container[ID].ToString());
-            
+            Guid? guid = Guid.Parse(container[ID].ToString());
 
-            string ApiUpdateURL = $"{ApiURL}/{guid.ToString()}";
+            string ApiUpdateURL = $"{ApiURL}/{guid}";
             teacherDto.Email = "new email";
             var updateTeacherResult = await HttpClient.PutAsJsonAsync(ApiUpdateURL, teacherDto);
             // Assert

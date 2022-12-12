@@ -69,7 +69,7 @@ namespace LabsAndCoursesManagement.API.IntegrationTests
         }
 
 
-        private CreateStudentDto CreateSUT()
+        private static CreateStudentDto CreateSUT()
         {
             return new CreateStudentDto
             {
