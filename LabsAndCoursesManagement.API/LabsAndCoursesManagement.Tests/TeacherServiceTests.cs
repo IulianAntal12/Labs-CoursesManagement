@@ -63,7 +63,7 @@ namespace LabsAndCoursesManagement.Tests
 
             //act
             Moq.Language.Flow.IReturnsResult<IRepository<Teacher>> returnsResult = teacherRepositoryMoq.Setup(x => x.Get(Teacher.Id)).Returns(Task.FromResult(Teacher));
-            var result = teacherService.Delete(Teacher.Id);
+            var result = service.Delete(Teacher.Id);
 
             //assert
             Assert.That(result.Result.IsSuccess, Is.True);
@@ -84,7 +84,7 @@ namespace LabsAndCoursesManagement.Tests
             var Teacher = mapper.Map<Teacher>(TeacherDto);
 
             //act
-            var result = teacherService.Delete(Teacher.Id);
+            var result = service.Delete(Teacher.Id);
 
             //assert
             Assert.That(result.Result.IsSuccess, Is.False);

@@ -46,6 +46,7 @@ namespace LabsAndCoursesManagement.API.IntegrationTests
             var deleteLabResponse = await HttpClient.DeleteAsync(ApiDeleteURL);
             // Assert
             deleteLabResponse.EnsureSuccessStatusCode();
+            deleteLabResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.OK);
         }
 
         [Fact]
@@ -58,6 +59,7 @@ namespace LabsAndCoursesManagement.API.IntegrationTests
             var updateLabResponse = await HttpClient.PutAsJsonAsync(ApiUpdateURL, labDto);
             // Assert
             updateLabResponse.EnsureSuccessStatusCode();
+            updateLabResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.NoContent);
         }
 
         [Fact]

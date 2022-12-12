@@ -62,7 +62,7 @@ namespace LabsAndCoursesManagement.WebAPI.Controllers
             {
                 return BadRequest(result.Error);
             }
-            return Ok();
+            return NoContent();
         }
     }
 }

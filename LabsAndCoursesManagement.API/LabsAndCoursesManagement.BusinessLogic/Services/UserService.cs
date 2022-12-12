@@ -1,4 +1,3 @@
-using AutoMapper;
 using FluentValidation;
 using LabsAndCoursesManagement.BusinessLogic.Base;
 using LabsAndCoursesManagement.BusinessLogic.Interfaces;

@@ -68,7 +68,7 @@ namespace SM.API.IntegrationTests
             Guid? guid = Guid.Parse(container[ID].ToString());
 
             string ApiUpdateURL = $"{ApiURL}/{guid}";
-            teacherDto.Email = "new email";
+            teacherDto.Email = "george.smoc@gmail.com";
             var updateTeacherResult = await HttpClient.PutAsJsonAsync(ApiUpdateURL, teacherDto);
             // Assert
             createTeacherResponse.EnsureSuccessStatusCode();
@@ -97,7 +97,7 @@ namespace SM.API.IntegrationTests
         {
             return new CreateTeacherDto
             {
-                FullName = "Mr.Cinnamon",
+                FullName = "Cinnamon Godfather",
                 Email = "cinnamon@gmail.com",
                 Role = "Lecturer",
                 PhoneNumber = "0756789456",

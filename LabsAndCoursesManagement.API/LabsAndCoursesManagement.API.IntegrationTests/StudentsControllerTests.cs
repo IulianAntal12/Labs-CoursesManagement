@@ -2,7 +2,6 @@
 using LabsAndCoursesManagement.API.IntegrationTests.Setup;
 using LabsAndCoursesManagement.DataAccess.Database;
 using LabsAndCoursesManagement.Models.Dtos;
-using LabsAndCoursesManagement.Models.Models;
 using Microsoft.Extensions.DependencyInjection;
 using System.Net.Http.Json;
 
@@ -11,7 +10,6 @@ namespace LabsAndCoursesManagement.API.IntegrationTests
     public class StudentsControllerTests : BaseIntegrationTests
     {
         private const string ApiURL = "/api/Students";
-        private readonly Guid teacherId;
         private readonly List<Guid> studentIds;
 
         public StudentsControllerTests(CustomWebApplicationFactory<Program> factory) : base(factory)
@@ -20,7 +18,6 @@ namespace LabsAndCoursesManagement.API.IntegrationTests
             {
                 var scopedServices = scope.ServiceProvider;
                 var db = scopedServices.GetRequiredService<DatabaseContext>();
-                teacherId = Utilities.SeedTeachers(db);
                 studentIds = Utilities.SeedStudents(db);
             }
         }
@@ -38,8 +35,6 @@ namespace LabsAndCoursesManagement.API.IntegrationTests
             createTeacherResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.Created);
 
             getStudentResult.EnsureSuccessStatusCode();
-            var students = await getStudentResult.Content
-                .ReadFromJsonAsync<List<Teacher>>();
         }
 
         [Fact]
@@ -61,7 +56,7 @@ namespace LabsAndCoursesManagement.API.IntegrationTests
             CreateStudentDto studentDto = CreateSUT();
             // Act
             string ApiUpdateURL = $"{ApiURL}/{studentIds[1]}";
-            studentDto.Email = "new email";
+            studentDto.Email = "george.smoc@gmail.com";
             var updateStudentResult = await HttpClient.PutAsJsonAsync(ApiUpdateURL, studentDto);
             // Assert
             updateStudentResult.EnsureSuccessStatusCode();
@@ -77,7 +72,7 @@ namespace LabsAndCoursesManagement.API.IntegrationTests
                 Email = "george.smoc13@gmail.com",
                 Year = 2,
                 Group = "B4",
-                IdentificationNumber = "some data that needs validation",
+                IdentificationNumber = "123456789RSL123456",
             };
         }
     }
