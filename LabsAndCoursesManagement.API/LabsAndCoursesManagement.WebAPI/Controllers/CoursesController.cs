@@ -49,7 +49,7 @@ namespace LabsAndCoursesManagement.WebAPI.Controllers
             var result = await service.Delete(courseId);
             if (result.IsFailure)
             {
-                return BadRequest(result.Error);
+                return StatusCode((int)result.StatusCode, result.Error);
             }
             return Ok();
         }
@@ -60,7 +60,7 @@ namespace LabsAndCoursesManagement.WebAPI.Controllers
             var result = await service.Update(courseId, dto);
             if (result.IsFailure)
             {
-                return BadRequest(result.Error);
+                return StatusCode((int)result.StatusCode, result.Error);
             }
             return Ok();
         }
