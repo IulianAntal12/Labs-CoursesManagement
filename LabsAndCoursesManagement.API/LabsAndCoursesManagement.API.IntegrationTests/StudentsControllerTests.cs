@@ -38,8 +38,6 @@ namespace LabsAndCoursesManagement.API.IntegrationTests
             createTeacherResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.Created);
 
             getStudentResult.EnsureSuccessStatusCode();
-            var students = await getStudentResult.Content
-                .ReadFromJsonAsync<List<Teacher>>();
         }
 
         [Fact]
@@ -61,7 +59,7 @@ namespace LabsAndCoursesManagement.API.IntegrationTests
             CreateStudentDto studentDto = CreateSUT();
             // Act
             string ApiUpdateURL = $"{ApiURL}/{studentIds[1]}";
-            studentDto.Email = "new email";
+            studentDto.Email = "george.smoc@gmail.com";
             var updateStudentResult = await HttpClient.PutAsJsonAsync(ApiUpdateURL, studentDto);
             // Assert
             updateStudentResult.EnsureSuccessStatusCode();
@@ -77,7 +75,7 @@ namespace LabsAndCoursesManagement.API.IntegrationTests
                 Email = "george.smoc13@gmail.com",
                 Year = 2,
                 Group = "B4",
-                IdentificationNumber = "some data that needs validation",
+                IdentificationNumber = "123456789RSL123456",
             };
         }
     }

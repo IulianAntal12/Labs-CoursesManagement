@@ -14,7 +14,7 @@ namespace LabsAndCoursesManagement.BusinessLogic.Services.Validators
                 .WithMessage("Please enter first name and last name");
             RuleFor(x => x.Email)
                 .NotEmpty()
-                .Matches("^[a-z|A-Z|0-9|_]+@[a-z]+\\.[a-z]+$");
+                .Matches("^[a-z|A-Z|0-9|_|.]+@[a-z]+\\.[a-z]+$");
             RuleFor(x => x.Role)
                 .NotEmpty()
                 .MaximumLength(50);
