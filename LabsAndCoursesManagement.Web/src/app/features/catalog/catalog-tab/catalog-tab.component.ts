@@ -8,7 +8,7 @@ import { Student } from 'src/app/core/models/student.model';
 })
 export class CatalogTabComponent implements OnInit{
   @Input() students: Student[];
-  displayedColumns = ['position', 'name', 'year', 'identificationNumber'];
+  displayedColumns = ['position', 'name', 'year', 'identificationNumber', 'options'];
   dataSource: Student[];
 
   ngOnInit(): void {

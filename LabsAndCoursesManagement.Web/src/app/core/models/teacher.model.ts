@@ -1,7 +1,8 @@
 import { Lab } from './lab.model';
+import { Guid } from 'guid-typescript';
 
 export interface Teacher {
-  id: any;
+  id: Guid;
   fullName: string;
   email: string;
   role: string;

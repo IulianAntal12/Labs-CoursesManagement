@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatAccordion } from '@angular/material/expansion';
+import { Guid } from 'guid-typescript';
 import { LabDto } from 'src/app/core/models/lab-dto.model';
 import { Lab } from 'src/app/core/models/lab.model';
 import { LabsService } from 'src/app/core/services/labs.service';
@@ -40,10 +41,10 @@ export class AddEditLabsComponent implements OnInit {
 
   submitEdit(index: number): void {
     this.labDto = this.formGroupArray[index].getRawValue();
+    this.labDto.teacherId = Guid.parse('179dd456-8d56-4993-821a-b09e596cc7ed');
     this.service.updateLab(this.labs[index].id, this.labDto).subscribe((lab: Lab) => this.labs[index] = lab);
   }
   submitAdd(): void {
-    console.log(this.addFormGroup.getRawValue());
     this.labDto = this.addFormGroup.getRawValue();
     this.service
       .createLab(this.labDto)

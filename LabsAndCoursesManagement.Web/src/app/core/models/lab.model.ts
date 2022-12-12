@@ -1,8 +1,9 @@
 import { Student } from './student.model';
 import { Teacher } from './teacher.model';
+import { Guid } from 'guid-typescript';
 
 export interface Lab {
-  id: any;
+  id: Guid;
   name: string;
   group: string;
   description: string;
