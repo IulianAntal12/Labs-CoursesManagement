@@ -1,6 +1,5 @@
 ﻿using LabsAndCoursesManagement.BusinessLogic.Interfaces;
 using LabsAndCoursesManagement.Models.Dtos;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LabsAndCoursesManagement.WebAPI.Controllers

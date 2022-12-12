@@ -1,6 +1,5 @@
 ﻿using FluentValidation;
 using LabsAndCoursesManagement.BusinessLogic.Base;
-using LabsAndCoursesManagement.BusinessLogic.Services.Validators;
 using LabsAndCoursesManagement.DataAccess.Repositories;
 using LabsAndCoursesManagement.Models.Dtos;
 using LabsAndCoursesManagement.Models.Helpers;

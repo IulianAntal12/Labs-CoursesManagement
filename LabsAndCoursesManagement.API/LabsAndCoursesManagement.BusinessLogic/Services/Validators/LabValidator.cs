@@ -12,7 +12,7 @@ namespace LabsAndCoursesManagement.BusinessLogic.Services.Validators
                 .MaximumLength(50);
             RuleFor(x => x.Group)
                 .NotEmpty()
-                .Matches("^(A|B|X)(1-5)$");
+                .Matches("^[A|B|X][1-5]$");
             RuleFor(x => x.Description)
                 .MaximumLength(200);
             RuleFor(x => x.Year)
@@ -21,8 +21,6 @@ namespace LabsAndCoursesManagement.BusinessLogic.Services.Validators
             RuleFor(x => x.Semester)
                 .NotEmpty()
                 .LessThan(3);
-            RuleFor(x => x.Teacher)
-                .NotNull();
         }
     }
 }

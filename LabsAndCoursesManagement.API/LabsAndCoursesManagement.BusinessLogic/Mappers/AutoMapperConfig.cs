@@ -13,6 +13,7 @@ namespace LabsAndCoursesManagement.BusinessLogic.Mappers
                 cfg.AddProfile(new UserMapper());
                 cfg.AddProfile(new LabMapper());
                 cfg.AddProfile(new StudentMapper());
+                cfg.AddProfile(new CourseMapper());
                 cfg.AddCollectionMappers();
             }
             );

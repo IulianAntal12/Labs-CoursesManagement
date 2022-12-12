@@ -5,7 +5,6 @@ using LabsAndCoursesManagement.Models.Models;
 using LabsAndCoursesManagement.Models.Dtos;
 using LabsAndCoursesManagement.Models.Helpers;
 using System.Net;
-using LabsAndCoursesManagement.BusinessLogic.Services.Validators;
 using FluentValidation;
 
 namespace LabsAndCoursesManagement.BusinessLogic.Services

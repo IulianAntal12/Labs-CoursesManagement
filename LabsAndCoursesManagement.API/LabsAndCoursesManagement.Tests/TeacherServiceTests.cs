@@ -1,6 +1,5 @@
 using AutoMapper;
 using FluentAssertions;
-using FluentValidation;
 using LabsAndCoursesManagement.BusinessLogic.Mappers;
 using LabsAndCoursesManagement.BusinessLogic.Services;
 using LabsAndCoursesManagement.BusinessLogic.Services.Validators;
@@ -16,14 +15,14 @@ namespace LabsAndCoursesManagement.Tests
         private readonly Mock<IRepository<Teacher>> teacherRepositoryMoq = new();
         private readonly Mock<IRepository<Lab>> labRepositoryMoq = new();
         private readonly TeacherValidator validator = new();
-        private TeacherService teacherService;
+        private TeacherService service;
        
         private IMapper mapper; 
 
         [SetUp]
         public void Setup()
         {
-            teacherService = new TeacherService(teacherRepositoryMoq.Object, labRepositoryMoq.Object, validator);
+            service = new TeacherService(teacherRepositoryMoq.Object, labRepositoryMoq.Object, validator);
             mapper = new AutoMapperBuilder().Build();
         }
 
@@ -41,7 +40,7 @@ namespace LabsAndCoursesManagement.Tests
             };
 
             //act
-            var result = teacherService.Add(teacherDto);
+            var result = service.Add(teacherDto);
 
 
             //assert
@@ -64,7 +63,7 @@ namespace LabsAndCoursesManagement.Tests
 
             //act
             teacherRepositoryMoq.Setup(x => x.Get(Teacher.Id)).Returns(Task.FromResult(Teacher));
-            var result = teacherService.Delete((Guid)Teacher.Id);
+            var result = service.Delete((Guid)Teacher.Id);
 
             //assert
             Assert.That(result.Result.IsSuccess, Is.True);
@@ -85,7 +84,7 @@ namespace LabsAndCoursesManagement.Tests
             var Teacher = mapper.Map<Teacher>(TeacherDto);
 
             //act
-            var result = teacherService.Delete((Guid)Teacher.Id);
+            var result = service.Delete((Guid)Teacher.Id);
 
             //assert
             Assert.That(result.Result.IsSuccess, Is.False);
@@ -108,7 +107,7 @@ namespace LabsAndCoursesManagement.Tests
 
             //act
             teacherRepositoryMoq.Setup(x => x.All()).Returns(Task.FromResult(Teachers));
-            var result = teacherService.GetAll();
+            var result = service.GetAll();
 
             //assert
             Assert.That(Teachers.AsEnumerable<Teacher>, Is.EqualTo(result.Result.Entity));
@@ -130,7 +129,7 @@ namespace LabsAndCoursesManagement.Tests
 
             //act
             teacherRepositoryMoq.Setup(x => x.Get(Teacher.Id)).Returns(Task.FromResult(Teacher));
-            var result = teacherService.GetById((Guid)Teacher.Id);
+            var result = service.GetById((Guid)Teacher.Id);
 
             //assert
             Assert.That(result.Result.IsSuccess, Is.True);
@@ -140,7 +139,7 @@ namespace LabsAndCoursesManagement.Tests
         public void GetBy_ExistingTeacher_IsSuccessShouldBeFalse()
         {
             //act
-            var result = teacherService.GetById(new Guid());
+            var result = service.GetById(new Guid());
 
             //assert
             Assert.That(result.Result.IsSuccess, Is.False);
@@ -160,7 +159,7 @@ namespace LabsAndCoursesManagement.Tests
             };
 
             //act
-            var result = teacherService.Add(teacherDto);
+            var result = service.Add(teacherDto);
 
 
             //assert
@@ -183,11 +182,151 @@ namespace LabsAndCoursesManagement.Tests
             };
 
             //act
-            var result = teacherService.Update(Guid.NewGuid(), teacherDto);
+            var result = service.Update(Guid.NewGuid(), teacherDto);
 
             //assert
             result.Result.IsFailure.Should().BeTrue();
             result.Result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        }
+
+        [Test]
+        public async Task When_AddedNewTeacher_Then_ShouldHaveIsSuccessTrueInResponse()
+        {
+            // Arrange
+            var teacher = CreateSUT();
+            // Act
+            var response = await service.Add(teacher);
+            // Assert
+            response.IsSuccess.Should().BeTrue();
+        }
+
+        [Test]
+        public async Task When_AddedNewTeacherWithEmptyFullName_Then_ShouldReturnUnprocessableEntity()
+        {
+            // Arrange
+            var teacher = CreateSUT();
+            teacher.FullName = "";
+            // Act
+            var response = await service.Add(teacher);
+            // Assert
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        }
+
+        [Test]
+        public async Task When_AddedNewTeacherWithInvalidFullName_Then_ShouldReturnUnprocessableEntity()
+        {
+            // Arrange
+            var teacher = CreateSUT();
+            teacher.FullName = "InvalidFullName";
+            // Act
+            var response = await service.Add(teacher);
+            // Assert
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        }
+
+        [Test]
+        public async Task When_AddedNewTeacherWithTooLongFullName_Then_ShouldReturnUnprocessableEntity()
+        {
+            // Arrange
+            var teacher = CreateSUT();
+            teacher.FullName = string.Concat(Enumerable.Repeat("Hello", 100));
+            // Act
+            var response = await service.Add(teacher);
+            // Assert
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        } 
+        
+        [Test]
+        public async Task When_AddedNewTeacherWithEmptyEmail_Then_ShouldReturnUnprocessableEntity()
+        {
+            // Arrange
+            var teacher = CreateSUT();
+            teacher.Email = "";
+            // Act
+            var response = await service.Add(teacher);
+            // Assert
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        }
+        
+        [Test]
+        public async Task When_AddedNewTeacherWithInvalidEmail_Then_ShouldReturnUnprocessableEntity()
+        {
+            // Arrange
+            var teacher = CreateSUT();
+            teacher.Email = "george.george";
+            // Act
+            var response = await service.Add(teacher);
+            // Assert
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        }
+        [Test]
+        public async Task When_AddedNewTeacherWithEmptyRole_Then_ShouldReturnUnprocessableEntity()
+        {
+            // Arrange
+            var teacher = CreateSUT();
+            teacher.Role = "";
+            // Act
+            var response = await service.Add(teacher);
+            // Assert
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        }
+        [Test]
+        public async Task When_AddedNewTeacherWithTooLongRole_Then_ShouldReturnUnprocessableEntity()
+        {
+            // Arrange
+            var teacher = CreateSUT();
+            teacher.Role = string.Concat(Enumerable.Repeat("Hello", 100));
+            // Act
+            var response = await service.Add(teacher);
+            // Assert
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        } 
+        
+        [Test]
+        public async Task When_AddedNewTeacherWithEmptyPhoneNumber_Then_ShouldReturnUnprocessableEntity()
+        {
+            // Arrange
+            var teacher = CreateSUT();
+            teacher.PhoneNumber = "";
+            // Act
+            var response = await service.Add(teacher);
+            // Assert
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        }
+        [Test]
+        public async Task When_AddedNewTeacherWithInvalidPhoneNumber_Then_ShouldReturnUnprocessableEntity()
+        {
+            // Arrange
+            var teacher = CreateSUT();
+            teacher.PhoneNumber = "07noidoi";
+            // Act
+            var response = await service.Add(teacher);
+            // Assert
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        }
+        
+        [Test]
+        public async Task When_AddedNewTeacherWithTooLongCabiner_Then_ShouldReturnUnprocessableEntity()
+        {
+            // Arrange
+            var teacher = CreateSUT();
+            teacher.Cabinet = "C4111";
+            // Act
+            var response = await service.Add(teacher);
+            // Assert
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        }
+
+        public CreateTeacherDto CreateSUT()
+        {
+            return new CreateTeacherDto()
+            {
+                FullName = "Full Name",
+                Email = "email@gmail.com",
+                Role = "Assistant",
+                PhoneNumber = "0770444999",
+                Cabinet = "C410"
+            };
         }
     }
 }
