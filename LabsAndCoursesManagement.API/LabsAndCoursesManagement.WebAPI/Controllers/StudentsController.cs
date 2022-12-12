@@ -62,7 +62,7 @@ namespace LabsAndCoursesManagement.WebAPI.Controllers
             {
                 return StatusCode((int) result.StatusCode, result.Error);
             }
-            return NoContent();
+            return Ok(result.Entity);
         }
 
         [HttpPut("{studentId:guid}/enroll")]
