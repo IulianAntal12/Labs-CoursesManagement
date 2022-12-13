@@ -16,7 +16,7 @@ namespace LabsAndCoursesManagement.DataAccess.Repositories
         public virtual async Task<T?> Add(T entity)
         {
             CheckDatabaseContextStatus();
-            await context.AddAsync(entity);
+            await context.Set<T>().AddAsync(entity);
             await SaveChanges();
             return entity;
         }

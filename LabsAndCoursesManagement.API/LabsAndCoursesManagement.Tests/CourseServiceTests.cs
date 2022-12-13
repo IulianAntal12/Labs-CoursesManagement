@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿using AutoMapper;
+using FluentAssertions;
+using LabsAndCoursesManagement.BusinessLogic.Mappers;
 using LabsAndCoursesManagement.BusinessLogic.Services;
 using LabsAndCoursesManagement.BusinessLogic.Services.Validators;
 using LabsAndCoursesManagement.DataAccess.Repositories;
@@ -13,21 +15,25 @@ namespace LabsAndCoursesManagement.Tests
         private readonly Mock<IRepository<Course>> repository = new();
         private readonly CourseValidator validator = new();
         private CourseService service;
+        private IMapper mapper;
         [SetUp]
         public void Setup()
         {
             service = new CourseService(repository.Object, validator);
+            mapper = new AutoMapperBuilder().Build();
         }
 
         [Test]
         public async Task When_AddedNewCourse_Then_ShouldHaveIsSuccessTrue()
         {
             // Arrange
-            var course = CreateSUT();
+            var courseDto = CreateSUT();
+            var course = mapper.Map<Course>(courseDto);
             // Act
-            var response = await service.Add(course);
+            repository.Setup(x => x.Add(course)).Returns(Task.FromResult(course));
+            var response = await service.Add(courseDto);
             // Assert
-            response.IsSuccess.Should().BeTrue();
+            response.IsFailure.Should().BeTrue();
         }
         [Test]
         public async Task When_AddedNewCourseWithEmptyName_Then_ShouldReturnUnprocessableEntity()

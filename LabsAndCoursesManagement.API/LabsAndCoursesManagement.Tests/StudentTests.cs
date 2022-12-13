@@ -24,7 +24,7 @@ namespace LabsAndCoursesManagement.Tests
                 Email = "Test",
                 Year = 3,
                 IdentificationNumber = "Test",
-                Group= "B4",
+                Group = "B4",
             };
             student = mapper.Map<Student>(studentDto);
             labDto = new CreateLabDto
@@ -52,6 +52,15 @@ namespace LabsAndCoursesManagement.Tests
                 Assert.That(student.Labs, Has.Count.EqualTo(1));
                 Assert.That(lab.Students, Does.Contain(student));
             });
+        }
+
+        [Test]
+        public void EnrollToLabs_WithEmptyList_StudentShouldHaveZeroLabs()
+        {
+            var emptyList = new List<Lab?>();
+            student.EnrollToLabs(emptyList);
+
+            Assert.That(student.Labs, Has.Count.EqualTo(0));
         }
     }
 }

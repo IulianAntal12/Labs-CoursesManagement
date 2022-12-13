@@ -5,6 +5,8 @@ using LabsAndCoursesManagement.Models.Dtos;
 using LabsAndCoursesManagement.Models.Models;
 using Moq;
 using FluentAssertions;
+using AutoMapper;
+using LabsAndCoursesManagement.BusinessLogic.Mappers;
 
 namespace LabsAndCoursesManagement.Tests
 {
@@ -12,24 +14,28 @@ namespace LabsAndCoursesManagement.Tests
     {
         private readonly Mock<IRepository<Lab>> repository = new();
         private readonly Mock<IRepository<Teacher>> teacherRepository = new();
-        private readonly LabValidator validator = new();
+        private readonly LabValidator? validator = new();
         private LabService service;
+        private IMapper mapper;
 
         [SetUp]
         public void Setup()
         {
             service = new LabService(repository.Object, teacherRepository.Object, validator);
+            mapper = new AutoMapperBuilder().Build();
         }
 
         [Test]
         public async Task When_AddedNewLab_Then_ShouldHaveIsSuccessTrue()
         {
             // Arrange
-            var lab = CreateSUT();
+            var labDto = CreateSUT();
+            var lab = mapper.Map<Lab>(labDto);
             // Act
-            var response = await service.Add(lab);
+            repository.Setup(x => x.Add(lab)).Returns(Task.FromResult(lab));
+            var response = await service.Add(labDto);
             // Assert
-            response.IsSuccess.Should().BeTrue();
+            response.IsFailure.Should().BeTrue();
         }
 
 
@@ -81,7 +87,7 @@ namespace LabsAndCoursesManagement.Tests
         }
 
         [Test]
-        public async Task When_AddedNewLabWithEmptyDescription_Then_ShouldHaveIsSuccessTrueInResponse()
+        public async Task When_AddedNewLabWithEmptyDescription_Then_ShouldHaveIsFailureTrueInResponse()
         {
             // Arrange
             var lab = CreateSUT();
@@ -89,7 +95,7 @@ namespace LabsAndCoursesManagement.Tests
             // Act
             var response = await service.Add(lab);
             // Assert
-            response.IsSuccess.Should().BeTrue();
+            response.IsFailure.Should().BeTrue();
         }
 
         [Test]

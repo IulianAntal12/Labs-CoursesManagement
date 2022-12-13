@@ -9,11 +9,11 @@ namespace LabsAndCoursesManagement.API.IntegrationTests.Setup
     {
         public static Guid SeedTeachers(DatabaseContext context)
         {
-            AutoMapperBuilder autoMapperBuilder = new AutoMapperBuilder();
+            AutoMapperBuilder autoMapperBuilder = new();
             var mapper = autoMapperBuilder.Build();
             var dto = new CreateTeacherDto
             {
-                FullName = "Mr.Cinnamon",
+                FullName = "Mr. Cinnamon",
                 Email = "cinnamon@gmail.com",
                 Role = "Lecturer",
                 PhoneNumber = "0756789456",
@@ -28,7 +28,7 @@ namespace LabsAndCoursesManagement.API.IntegrationTests.Setup
         public static List<Guid> SeedLabs(DatabaseContext context)
         {
             var teacherId = SeedTeachers(context);
-            AutoMapperBuilder autoMapperBuilder = new AutoMapperBuilder();
+            AutoMapperBuilder autoMapperBuilder = new();
             var mapper = autoMapperBuilder.Build();
             var labIds = new List<Guid>();
             for (var studentIndex = 0; studentIndex < 2; studentIndex++)
@@ -52,7 +52,7 @@ namespace LabsAndCoursesManagement.API.IntegrationTests.Setup
 
         public static List<Guid> SeedStudents(DatabaseContext context)
         {
-            AutoMapperBuilder autoMapperBuilder = new AutoMapperBuilder();
+            AutoMapperBuilder autoMapperBuilder = new();
             var mapper = autoMapperBuilder.Build();
             var studentIds = new List<Guid>();
             for (var studentIndex = 0; studentIndex < 2; studentIndex++) 
@@ -62,7 +62,7 @@ namespace LabsAndCoursesManagement.API.IntegrationTests.Setup
                     FullName = "George Smoc",
                     Email = "george.smoc13@gmail.com",
                     Year = 3,
-                    IdentificationNumber = "Some string that is not yet validated",
+                    IdentificationNumber = "123456789RSL123456",
                     Group = "B4"
                 };
                 var student = mapper.Map<CreateStudentDto, Student>(dto);

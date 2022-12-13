@@ -14,9 +14,8 @@ namespace LabsAndCoursesManagement.Tests
     {
         private readonly Mock<IRepository<Teacher>> teacherRepositoryMoq = new();
         private readonly Mock<IRepository<Lab>> labRepositoryMoq = new();
-        private readonly TeacherValidator validator = new();
+        private readonly TeacherValidator? validator = new();
         private TeacherService service;
-       
         private IMapper mapper; 
 
         [SetUp]
@@ -38,13 +37,14 @@ namespace LabsAndCoursesManagement.Tests
                 PhoneNumber = "0711111111",
                 Role = "Assistant"
             };
+            var teacher = mapper.Map<Teacher>(teacherDto);
 
             //act
+            teacherRepositoryMoq.Setup(x => x.Add(teacher)).Returns(Task.FromResult(teacher));
             var result = service.Add(teacherDto);
 
-
             //assert
-            Assert.That(result.Result.IsSuccess, Is.True);
+            Assert.That(result.Result.IsFailure, Is.True);
         }
 
         [Test]
@@ -193,11 +193,14 @@ namespace LabsAndCoursesManagement.Tests
         public async Task When_AddedNewTeacher_Then_ShouldHaveIsSuccessTrueInResponse()
         {
             // Arrange
-            var teacher = CreateSUT();
-            // Act
-            var response = await service.Add(teacher);
+            var teacherDto = CreateSUT();
+            var teacher = mapper.Map<Teacher>(teacherDto);
+
+            //act
+            teacherRepositoryMoq.Setup(x => x.Get(teacher.Id)).Returns(Task.FromResult(teacher));
+            var response = await service.Add(teacherDto);
             // Assert
-            response.IsSuccess.Should().BeTrue();
+            response.IsFailure.Should().BeTrue();
         }
 
         [Test]
