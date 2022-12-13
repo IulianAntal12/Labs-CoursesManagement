@@ -32,7 +32,7 @@ namespace LabsAndCoursesManagement.BusinessLogic.Base
             var result = await repository.Add(entity);
             if (result == null)
             {
-                return Result<T>.Failure(HttpStatusCode.BadRequest, "Something went wrong while adding object to database");
+                return Result<T?>.Failure(HttpStatusCode.BadRequest, "Something went wrong while adding object to database");
             }
 
             await repository.SaveChanges();

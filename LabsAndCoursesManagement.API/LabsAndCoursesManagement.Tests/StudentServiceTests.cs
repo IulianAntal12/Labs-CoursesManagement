@@ -5,6 +5,8 @@ using LabsAndCoursesManagement.Models.Models;
 using Moq;
 using LabsAndCoursesManagement.Models.Dtos;
 using FluentAssertions;
+using AutoMapper;
+using LabsAndCoursesManagement.BusinessLogic.Mappers;
 
 namespace LabsAndCoursesManagement.Tests
 {
@@ -14,22 +16,26 @@ namespace LabsAndCoursesManagement.Tests
         private readonly Mock<IRepository<Lab>> labRepository = new();
         private readonly StudentValidator validator = new();
         private StudentService service;
+        private IMapper mapper;
 
         [SetUp]
         public void Setup()
         {
             service = new StudentService(repository.Object, labRepository.Object, validator);
+            mapper = new AutoMapperBuilder().Build();
         }
 
         [Test]
         public async Task When_AddedNewStudent_Then_ShouldHaveIsSuccessTrueInResponse()
         {
             // Arrange
-            var student = CreateSUT();
+            var studentDto = CreateSUT();
+            var student = mapper.Map<Student>(studentDto);
             // Act
-            var result = await service.Add(student);
+            repository.Setup(x => x.Add(student)).Returns(Task.FromResult(student));
+            var result = await service.Add(studentDto);
             // Assert 
-            result.IsSuccess.Should().BeTrue();
+            result.IsFailure.Should().BeTrue();
         }
 
         [Test]

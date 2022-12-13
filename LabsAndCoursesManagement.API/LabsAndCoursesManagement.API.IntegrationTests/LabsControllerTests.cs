@@ -16,13 +16,11 @@ namespace LabsAndCoursesManagement.API.IntegrationTests
 
         public LabsControllerTests(CustomWebApplicationFactory<Program> factory) : base(factory)
         {
-            using (var scope = factory.Services.CreateScope())
-            {
-                var scopedServices = scope.ServiceProvider;
-                var db = scopedServices.GetRequiredService<DatabaseContext>();
-                teacherId = Utilities.SeedTeachers(db);
-                labIds = Utilities.SeedLabs(db);
-            }
+            using var scope = factory.Services.CreateScope();
+            var scopedServices = scope.ServiceProvider;
+            var db = scopedServices.GetRequiredService<DatabaseContext>();
+            teacherId = Utilities.SeedTeachers(db);
+            labIds = Utilities.SeedLabs(db);
         }
 
         [Fact]

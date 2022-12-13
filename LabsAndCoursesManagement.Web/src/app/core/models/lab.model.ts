@@ -2,13 +2,13 @@ import { Student } from './student.model';
 import { Teacher } from './teacher.model';
 
 export interface Lab {
-  id: any;
+  id: string;
   name: string;
   group: string;
   description: string;
   year: number;
   semester: number;
   teacher: Teacher;
-  teacherId: any;
+  teacherId: string;
   students: Student[];
 }

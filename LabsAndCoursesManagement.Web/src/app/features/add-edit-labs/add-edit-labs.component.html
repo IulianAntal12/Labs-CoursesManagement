@@ -24,18 +24,18 @@
       <p>Group: {{ lab.group }}</p>
       <mat-form-field appearance="fill">
         <mat-select formControlName="group">
-          <mat-option value="a1">A1</mat-option>
-          <mat-option value="a2">A2</mat-option>
-          <mat-option value="a3">A3</mat-option>
-          <mat-option value="a4">A4</mat-option>
-          <mat-option value="a5">A5</mat-option>
-          <mat-option value="a6">A6</mat-option>
-          <mat-option value="b1">B1</mat-option>
-          <mat-option value="b2">B2</mat-option>
-          <mat-option value="b3">B3</mat-option>
-          <mat-option value="b4">B4</mat-option>
-          <mat-option value="b5">B5</mat-option>
-          <mat-option value="x1">X1</mat-option>
+          <mat-option value="A1">A1</mat-option>
+          <mat-option value="A2">A2</mat-option>
+          <mat-option value="A3">A3</mat-option>
+          <mat-option value="A4">A4</mat-option>
+          <mat-option value="A5">A5</mat-option>
+          <mat-option value="A6">A6</mat-option>
+          <mat-option value="B1">B1</mat-option>
+          <mat-option value="B2">B2</mat-option>
+          <mat-option value="B3">B3</mat-option>
+          <mat-option value="B4">B4</mat-option>
+          <mat-option value="B5">B5</mat-option>
+          <mat-option value="X1">X1</mat-option>
         </mat-select>
       </mat-form-field>
       <p>Description: {{ lab.description }}</p>
@@ -61,6 +61,9 @@
       <button color="primary" mat-button class="submit-btn" inputmode="submit">
         Edit<mat-icon style="margin-left: 4px">edit</mat-icon>
       </button>
+      <button color="primary" mat-button class="submit-btn" (click)="deleteLab(lab)">
+        Delete<mat-icon style="margin-left: 4px">delete</mat-icon>
+      </button>
     </form>
   </mat-expansion-panel>
 
@@ -85,18 +88,18 @@
       <p>Group</p>
       <mat-form-field appearance="fill">
         <mat-select formControlName="group">
-          <mat-option value="a1">A1</mat-option>
-          <mat-option value="a2">A2</mat-option>
-          <mat-option value="a3">A3</mat-option>
-          <mat-option value="a4">A4</mat-option>
-          <mat-option value="a5">A5</mat-option>
-          <mat-option value="a6">A6</mat-option>
-          <mat-option value="b1">B1</mat-option>
-          <mat-option value="b2">B2</mat-option>
-          <mat-option value="b3">B3</mat-option>
-          <mat-option value="b4">B4</mat-option>
-          <mat-option value="b5">B5</mat-option>
-          <mat-option value="x1">X1</mat-option>
+          <mat-option value="A1">A1</mat-option>
+          <mat-option value="A2">A2</mat-option>
+          <mat-option value="A3">A3</mat-option>
+          <mat-option value="A4">A4</mat-option>
+          <mat-option value="A5">A5</mat-option>
+          <mat-option value="A6">A6</mat-option>
+          <mat-option value="B1">B1</mat-option>
+          <mat-option value="B2">B2</mat-option>
+          <mat-option value="B3">B3</mat-option>
+          <mat-option value="B4">B4</mat-option>
+          <mat-option value="B5">B5</mat-option>
+          <mat-option value="X1">X1</mat-option>
         </mat-select>
       </mat-form-field>
       <p>Description</p>
