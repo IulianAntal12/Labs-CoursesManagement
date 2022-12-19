@@ -9,20 +9,22 @@ import { BaseService } from './base.service';
 })
 export class LabsService {
   readonly endpoint: string = 'Labs';
+
   constructor(private readonly baseService: BaseService) {}
+
   public getLabs(): Observable<Lab[]> {
-    return this.baseService.get(`${this.endpoint}`);
+    return this.baseService.get<Lab[]>(`${this.endpoint}`);
   }
 
-  public createLab(labDto: LabDto): any {
-    return this.baseService.add(`${this.endpoint}`, labDto);
+  public createLab(labDto: LabDto): Observable<Lab> {
+    return this.baseService.add<Lab, LabDto>(`${this.endpoint}`, labDto);
   }
 
-  public deleteLab(id: any): any {
+  public deleteLab(id: string) {
     return this.baseService.delete(`${this.endpoint}`, id);
   }
 
-  public updateLab(id: any, labDto: LabDto): any {
-    return this.baseService.update(`${this.endpoint}`, id, labDto);
+  public updateLab(id: string, labDto: LabDto): Observable<Lab> {
+    return this.baseService.update<Lab, LabDto>(`${this.endpoint}`, id, labDto);
   }
 }

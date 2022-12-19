@@ -22,21 +22,21 @@ namespace LabsAndCoursesManagement.Tests
 
             studentDto = new CreateStudentDto
             {
-                FullName = "Test",
-                Email = "Test",
+                FullName = "Test test",
+                Email = "test@test.test",
                 Year = 3,
-                IdentificationNumber = "Test",
+                IdentificationNumber = "123456789RSL123456",
                 Group = "B4",
             };
             student = mapper.Map<Student>(studentDto);
 
             teacherDto = new CreateTeacherDto
             {
-                FullName = "Test",
-                Email = "Test",
+                FullName = "Test test",
+                Email = "test@test.test",
                 Role = "Test",
                 Cabinet = "Test",
-                PhoneNumber = "Test",
+                PhoneNumber = "076652123",
             };
             teacher = mapper.Map<Teacher>(teacherDto);
 

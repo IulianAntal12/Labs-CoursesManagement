@@ -1,7 +1,7 @@
 import { Lab } from './lab.model';
 
 export interface Student {
-  id: any;
+  id: string;
   fullName: string;
   email: string;
   year: number;

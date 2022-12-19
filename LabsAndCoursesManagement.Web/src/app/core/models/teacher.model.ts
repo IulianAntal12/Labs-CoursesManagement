@@ -1,7 +1,7 @@
 import { Lab } from './lab.model';
 
 export interface Teacher {
-  id: any;
+  id: string;
   fullName: string;
   email: string;
   role: string;

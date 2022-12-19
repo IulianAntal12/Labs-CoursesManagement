@@ -18,12 +18,13 @@ namespace LabsAndCoursesManagement.Tests
         public void Setup()
         {
             mapper = new AutoMapperBuilder().Build();
-            teacherDto = new CreateTeacherDto {
-                FullName= "Test",
-                Email= "Test",
+            teacherDto = new CreateTeacherDto
+            {
+                FullName = "Test",
+                Email = "Test",
                 Role = "Test",
-                Cabinet= "Test",
-                PhoneNumber= "Test",
+                Cabinet = "Test",
+                PhoneNumber = "Test",
             };
             teacher = mapper.Map<Teacher>(teacherDto);
             labDto = new CreateLabDto
@@ -51,6 +52,15 @@ namespace LabsAndCoursesManagement.Tests
                 Assert.That(teacher.Labs, Has.Count.EqualTo(1));
                 Assert.That(teacher.Id, Is.EqualTo(lab.TeacherId));
             });
+        }
+
+        [Test]
+        public void EnrollToLabs_WithEmptyList_TeacherShouldHaveZeroLasb()
+        {
+            var emptyLabs = new List<Lab?>();
+            teacher.EnrollToLabs(emptyLabs);
+
+            Assert.That(teacher.Labs, Has.Count.EqualTo(0));
         }
     }
 }

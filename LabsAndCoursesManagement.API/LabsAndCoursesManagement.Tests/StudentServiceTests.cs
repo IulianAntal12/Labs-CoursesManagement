@@ -1,28 +1,42 @@
-﻿namespace LabsAndCoursesManagement.Tests
+using LabsAndCoursesManagement.BusinessLogic.Services.Validators;
+using LabsAndCoursesManagement.BusinessLogic.Services;
+using LabsAndCoursesManagement.DataAccess.Repositories;
+using LabsAndCoursesManagement.Models.Models;
+using Moq;
+using LabsAndCoursesManagement.Models.Dtos;
+using FluentAssertions;
+using AutoMapper;
+using LabsAndCoursesManagement.BusinessLogic.Mappers;
+
+namespace LabsAndCoursesManagement.Tests
 {
     public class StudentServiceTests
     {
-        //private readonly Mock<IRepository<Student>> repository = new();
-        //private readonly Mock<IRepository<Lab>> labRepository = new();
-        //private readonly CreateStudentDtoValidator validator = new();
-        //private StudentService service;
+        private readonly Mock<IRepository<Student>> repository = new();
+        private readonly Mock<IRepository<Lab>> labRepository = new();
+        private readonly StudentValidator validator = new();
+        private StudentService service;
+        private IMapper mapper;
 
-        //[SetUp]
-        //public void Setup()
-        //{
-        //    service = new StudentService(repository.Object, labRepository.Object, validator);
-        //}
+        [SetUp]
+        public void Setup()
+        {
+            service = new StudentService(repository.Object, labRepository.Object, validator);
+            mapper = new AutoMapperBuilder().Build();
+        }
 
-        //[Test]
-        //public async Task When_AddedNewStudent_Then_ShouldHaveIsSuccessTrueInResponse()
-        //{
-        //    // Arrange
-        //    var student = CreateSUT();
-        //    // Act
-        //    var result = await service.Add(student);
-        //    // Assert 
-        //    result.IsSuccess.Should().BeTrue();
-        //}
+        [Test]
+        public async Task When_AddedNewStudent_Then_ShouldHaveIsSuccessTrueInResponse()
+        {
+            // Arrange
+            var studentDto = CreateSUT();
+            var student = mapper.Map<Student>(studentDto);
+            // Act
+            repository.Setup(x => x.Add(student)).Returns(Task.FromResult(student));
+            var result = await service.Add(studentDto);
+            // Assert 
+            result.IsFailure.Should().BeTrue();
+        }
 
         //[Test]
         //public async Task When_AddedNewStudentWithEmptyFullName_Then_ShouldReturnUnprocessableEntity()

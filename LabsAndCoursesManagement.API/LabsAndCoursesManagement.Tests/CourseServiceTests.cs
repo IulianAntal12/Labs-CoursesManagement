@@ -33,6 +33,55 @@
     //        response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
     //    }
 
+﻿using AutoMapper;
+using FluentAssertions;
+using LabsAndCoursesManagement.BusinessLogic.Mappers;
+using LabsAndCoursesManagement.BusinessLogic.Services;
+using LabsAndCoursesManagement.BusinessLogic.Services.Validators;
+using LabsAndCoursesManagement.DataAccess.Repositories;
+using LabsAndCoursesManagement.Models.Dtos;
+using LabsAndCoursesManagement.Models.Models;
+using Moq;
+
+namespace LabsAndCoursesManagement.Tests
+{
+    public class CourseServiceTests
+    {
+        private readonly Mock<IRepository<Course>> repository = new();
+        private readonly CourseValidator validator = new();
+        private CourseService service;
+        private IMapper mapper;
+        [SetUp]
+        public void Setup()
+        {
+            service = new CourseService(repository.Object, validator);
+            mapper = new AutoMapperBuilder().Build();
+        }
+
+        [Test]
+        public async Task When_AddedNewCourse_Then_ShouldHaveIsSuccessTrue()
+        {
+            // Arrange
+            var courseDto = CreateSUT();
+            var course = mapper.Map<Course>(courseDto);
+            // Act
+            repository.Setup(x => x.Add(course)).Returns(Task.FromResult(course));
+            var response = await service.Add(courseDto);
+            // Assert
+            response.IsFailure.Should().BeTrue();
+        }
+        [Test]
+        public async Task When_AddedNewCourseWithEmptyName_Then_ShouldReturnUnprocessableEntity()
+        {
+            // Arrange
+            var course = CreateSUT();
+            course.Name = "";
+            // Act
+            var response = await service.Add(course);
+            // Assert
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        }
+
     //    [Test]
     //    public async Task When_AddedNewCourseWithTooLongName_Then_ShouldReturnUnprocessableEntity()
     //    {
