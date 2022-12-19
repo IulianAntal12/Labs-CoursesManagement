@@ -8,6 +8,8 @@ import { CatalogTabComponent } from './catalog/catalog-tab/catalog-tab.component
 import { TeachersComponent } from './teachers/teachers.component';
 import { AddEditLabsComponent } from './add-edit-labs/add-edit-labs.component';
 import { AddEditTeachersComponent } from './add-edit-teachers/add-edit-teachers.component';
+import { HttpClient } from '@angular/common/http';
+import { FormBuilder } from '@angular/forms';
 
 
 @NgModule({
@@ -31,6 +33,7 @@ import { AddEditTeachersComponent } from './add-edit-teachers/add-edit-teachers.
     TeachersComponent,
     AddEditLabsComponent,
     AddEditTeachersComponent
-  ]
+  ],
+  providers: [HttpClient, FormBuilder]
 })
 export class FeaturesModule { }
