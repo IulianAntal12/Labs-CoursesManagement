@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
-using LabsAndCoursesManagement.Models.Models;
+using LabsAndCoursesManagement.Models.Dtos;
 
-namespace LabsAndCoursesManagement.BusinessLogic.Services.Validators
+namespace LabsAndCoursesManagement.BusinessLogic.Validators
 {
-    public class TeacherValidator : AbstractValidator<Teacher>
+    public class CreateStudentDtoValidator : AbstractValidator<CreateStudentDto>
     {
-        public TeacherValidator()
+        public CreateStudentDtoValidator()
         {
             RuleFor(x => x.FullName)
                 .NotEmpty()
@@ -15,13 +15,15 @@ namespace LabsAndCoursesManagement.BusinessLogic.Services.Validators
             RuleFor(x => x.Email)
                 .NotEmpty()
                 .Matches("^[a-z|A-Z|0-9|_|.]+@[a-z]+\\.[a-z]+$");
-            RuleFor(x => x.Role)
+            RuleFor(x => x.Year)
                 .NotEmpty()
-                .MaximumLength(50);
-            RuleFor(x => x.PhoneNumber)
-                .Matches("^(\\+4|)?(07[0-8]{1}[0-9]{1}|02[0-9]{2}|03[0-9]{2}){1}?(\\s|\\.|\\$-)?([0-9]{3}(\\s|\\.|\\-|)){2}");
-            RuleFor(x => x.Cabinet)
-                .MaximumLength(4);
+                .LessThan(7);
+            RuleFor(x => x.IdentificationNumber)
+                .NotEmpty()
+                .Matches("^[0-9]{9}[A-Z]{3}[0-9]{6}$");
+            RuleFor(x => x.Group)
+                .NotEmpty()
+                .Matches("^[A|B|X][1-5]$");
         }
 
         private bool BeAValidFullName(string fullName)

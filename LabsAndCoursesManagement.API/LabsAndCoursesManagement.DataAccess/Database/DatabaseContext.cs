@@ -9,6 +9,7 @@ namespace LabsAndCoursesManagement.DataAccess.Database
         public DbSet<Student> Students => Set<Student>();
         public DbSet<Teacher> Teachers => Set<Teacher>();
         public DbSet<User> Users => Set<User>();
+        public DbSet<Report> Reports => Set<Report>();
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options): base(options)
         {

@@ -1,6 +1,10 @@
-﻿namespace LabsAndCoursesManagement.Models.Dtos
+﻿using LabsAndCoursesManagement.Models.Helpers;
+using LabsAndCoursesManagement.Models.Models;
+using MediatR;
+
+namespace LabsAndCoursesManagement.BusinessLogic.Commands
 {
-    public class CreateReportDto
+    public class CreateReportCommand: IRequest<Result<Report>>
     {
         public Guid StudentId { get; set; }
 

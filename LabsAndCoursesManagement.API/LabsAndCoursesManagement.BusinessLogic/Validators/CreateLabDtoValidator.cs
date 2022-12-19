@@ -1,15 +1,18 @@
 ﻿using FluentValidation;
-using LabsAndCoursesManagement.Models.Models;
+using LabsAndCoursesManagement.Models.Dtos;
 
-namespace LabsAndCoursesManagement.BusinessLogic.Services.Validators
+namespace LabsAndCoursesManagement.BusinessLogic.Validators
 {
-    public class CourseValidator : AbstractValidator<Course>
+    public class CreateLabDtoValidator : AbstractValidator<CreateLabDto>
     {
-        public CourseValidator()
+        public CreateLabDtoValidator()
         {
             RuleFor(x => x.Name)
                 .NotEmpty()
                 .MaximumLength(50);
+            RuleFor(x => x.Group)
+                .NotEmpty()
+                .Matches("^[A|B|X][1-5]$");
             RuleFor(x => x.Description)
                 .MaximumLength(200);
             RuleFor(x => x.Year)
@@ -18,6 +21,8 @@ namespace LabsAndCoursesManagement.BusinessLogic.Services.Validators
             RuleFor(x => x.Semester)
                 .NotEmpty()
                 .LessThan(3);
+            RuleFor(x => x.TeacherId)
+                .NotEmpty();
         }
     }
 }
