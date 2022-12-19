@@ -68,7 +68,7 @@ export class AddEditLabsComponent implements OnInit {
 
   deleteLab(lab: Lab): void {
     this.service.deleteLab(lab.id).subscribe();
-    let index = this.labs.indexOf(lab);
+    const index = this.labs.indexOf(lab);
     this.labs.splice(index, 1);
     this.formGroupArray.splice(index, 1);
   }
