@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CatalogTabComponent } from './catalog-tab.component';
@@ -8,6 +9,7 @@ describe('CatalogTabComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientModule],
       declarations: [ CatalogTabComponent ]
     })
     .compileComponents();

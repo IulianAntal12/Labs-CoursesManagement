@@ -47,6 +47,7 @@ import {CdkMenuModule} from '@angular/cdk/menu';
 import {DialogModule} from '@angular/cdk/dialog';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [],
@@ -54,6 +55,7 @@ import { RouterModule } from '@angular/router';
   ],
   exports: [
     RouterModule,
+    BrowserAnimationsModule,
     A11yModule,
     CdkAccordionModule,
     ClipboardModule,
