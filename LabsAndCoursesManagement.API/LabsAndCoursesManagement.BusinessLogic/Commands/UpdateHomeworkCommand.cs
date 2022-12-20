@@ -1,6 +1,6 @@
 ﻿namespace LabsAndCoursesManagement.BusinessLogic.Commands
 {
-    public class UpdateReportCommand : CreateReportCommand
+    public class UpdateHomeworkCommand : CreateHomeworkCommand
     {
         public Guid Id { get; set; }
     }

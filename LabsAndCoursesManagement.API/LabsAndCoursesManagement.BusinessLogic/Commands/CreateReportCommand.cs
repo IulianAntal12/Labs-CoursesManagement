@@ -4,7 +4,7 @@ using MediatR;
 
 namespace LabsAndCoursesManagement.BusinessLogic.Commands
 {
-    public class CreateReportCommand: IRequest<Result<Report>>
+    public class CreateReportCommand : IRequest<Result<Report>>
     {
         public Guid StudentId { get; set; }
 

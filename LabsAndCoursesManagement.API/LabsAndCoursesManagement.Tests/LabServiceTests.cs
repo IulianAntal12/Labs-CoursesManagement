@@ -1,5 +1,4 @@
 using LabsAndCoursesManagement.BusinessLogic.Interfaces;
-using LabsAndCoursesManagement.BusinessLogic.Services.Validators;
 using LabsAndCoursesManagement.DataAccess.Repositories;
 using LabsAndCoursesManagement.Models.Dtos;
 using LabsAndCoursesManagement.Models.Models;
@@ -14,14 +13,13 @@ namespace LabsAndCoursesManagement.Tests
     {
         private readonly Mock<IRepository<Lab>> repository = new();
         private readonly Mock<IRepository<Teacher>> teacherRepository = new();
-        private readonly LabValidator? validator = new();
         private LabService service;
         private IMapper mapper;
 
         [SetUp]
         public void Setup()
         {
-            service = new LabService(repository.Object, teacherRepository.Object, validator);
+            service = new LabService(repository.Object, teacherRepository.Object);
             mapper = new AutoMapperBuilder().Build();
         }
 
@@ -30,9 +28,8 @@ namespace LabsAndCoursesManagement.Tests
         {
             // Arrange
             var labDto = CreateSUT();
-            var lab = mapper.Map<Lab>(labDto);
             // Act
-            repository.Setup(x => x.Add(lab)).Returns(Task.FromResult(lab));
+            //repository.Setup(x => x.Add(lab)).Returns(Task.FromResult(lab));
             var response = await service.Add(labDto);
             // Assert
             response.IsFailure.Should().BeTrue();
@@ -178,17 +175,17 @@ namespace LabsAndCoursesManagement.Tests
         //    // Assert
         //    response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
         //}
-        //private static CreateLabDto CreateSUT()
-        //{
-        //    return new CreateLabDto
-        //    {
-        //        Name = "New Name",
-        //        Group = "A3",
-        //        Description = "Description",
-        //        Semester = 1,
-        //        Year = 1,
-        //        TeacherId = Guid.NewGuid()
-        //    };
-        //}
+        private static CreateLabDto CreateSUT()
+        {
+            return new CreateLabDto
+            {
+                Name = "New Name",
+                Group = "A3",
+                Description = "Description",
+                Semester = 1,
+                Year = 1,
+                TeacherId = Guid.NewGuid()
+            };
+        }
     }
 }

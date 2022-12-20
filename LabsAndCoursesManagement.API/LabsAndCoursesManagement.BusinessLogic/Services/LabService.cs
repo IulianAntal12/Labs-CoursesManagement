@@ -11,7 +11,7 @@ namespace LabsAndCoursesManagement.BusinessLogic.Interfaces
     {
         private readonly IRepository<Teacher> teacherRepository;
 
-        public LabService(IRepository<Lab> repository, IRepository<Teacher> teacherRepository) 
+        public LabService(IRepository<Lab> repository, IRepository<Teacher> teacherRepository)
             : base(repository)
         {
             this.teacherRepository = teacherRepository;

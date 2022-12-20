@@ -5,7 +5,7 @@ using MediatR;
 
 namespace LabsAndCoursesManagement.BusinessLogic.Queries
 {
-    public class GetAllReportsQueryHandler: IRequestHandler<GetAllReportsQuery, Result<IEnumerable<Report>>>
+    public class GetAllReportsQueryHandler : IRequestHandler<GetAllReportsQuery, Result<IEnumerable<Report>>>
     {
         private readonly IRepository<Report> repository;
 

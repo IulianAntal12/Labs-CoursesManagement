@@ -3,11 +3,10 @@ using LabsAndCoursesManagement.Models.Models;
 
 namespace LabsAndCoursesManagement.DataAccess.Repositories.GenericRepositories
 {
-    public class CourseRepository : Repository<Course>
+    public class HomeworkRepository : Repository<Homework>
     {
-        public CourseRepository(DatabaseContext context) : base(context)
+        public HomeworkRepository(DatabaseContext context) : base(context)
         {
-
         }
     }
 }

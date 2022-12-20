@@ -1,4 +1,3 @@
-using LabsAndCoursesManagement.BusinessLogic.Services.Validators;
 using LabsAndCoursesManagement.BusinessLogic.Services;
 using LabsAndCoursesManagement.DataAccess.Repositories;
 using LabsAndCoursesManagement.Models.Models;
@@ -14,15 +13,12 @@ namespace LabsAndCoursesManagement.Tests
     {
         private readonly Mock<IRepository<Student>> repository = new();
         private readonly Mock<IRepository<Lab>> labRepository = new();
-        private readonly StudentValidator validator = new();
         private StudentService service;
-        private IMapper mapper;
 
         [SetUp]
         public void Setup()
         {
-            service = new StudentService(repository.Object, labRepository.Object, validator);
-            mapper = new AutoMapperBuilder().Build();
+            service = new StudentService(repository.Object, labRepository.Object);
         }
 
         [Test]
@@ -30,9 +26,8 @@ namespace LabsAndCoursesManagement.Tests
         {
             // Arrange
             var studentDto = CreateSUT();
-            var student = mapper.Map<Student>(studentDto);
             // Act
-            repository.Setup(x => x.Add(student)).Returns(Task.FromResult(student));
+            //repository.Setup(x => x.Add(student)).Returns(Task.FromResult(student));
             var result = await service.Add(studentDto);
             // Assert 
             result.IsFailure.Should().BeTrue();
@@ -164,16 +159,16 @@ namespace LabsAndCoursesManagement.Tests
         //    // Assert 
         //    result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
         //}
-        //private static CreateStudentDto CreateSUT()
-        //{
-        //    return new CreateStudentDto
-        //    {
-        //        FullName = "George Smoc",
-        //        Email = "george.smoc13@gmail.com",
-        //        Year = 1,
-        //        IdentificationNumber = "123456789RSL123456",
-        //        Group = "B4"
-        //    };
-        //}
+        private static CreateStudentDto CreateSUT()
+        {
+            return new CreateStudentDto
+            {
+                FullName = "George Smoc",
+                Email = "george.smoc13@gmail.com",
+                Year = 1,
+                IdentificationNumber = "123456789RSL123456",
+                Group = "B4"
+            };
+        }
     }
 }

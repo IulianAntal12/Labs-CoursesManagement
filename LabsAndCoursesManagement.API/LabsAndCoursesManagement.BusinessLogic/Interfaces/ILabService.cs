@@ -6,6 +6,6 @@ namespace LabsAndCoursesManagement.BusinessLogic.Interfaces
 {
     public interface ILabService : IBaseService<Lab, CreateLabDto>
     {
-       
+
     }
 }

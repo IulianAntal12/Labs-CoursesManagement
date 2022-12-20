@@ -4,11 +4,11 @@ using LabsAndCoursesManagement.Models.Models;
 
 namespace LabsAndCoursesManagement.BusinessLogic.Mappers
 {
-    public class StudentMapper : Profile
+    public class HomeworkMapperProfile : Profile
     {
-        public StudentMapper()
+        public HomeworkMapperProfile()
         {
-            CreateMap<Student, CreateStudentDto>().ReverseMap();
+            CreateMap<CreateHomeworkDto, Homework>().ReverseMap();
         }
     }
 }

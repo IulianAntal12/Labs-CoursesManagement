@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LabsAndCoursesManagement.DataAccess.Repositories.GenericRepositories
 {
-    public class TeacherRepository: Repository<Teacher>
+    public class TeacherRepository : Repository<Teacher>
     {
         public TeacherRepository(DatabaseContext context) : base(context)
         {

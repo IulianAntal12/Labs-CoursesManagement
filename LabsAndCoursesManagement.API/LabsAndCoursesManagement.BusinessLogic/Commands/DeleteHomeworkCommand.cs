@@ -4,10 +4,10 @@ using MediatR;
 
 namespace LabsAndCoursesManagement.BusinessLogic.Commands
 {
-    public class DeleteReportCommand : IRequest<Result<Report>>
+    public class DeleteHomeworkCommand : IRequest<Result<Homework>>
     {
         public Guid Id { get; set; }
-        public DeleteReportCommand(Guid id)
+        public DeleteHomeworkCommand(Guid id)
         {
             Id = id;
         }

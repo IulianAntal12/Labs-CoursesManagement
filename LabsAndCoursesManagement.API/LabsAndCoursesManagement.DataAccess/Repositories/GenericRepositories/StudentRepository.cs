@@ -3,9 +3,9 @@ using LabsAndCoursesManagement.Models.Models;
 
 namespace LabsAndCoursesManagement.DataAccess.Repositories.GenericRepositories
 {
-    public class StudentRepository: Repository<Student>
+    public class StudentRepository : Repository<Student>
     {
-        public StudentRepository(DatabaseContext context): base(context)
+        public StudentRepository(DatabaseContext context) : base(context)
         {
 
         }

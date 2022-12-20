@@ -13,10 +13,6 @@ namespace LabsAndCoursesManagement.DataAccess
         public static IServiceCollection AddInfrastrutureServices
             (this IServiceCollection services, IConfiguration configuration)
         {
-            //services.AddScoped
-            //    (typeof(IRepository<>),
-            //    typeof(Repository<>));
-
             services.AddScoped<IRepository<Course>, CourseRepository>();
             services.AddScoped<IRepository<Lab>, LabRepository>();
             services.AddScoped<IRepository<Student>, StudentRepository>();
@@ -24,6 +20,7 @@ namespace LabsAndCoursesManagement.DataAccess
             services.AddScoped<IRepository<Report>, ReportRepository>();
             services.AddScoped<IRepository<User>, UserRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IRepository<Homework>, HomeworkRepository>();
 
             services.
                 AddDbContext<DatabaseContext>

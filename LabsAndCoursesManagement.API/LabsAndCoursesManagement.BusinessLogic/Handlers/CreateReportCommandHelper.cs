@@ -7,7 +7,7 @@ using MediatR;
 
 namespace LabsAndCoursesManagement.BusinessLogic.Handlers
 {
-    public class CreateReportCommandHelper: IRequestHandler<CreateReportCommand, Result<Report>>
+    public class CreateReportCommandHelper : IRequestHandler<CreateReportCommand, Result<Report>>
     {
         private readonly IRepository<Report> repository;
 
@@ -18,14 +18,18 @@ namespace LabsAndCoursesManagement.BusinessLogic.Handlers
 
         public async Task<Result<Report>> Handle(CreateReportCommand request, CancellationToken cancellationToken)
         {
-            var reportEntity = ReportMapper.Mapper.Map<Report>(request);
-            if (reportEntity == null)
+            var homeworkEntity = ReportMapper.Mapper.Map<Report>(request);
+            if (homeworkEntity == null)
             {
                 return Result<Report>.Failure(System.Net.HttpStatusCode.InternalServerError, "Issue with the mapper");
             }
 
-            var newReport = await repository.Add(reportEntity);
-            return Result<Report>.Success(newReport);
+            var newHomework = await repository.Add(homeworkEntity);
+            if (newHomework != null)
+            {
+                return Result<Report>.Success(newHomework);
+            }
+            return Result<Report>.Failure(System.Net.HttpStatusCode.InternalServerError, "Issue");
         }
     }
 }
