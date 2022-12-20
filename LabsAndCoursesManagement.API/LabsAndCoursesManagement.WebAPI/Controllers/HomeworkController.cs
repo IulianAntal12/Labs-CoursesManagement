@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LabsAndCoursesManagement.WebAPI.Controllers
 {
-    [Route("api/v{version:apiVersion}/reports")]
+    [Route("api/v{version:apiVersion}/homeworks")]
     [ApiController]
     [ApiVersion("1.0")]
     public class HomeworkController : ControllerBase
