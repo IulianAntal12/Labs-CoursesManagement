@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.Tests\TeacherServiceTests.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using AutoMapper;
+using FluentAssertions;
+using LabsAndCoursesManagement.BusinessLogic.Mappers;
+using LabsAndCoursesManagement.BusinessLogic.Services;
+using LabsAndCoursesManagement.DataAccess.Repositories;
+using LabsAndCoursesManagement.Models.Dtos;
+using LabsAndCoursesManagement.Models.Models;
+using Moq;
+
+namespace LabsAndCoursesManagement.Tests
+{
+    public class TeacherServiceTests
+    {
+        private readonly Mock&lt;IRepository&lt;Teacher&gt;&gt; teacherRepositoryMoq = new();
+        private readonly Mock&lt;IRepository&lt;Lab&gt;&gt; labRepositoryMoq = new();
+        private TeacherService service;
+        private IMapper mapper;
+
+        [SetUp]
+        public void Setup()
+        {
+            service = new TeacherService(teacherRepositoryMoq.Object, labRepositoryMoq.Object);
+            mapper = new AutoMapperBuilder().Build();
+        }
+
+        [Test]
+        public void AddTeacher_NotNullEntity_IsSuccessShouldBeTrue()
+        {
+            //arrange
+            var teacherDto = new CreateTeacherDto()
+            {
+                FullName = &quot;Test Name&quot;,
+                Cabinet = &quot;111&quot;,
+                Email = &quot;a@a.a&quot;,
+                PhoneNumber = &quot;0711111111&quot;,
+                Role = &quot;Assistant&quot;
+            };
+
+            //act
+            //teacherRepositoryMoq.Setup(x =&gt; x.Add(teacher)).Returns(Task.FromResult(teacher));
+            var result = service.Add(teacherDto);
+
+            //assert
+            Assert.That(result.Result.IsFailure, Is.True);
+        }
+
+        [Test]
+        public void DeleteTeacher_ExistingEntity_IsSuccessShouldBeTrue()
+        {
+            //arrange
+            var TeacherDto = new CreateTeacherDto()
+            {
+                FullName = &quot;TestName&quot;,
+                Cabinet = &quot;111&quot;,
+                Email = &quot;a@a.a&quot;,
+                PhoneNumber = &quot;0711111111&quot;,
+                Role = &quot;Assistant&quot;
+            };
+            var Teacher = mapper.Map&lt;Teacher&gt;(TeacherDto);
+
+            //act
+            //Moq.Language.Flow.IReturnsResult&lt;IRepository&lt;Teacher&gt;&gt; returnsResult = teacherRepositoryMoq.Setup(x =&gt; x.Get(Teacher.Id)).Returns(Task.FromResult(Teacher));
+            var result = service.Delete(Teacher.Id);
+
+            //assert
+            Assert.That(result.Result.IsSuccess, Is.True);
+        }
+
+        [Test]
+        public void DeleteTeacher_NotexistingEntity_IsSuccessShouldBeFalse()
+        {
+            //arrange
+            var TeacherDto = new CreateTeacherDto()
+            {
+                FullName = &quot;TestName&quot;,
+                Cabinet = &quot;111&quot;,
+                Email = &quot;a@a.a&quot;,
+                PhoneNumber = &quot;0711111111&quot;,
+                Role = &quot;Assistant&quot;
+            };
+            var Teacher = mapper.Map&lt;Teacher&gt;(TeacherDto);
+
+            //act
+            var result = service.Delete(Teacher.Id);
+
+            //assert
+            Assert.That(result.Result.IsSuccess, Is.False);
+        }
+
+        [Test]
+        public void GetAll_ShouldReturnAListOfTeachers()
+        {
+            //arrange
+            var TeacherDto = new CreateTeacherDto()
+            {
+                FullName = &quot;TestName&quot;,
+                Cabinet = &quot;111&quot;,
+                Email = &quot;a@a.a&quot;,
+                PhoneNumber = &quot;0711111111&quot;,
+                Role = &quot;Assistant&quot;
+            };
+            var Teacher = mapper.Map&lt;Teacher&gt;(TeacherDto);
+            IEnumerable&lt;Teacher&gt; Teachers = new List&lt;Teacher&gt;() { Teacher };
+
+            //act
+            teacherRepositoryMoq.Setup(x =&gt; x.All()).Returns(Task.FromResult(Teachers));
+            var result = service.GetAll();
+
+            //assert
+            Assert.That(Teachers.AsEnumerable&lt;Teacher?&gt;, Is.EqualTo(result.Result.Entity));
+        }
+
+        [Test]
+        public void GetBy_ExistingTeacher_IsSuccessShouldBeTrue()
+        {
+            //arrange
+            var TeacherDto = new CreateTeacherDto()
+            {
+                FullName = &quot;TestName&quot;,
+                Cabinet = &quot;111&quot;,
+                Email = &quot;a@a.a&quot;,
+                PhoneNumber = &quot;0711111111&quot;,
+                Role = &quot;Assistant&quot;
+            };
+            var Teacher = mapper.Map&lt;Teacher&gt;(TeacherDto);
+
+            //act
+            //teacherRepositoryMoq.Setup(x =&gt; x.Get(Teacher.Id)).Returns(Task.FromResult(Teacher));
+            var result = service.GetById((Guid)Teacher.Id);
+
+            //assert
+            Assert.That(result.Result.IsSuccess, Is.True);
+        }
+
+        [Test]
+        public void GetBy_ExistingTeacher_IsSuccessShouldBeFalse()
+        {
+            //act
+            var result = service.GetById(new Guid());
+
+            //assert
+            Assert.That(result.Result.IsSuccess, Is.False);
+        }
+
+        [Test]
+        public void AddTeacher_NotValidEntity_IsFailureShouldBeTrue()
+        {
+            //arrange
+            var teacherDto = new CreateTeacherDto()
+            {
+                FullName = &quot;TestName&quot;,
+                Cabinet = &quot;111&quot;,
+                Email = &quot;a@a.a&quot;,
+                PhoneNumber = &quot;0711111111&quot;,
+                Role = &quot;Assistant&quot;
+            };
+
+            //act
+            var result = service.Add(teacherDto);
+
+
+            //assert
+            result.Result.IsFailure.Should().BeTrue();
+            result.Result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        }
+
+
+        [Test]
+        public void UpdateTeacher_NotValidEntity_IsFailureShouldBeTrue()
+        {
+            //arrange
+            var teacherDto = new CreateTeacherDto()
+            {
+                FullName = &quot;TestName&quot;,
+                Cabinet = &quot;111&quot;,
+                Email = &quot;a@a.a&quot;,
+                PhoneNumber = &quot;0711111111&quot;,
+                Role = &quot;Assistant&quot;
+            };
+
+            //act
+            var result = service.Update(Guid.NewGuid(), teacherDto);
+
+            //assert
+            result.Result.IsFailure.Should().BeTrue();
+            result.Result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        }
+
+        [Test]
+        public async Task When_AddedNewTeacher_Then_ShouldHaveIsSuccessTrueInResponse()
+        {
+            // Arrange
+            var teacherDto = CreateSUT();
+
+            //act
+            //teacherRepositoryMoq.Setup(x =&gt; x.Get(teacher.Id)).Returns(Task.FromResult(teacher));
+            var response = await service.Add(teacherDto);
+            // Assert
+            response.IsFailure.Should().BeTrue();
+        }
+
+        [Test]
+        public async Task When_AddedNewTeacherWithEmptyFullName_Then_ShouldReturnUnprocessableEntity()
+        {
+            // Arrange
+            var teacher = CreateSUT();
+            teacher.FullName = &quot;&quot;;
+            // Act
+            var response = await service.Add(teacher);
+            // Assert
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        }
+
+        [Test]
+        public async Task When_AddedNewTeacherWithInvalidFullName_Then_ShouldReturnUnprocessableEntity()
+        {
+            // Arrange
+            var teacher = CreateSUT();
+            teacher.FullName = &quot;InvalidFullName&quot;;
+            // Act
+            var response = await service.Add(teacher);
+            // Assert
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        }
+
+        [Test]
+        public async Task When_AddedNewTeacherWithTooLongFullName_Then_ShouldReturnUnprocessableEntity()
+        {
+            // Arrange
+            var teacher = CreateSUT();
+            teacher.FullName = string.Concat(Enumerable.Repeat(&quot;Hello&quot;, 100));
+            // Act
+            var response = await service.Add(teacher);
+            // Assert
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        }
+
+        //[Test]
+        //public async Task When_AddedNewTeacherWithEmptyEmail_Then_ShouldReturnUnprocessableEntity()
+        //{
+        //    // Arrange
+        //    var teacher = CreateSUT();
+        //    teacher.Email = &quot;&quot;;
+        //    // Act
+        //    var response = await service.Add(teacher);
+        //    // Assert
+        //    response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
+
+        //[Test]
+        //public async Task When_AddedNewTeacherWithInvalidEmail_Then_ShouldReturnUnprocessableEntity()
+        //{
+        //    // Arrange
+        //    var teacher = CreateSUT();
+        //    teacher.Email = &quot;george.george&quot;;
+        //    // Act
+        //    var response = await service.Add(teacher);
+        //    // Assert
+        //    response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
+        //[Test]
+        //public async Task When_AddedNewTeacherWithEmptyRole_Then_ShouldReturnUnprocessableEntity()
+        //{
+        //    // Arrange
+        //    var teacher = CreateSUT();
+        //    teacher.Role = &quot;&quot;;
+        //    // Act
+        //    var response = await service.Add(teacher);
+        //    // Assert
+        //    response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
+        //[Test]
+        //public async Task When_AddedNewTeacherWithTooLongRole_Then_ShouldReturnUnprocessableEntity()
+        //{
+        //    // Arrange
+        //    var teacher = CreateSUT();
+        //    teacher.Role = string.Concat(Enumerable.Repeat(&quot;Hello&quot;, 100));
+        //    // Act
+        //    var response = await service.Add(teacher);
+        //    // Assert
+        //    response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //} 
+
+        //[Test]
+        //public async Task When_AddedNewTeacherWithEmptyPhoneNumber_Then_ShouldReturnUnprocessableEntity()
+        //{
+        //    // Arrange
+        //    var teacher = CreateSUT();
+        //    teacher.PhoneNumber = &quot;&quot;;
+        //    // Act
+        //    var response = await service.Add(teacher);
+        //    // Assert
+        //    response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
+        //[Test]
+        //public async Task When_AddedNewTeacherWithInvalidPhoneNumber_Then_ShouldReturnUnprocessableEntity()
+        //{
+        //    // Arrange
+        //    var teacher = CreateSUT();
+        //    teacher.PhoneNumber = &quot;07noidoi&quot;;
+        //    // Act
+        //    var response = await service.Add(teacher);
+        //    // Assert
+        //    response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
+
+        //[Test]
+        //public async Task When_AddedNewTeacherWithTooLongCabiner_Then_ShouldReturnUnprocessableEntity()
+        //{
+        //    // Arrange
+        //    var teacher = CreateSUT();
+        //    teacher.Cabinet = &quot;C4111&quot;;
+        //    // Act
+        //    var response = await service.Add(teacher);
+        //    // Assert
+        //    response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
+
+        private static CreateTeacherDto CreateSUT()
+        {
+            return new CreateTeacherDto()
+            {
+                FullName = &quot;Full Name&quot;,
+                Email = &quot;email@gmail.com&quot;,
+                Role = &quot;Assistant&quot;,
+                PhoneNumber = &quot;0770444999&quot;,
+                Cabinet = &quot;C410&quot;
+            };
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[14,9,14,82,1],[15,9,15,74,1],[21,9,21,10,1],[22,13,22,96,1],[23,13,23,54,1],[24,9,24,10,1],[28,9,28,10,1],[30,13,37,15,1],[41,13,41,50,1],[44,13,44,59,1],[45,9,45,10,1],[49,9,49,10,1],[51,13,58,15,1],[59,13,59,59,1],[63,13,63,53,1],[66,13,66,59,1],[67,9,67,10,0],[71,9,71,10,1],[73,13,80,15,1],[81,13,81,59,1],[84,13,84,53,1],[87,13,87,60,1],[88,9,88,10,1],[92,9,92,10,1],[94,13,101,15,1],[102,13,102,59,1],[103,13,103,77,1],[106,13,106,89,1],[107,13,107,43,1],[110,13,110,92,1],[111,9,111,10,1],[115,9,115,10,1],[117,13,124,15,1],[125,13,125,59,1],[129,13,129,60,1],[132,13,132,59,1],[133,9,133,10,0],[137,9,137,10,1],[139,13,139,54,1],[142,13,142,60,1],[143,9,143,10,1],[147,9,147,10,1],[149,13,156,15,1],[159,13,159,50,1],[163,13,163,55,1],[164,13,164,97,1],[165,9,165,10,0],[170,9,170,10,1],[172,13,179,15,1],[182,13,182,69,1],[185,13,185,55,1],[186,13,186,97,1],[187,9,187,10,0],[191,9,191,10,1],[193,13,193,42,1],[197,13,197,58,1],[199,13,199,50,1],[200,9,200,10,1],[204,9,204,10,1],[206,13,206,39,1],[207,13,207,35,1],[209,13,209,55,1],[211,13,211,92,1],[212,9,212,10,0],[216,9,216,10,1],[218,13,218,39,1],[219,13,219,50,1],[221,13,221,55,1],[223,13,223,92,1],[224,9,224,10,0],[228,9,228,10,1],[230,13,230,39,1],[231,13,231,79,1],[233,13,233,55,1],[235,13,235,92,1],[236,9,236,10,0],[320,9,320,10,1],[321,13,328,15,1],[329,9,329,10,1]]);
+    </script>
+  </body>
+</html>

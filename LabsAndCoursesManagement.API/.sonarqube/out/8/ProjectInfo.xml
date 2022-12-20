@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+  <ProjectName>LabsAndCoursesManagement.BusinessLogic</ProjectName>
+  <ProjectLanguage>C#</ProjectLanguage>
+  <ProjectType>Product</ProjectType>
+  <ProjectGuid>ec698a39-ab4b-4017-a91f-12288022a32a</ProjectGuid>
+  <FullPath>C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\LabsAndCoursesManagement.BusinessLogic.csproj</FullPath>
+  <IsExcluded>false</IsExcluded>
+  <AnalysisResults>
+    <AnalysisResult Id="FilesToAnalyze" Location="C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\.sonarqube\out\8\FilesToAnalyze.txt" />
+  </AnalysisResults>
+  <AnalysisSettings>
+    <Property Name="sonar.cs.roslyn.reportFilePath">C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\bin\Debug\net7.0\LabsAndCoursesManagement.BusinessLogic.dll.RoslynCA.json|C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\bin\Debug\net7.0\LabsAndCoursesManagement.BusinessLogic.dll.RoslynCA.json</Property>
+    <Property Name="sonar.cs.analyzer.projectOutPath">C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\.sonarqube\out\8</Property>
+  </AnalysisSettings>
+  <Configuration>Debug</Configuration>
+  <Platform>AnyCPU</Platform>
+  <TargetFramework>net7.0</TargetFramework>
+</ProjectInfo>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\Queries\GetReportByIdQueryHandler.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using LabsAndCoursesManagement.DataAccess.Repositories;
+using LabsAndCoursesManagement.Models.Helpers;
+using LabsAndCoursesManagement.Models.Models;
+using MediatR;
+
+namespace LabsAndCoursesManagement.BusinessLogic.Queries
+{
+    public class GetReportByIdQueryHandler : IRequestHandler&lt;GetReportByIdQuery, Result&lt;Report&gt;&gt;
+    {
+        private readonly IRepository&lt;Report&gt; repository;
+
+        public GetReportByIdQueryHandler(IRepository&lt;Report&gt; repository)
+        {
+            this.repository = repository;
+        }
+        public async Task&lt;Result&lt;Report&gt;&gt; Handle(GetReportByIdQuery request, CancellationToken cancellationToken)
+        {
+            var entity = await repository.Get(request.Id);
+            if (entity == null)
+            {
+                return Result&lt;Report&gt;.Failure(System.Net.HttpStatusCode.NotFound, $&quot;Could not find report with id {request.Id}&quot;);
+            }
+            return Result&lt;Report&gt;.Success(entity);
+
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[12,9,12,73,0],[13,9,13,10,0],[14,13,14,42,0],[15,9,15,10,0],[17,9,17,10,0],[18,13,18,59,0],[19,13,19,32,0],[20,13,20,14,0],[21,17,21,130,0],[23,13,23,51,0],[25,9,25,10,0]]);
+    </script>
+  </body>
+</html>

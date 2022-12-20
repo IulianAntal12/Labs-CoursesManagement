@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.WebAPI\Controllers\AuthController.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using LabsAndCoursesManagement.BusinessLogic.Interfaces;
+using LabsAndCoursesManagement.WebAPI.Dtos;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
+namespace LabsAndCoursesManagement.WebAPI.Controllers;
+
+[Route(&quot;api/v{version:apiVersion}/auth&quot;)]
+[ApiController]
+[ApiVersion(&quot;1.0&quot;)]
+public class AuthController : ControllerBase
+{
+    private readonly ILogger&lt;AuthController&gt; _logger;
+    private readonly IAuthorizationService _authorizationService;
+    private readonly IUserService _userService;
+
+
+    public AuthController(ILogger&lt;AuthController&gt; logger, IAuthorizationService authorizationService,
+        IUserService userService)
+    {
+        _logger = logger;
+        _authorizationService = authorizationService;
+        _userService = userService;
+    }
+
+    [HttpPost]
+    public async Task&lt;IActionResult&gt; RegisterUser([FromBody] UserRegistrationDTO userRegistrationDto)
+    {
+        var response = await _userService.RegisterUserAsync(userRegistrationDto);
+        if (response.IsFailure)
+        {
+            return StatusCode(409, response.Error);
+        }
+
+        return StatusCode(201, response.Entity);
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[18,5,19,34,0],[20,5,20,6,0],[21,9,21,26,0],[22,9,22,54,0],[23,9,23,36,0],[24,5,24,6,0],[28,5,28,6,0],[29,9,29,82,0],[30,9,30,32,0],[31,9,31,10,0],[32,13,32,52,0],[35,9,35,49,0],[36,5,36,6,0]]);
+    </script>
+  </body>
+</html>

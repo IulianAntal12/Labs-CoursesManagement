@@ -1,0 +1,6 @@
+projectKey=LabsAndCoursesManagement
+serverUrl=http://localhost:9000
+serverVersion=9.7.1.62043
+dashboardUrl=http://localhost:9000/dashboard?id=LabsAndCoursesManagement
+ceTaskId=AYUv_kcNq-e4JHtziwUg
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYUv_kcNq-e4JHtziwUg

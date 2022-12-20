@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\Queries\GetReportByIdQuery.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using LabsAndCoursesManagement.Models.Helpers;
+using LabsAndCoursesManagement.Models.Models;
+using MediatR;
+
+namespace LabsAndCoursesManagement.BusinessLogic.Queries
+{
+    public class GetReportByIdQuery : IRequest&lt;Result&lt;Report&gt;&gt;
+    {
+        public GetReportByIdQuery(Guid id)
+        {
+            Id = id;
+        }
+        public Guid Id { get; private set; }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[9,9,9,43,0],[10,9,10,10,0],[11,13,11,21,0],[12,9,12,10,0],[13,26,13,30,0],[13,31,13,43,0]]);
+    </script>
+  </body>
+</html>

@@ -9,7 +9,7 @@ using System.Net;
 
 namespace LabsAndCoursesManagement.BusinessLogic.Services;
 
-public class UserService : BaseService<User, UserRegistrationDTO>, IUserService
+public class UserService : BaseService<User, UserRegistrationDto>, IUserService
 {
 
     private readonly IUserRepository userRepository;
@@ -20,17 +20,17 @@ public class UserService : BaseService<User, UserRegistrationDTO>, IUserService
         this.userRepository = userRepository;
     }
 
-    public async Task<Result<User>> RegisterUserAsync(UserRegistrationDTO userRegistrationDto)
+    public async Task<Result<User>> RegisterUserAsync(UserRegistrationDto userRegistration)
     {
-        var user = mapper.Map<User>(userRegistrationDto);
-        var userFromDb = await userRepository.GetByEmail(userRegistrationDto.Email);
+        var user = mapper.Map<User>(userRegistration);
+        var userFromDb = await userRepository.GetByEmail(userRegistration.Email);
 
         if (userFromDb != null)
         {
             return Result<User>.Failure(HttpStatusCode.Conflict, "User has laready been registered");
         }
 
-        var createdUser = mapper.Map(userRegistrationDto, user);
+        var createdUser = mapper.Map(userRegistration, user);
 
         await userRepository.Add(createdUser);
         await userRepository.SaveChanges();

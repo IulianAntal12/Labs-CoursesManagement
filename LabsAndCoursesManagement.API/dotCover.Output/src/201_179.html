@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\Services\LabService.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using LabsAndCoursesManagement.BusinessLogic.Base;
+using LabsAndCoursesManagement.DataAccess.Repositories;
+using LabsAndCoursesManagement.Models.Dtos;
+using LabsAndCoursesManagement.Models.Helpers;
+using LabsAndCoursesManagement.Models.Models;
+using System.Net;
+
+namespace LabsAndCoursesManagement.BusinessLogic.Interfaces
+{
+    public class LabService : BaseService&lt;Lab, CreateLabDto&gt;, ILabService
+    {
+        private readonly IRepository&lt;Teacher&gt; teacherRepository;
+
+        public LabService(IRepository&lt;Lab&gt; repository, IRepository&lt;Teacher&gt; teacherRepository)
+            : base(repository)
+        {
+            this.teacherRepository = teacherRepository;
+        }
+
+        public new async Task&lt;Result&lt;Lab&gt;&gt; Update(Guid id, CreateLabDto dto)
+        {
+            var entity = mapper.Map&lt;Lab&gt;(dto);
+
+            var teacher = await teacherRepository.Get(entity.TeacherId);
+            if (teacher == null)
+            {
+                return Result&lt;Lab&gt;.Failure(HttpStatusCode.UnprocessableEntity, &quot;Cannot find teacher specified by id&quot;);
+            }
+
+            var response = await repository.Update(id, entity);
+            if (response == null)
+            {
+                return Result&lt;Lab&gt;.Failure(HttpStatusCode.NotFound, &quot;Cannot find entity specified by id&quot;);
+            }
+            return Result&lt;Lab&gt;.Success(response);
+        }
+
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[15,15,15,31,1],[16,9,16,10,1],[17,13,17,56,1],[18,9,18,10,1],[21,9,21,10,0],[22,13,22,47,0],[24,13,24,73,0],[25,13,25,33,0],[26,13,26,14,0],[27,17,27,119,0],[30,13,30,64,0],[31,13,31,34,0],[32,13,32,14,0],[33,17,33,107,0],[35,13,35,50,0],[36,9,36,10,0]]);
+    </script>
+  </body>
+</html>

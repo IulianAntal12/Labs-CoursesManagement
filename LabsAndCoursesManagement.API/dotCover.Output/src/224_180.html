@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\Migrations\20221220132655_InitialCreate.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace LabsAndCoursesManagement.DataAccess.Migrations
+{
+    /// &lt;inheritdoc /&gt;
+    public partial class InitialCreate : Migration
+    {
+        /// &lt;inheritdoc /&gt;
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.CreateTable(
+                name: &quot;Homework&quot;,
+                columns: table =&gt; new
+                {
+                    Id = table.Column&lt;Guid&gt;(type: &quot;uniqueidentifier&quot;, nullable: false),
+                    Value = table.Column&lt;double&gt;(type: &quot;float&quot;, nullable: false),
+                    Description = table.Column&lt;string&gt;(type: &quot;nvarchar(max)&quot;, nullable: false),
+                    Bonus = table.Column&lt;double&gt;(type: &quot;float&quot;, nullable: false)
+                },
+                constraints: table =&gt;
+                {
+                    table.PrimaryKey(&quot;PK_Homework&quot;, x =&gt; x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: &quot;Reports&quot;,
+                columns: table =&gt; new
+                {
+                    Id = table.Column&lt;Guid&gt;(type: &quot;uniqueidentifier&quot;, nullable: false),
+                    StudentId = table.Column&lt;Guid&gt;(type: &quot;uniqueidentifier&quot;, nullable: false),
+                    TeacherId = table.Column&lt;Guid&gt;(type: &quot;uniqueidentifier&quot;, nullable: false),
+                    Value = table.Column&lt;double&gt;(type: &quot;float&quot;, nullable: false),
+                    EvaluationType = table.Column&lt;string&gt;(type: &quot;nvarchar(max)&quot;, nullable: false),
+                    EvaluationDate = table.Column&lt;DateTime&gt;(type: &quot;datetime2&quot;, nullable: false)
+                },
+                constraints: table =&gt;
+                {
+                    table.PrimaryKey(&quot;PK_Reports&quot;, x =&gt; x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: &quot;Students&quot;,
+                columns: table =&gt; new
+                {
+                    Id = table.Column&lt;Guid&gt;(type: &quot;uniqueidentifier&quot;, nullable: false),
+                    FullName = table.Column&lt;string&gt;(type: &quot;nvarchar(max)&quot;, nullable: false),
+                    Email = table.Column&lt;string&gt;(type: &quot;nvarchar(max)&quot;, nullable: false),
+                    Year = table.Column&lt;int&gt;(type: &quot;int&quot;, nullable: false),
+                    IdentificationNumber = table.Column&lt;string&gt;(type: &quot;nvarchar(max)&quot;, nullable: false),
+                    Group = table.Column&lt;string&gt;(type: &quot;nvarchar(max)&quot;, nullable: false)
+                },
+                constraints: table =&gt;
+                {
+                    table.PrimaryKey(&quot;PK_Students&quot;, x =&gt; x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: &quot;Teachers&quot;,
+                columns: table =&gt; new
+                {
+                    Id = table.Column&lt;Guid&gt;(type: &quot;uniqueidentifier&quot;, nullable: false),
+                    FullName = table.Column&lt;string&gt;(type: &quot;nvarchar(max)&quot;, nullable: false),
+                    Email = table.Column&lt;string&gt;(type: &quot;nvarchar(max)&quot;, nullable: false),
+                    Role = table.Column&lt;string&gt;(type: &quot;nvarchar(max)&quot;, nullable: false),
+                    PhoneNumber = table.Column&lt;string&gt;(type: &quot;nvarchar(max)&quot;, nullable: false),
+                    Cabinet = table.Column&lt;string&gt;(type: &quot;nvarchar(max)&quot;, nullable: false)
+                },
+                constraints: table =&gt;
+                {
+                    table.PrimaryKey(&quot;PK_Teachers&quot;, x =&gt; x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: &quot;Labs&quot;,
+                columns: table =&gt; new
+                {
+                    Id = table.Column&lt;Guid&gt;(type: &quot;uniqueidentifier&quot;, nullable: false),
+                    Name = table.Column&lt;string&gt;(type: &quot;nvarchar(max)&quot;, nullable: false),
+                    Group = table.Column&lt;string&gt;(type: &quot;nvarchar(max)&quot;, nullable: false),
+                    Description = table.Column&lt;string&gt;(type: &quot;nvarchar(max)&quot;, nullable: false),
+                    Year = table.Column&lt;int&gt;(type: &quot;int&quot;, nullable: false),
+                    Semester = table.Column&lt;int&gt;(type: &quot;int&quot;, nullable: false),
+                    TeacherId = table.Column&lt;Guid&gt;(type: &quot;uniqueidentifier&quot;, nullable: false)
+                },
+                constraints: table =&gt;
+                {
+                    table.PrimaryKey(&quot;PK_Labs&quot;, x =&gt; x.Id);
+                    table.ForeignKey(
+                        name: &quot;FK_Labs_Teachers_TeacherId&quot;,
+                        column: x =&gt; x.TeacherId,
+                        principalTable: &quot;Teachers&quot;,
+                        principalColumn: &quot;Id&quot;,
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: &quot;Users&quot;,
+                columns: table =&gt; new
+                {
+                    ID = table.Column&lt;Guid&gt;(type: &quot;uniqueidentifier&quot;, nullable: false),
+                    Email = table.Column&lt;string&gt;(type: &quot;nvarchar(max)&quot;, nullable: false),
+                    Password = table.Column&lt;string&gt;(type: &quot;nvarchar(max)&quot;, nullable: false),
+                    FullName = table.Column&lt;string&gt;(type: &quot;nvarchar(max)&quot;, nullable: false),
+                    Group = table.Column&lt;string&gt;(type: &quot;nvarchar(max)&quot;, nullable: false),
+                    Year = table.Column&lt;string&gt;(type: &quot;nvarchar(max)&quot;, nullable: false),
+                    StudentID = table.Column&lt;Guid&gt;(type: &quot;uniqueidentifier&quot;, nullable: false)
+                },
+                constraints: table =&gt;
+                {
+                    table.PrimaryKey(&quot;PK_Users&quot;, x =&gt; x.ID);
+                    table.ForeignKey(
+                        name: &quot;FK_Users_Teachers_StudentID&quot;,
+                        column: x =&gt; x.StudentID,
+                        principalTable: &quot;Teachers&quot;,
+                        principalColumn: &quot;Id&quot;,
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: &quot;LabStudent&quot;,
+                columns: table =&gt; new
+                {
+                    LabsId = table.Column&lt;Guid&gt;(type: &quot;uniqueidentifier&quot;, nullable: false),
+                    StudentsId = table.Column&lt;Guid&gt;(type: &quot;uniqueidentifier&quot;, nullable: false)
+                },
+                constraints: table =&gt;
+                {
+                    table.PrimaryKey(&quot;PK_LabStudent&quot;, x =&gt; new { x.LabsId, x.StudentsId });
+                    table.ForeignKey(
+                        name: &quot;FK_LabStudent_Labs_LabsId&quot;,
+                        column: x =&gt; x.LabsId,
+                        principalTable: &quot;Labs&quot;,
+                        principalColumn: &quot;Id&quot;,
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: &quot;FK_LabStudent_Students_StudentsId&quot;,
+                        column: x =&gt; x.StudentsId,
+                        principalTable: &quot;Students&quot;,
+                        principalColumn: &quot;Id&quot;,
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: &quot;IX_Labs_TeacherId&quot;,
+                table: &quot;Labs&quot;,
+                column: &quot;TeacherId&quot;);
+
+            migrationBuilder.CreateIndex(
+                name: &quot;IX_LabStudent_StudentsId&quot;,
+                table: &quot;LabStudent&quot;,
+                column: &quot;StudentsId&quot;);
+
+            migrationBuilder.CreateIndex(
+                name: &quot;IX_Users_StudentID&quot;,
+                table: &quot;Users&quot;,
+                column: &quot;StudentID&quot;,
+                unique: true);
+        }
+
+        /// &lt;inheritdoc /&gt;
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: &quot;Homework&quot;);
+
+            migrationBuilder.DropTable(
+                name: &quot;LabStudent&quot;);
+
+            migrationBuilder.DropTable(
+                name: &quot;Reports&quot;);
+
+            migrationBuilder.DropTable(
+                name: &quot;Users&quot;);
+
+            migrationBuilder.DropTable(
+                name: &quot;Labs&quot;);
+
+            migrationBuilder.DropTable(
+                name: &quot;Students&quot;);
+
+            migrationBuilder.DropTable(
+                name: &quot;Teachers&quot;);
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[13,9,13,10,0],[14,13,16,35,0],[16,35,22,18,0],[22,18,24,17,0],[24,17,24,18,0],[24,18,25,21,0],[25,21,25,64,0],[25,64,26,17,0],[26,17,26,18,0],[26,18,26,20,0],[28,13,30,35,0],[30,35,38,18,0],[38,18,40,17,0],[40,17,40,18,0],[40,18,41,21,0],[41,21,41,63,0],[41,63,42,17,0],[42,17,42,18,0],[42,18,42,20,0],[44,13,46,35,0],[46,35,54,18,0],[54,18,56,17,0],[56,17,56,18,0],[56,18,57,21,0],[57,21,57,64,0],[57,64,58,17,0],[58,17,58,18,0],[58,18,58,20,0],[60,13,62,35,0],[62,35,70,18,0],[70,18,72,17,0],[72,17,72,18,0],[72,18,73,21,0],[73,21,73,64,0],[73,64,74,17,0],[74,17,74,18,0],[74,18,74,20,0],[76,13,78,35,0],[78,35,87,18,0],[87,18,89,17,0],[89,17,89,18,0],[89,18,90,21,0],[90,21,90,60,0],[90,60,91,21,0],[91,21,96,62,0],[96,62,97,17,0],[97,17,97,18,0],[97,18,97,20,0],[99,13,101,35,0],[101,35,110,18,0],[110,18,112,17,0],[112,17,112,18,0],[112,18,113,21,0],[113,21,113,61,0],[113,61,114,21,0],[114,21,119,62,0],[119,62,120,17,0],[120,17,120,18,0],[120,18,120,20,0],[122,13,124,35,0],[124,35,128,18,0],[128,18,130,17,0],[130,17,130,18,0],[130,18,131,21,0],[131,21,131,92,0],[131,92,132,21,0],[132,21,137,62,0],[137,62,138,21,0],[138,21,143,62,0],[143,62,144,17,0],[144,17,144,18,0],[144,18,144,20,0],[146,13,149,38,0],[151,13,154,39,0],[156,13,160,31,0],[161,9,161,10,0],[165,9,165,10,0],[166,13,167,35,0],[169,13,170,37,0],[172,13,173,34,0],[175,13,176,32,0],[178,13,179,31,0],[181,13,182,35,0],[184,13,185,35,0],[186,9,186,10,0]]);
+    </script>
+  </body>
+</html>

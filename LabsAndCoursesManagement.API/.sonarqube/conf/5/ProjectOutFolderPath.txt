@@ -1,0 +1,1 @@
+C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\.sonarqube\out\5

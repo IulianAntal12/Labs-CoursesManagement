@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\Repositories\GenericRepositories\UserRepository.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using LabsAndCoursesManagement.DataAccess.Database;
+using LabsAndCoursesManagement.Models.Models;
+using System.Data.Entity;
+
+namespace LabsAndCoursesManagement.DataAccess.Repositories.GenericRepositories;
+
+public interface IUserRepository : IRepository&lt;User&gt;
+{
+    Task&lt;User&gt; GetByEmail(string email);
+}
+
+public class UserRepository : Repository&lt;User&gt;, IUserRepository
+{
+    public UserRepository(DatabaseContext context) : base(context)
+    {
+
+    }
+
+    public async Task&lt;User&gt; GetByEmail(string email)
+    {
+        return await context.Users.FirstOrDefaultAsync(u =&gt; u.Email == email);
+    }
+
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[14,54,14,67,0],[15,5,15,6,0],[17,5,17,6,0],[20,5,20,6,0],[21,9,21,79,0],[22,5,22,6,0]]);
+    </script>
+  </body>
+</html>

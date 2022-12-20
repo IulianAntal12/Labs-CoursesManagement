@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\Handlers\CreateHomeworkCommandHelper.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using LabsAndCoursesManagement.BusinessLogic.Commands;
+using LabsAndCoursesManagement.BusinessLogic.Mappers;
+using LabsAndCoursesManagement.DataAccess.Repositories;
+using LabsAndCoursesManagement.Models.Helpers;
+using LabsAndCoursesManagement.Models.Models;
+using MediatR;
+
+namespace LabsAndCoursesManagement.BusinessLogic.Handlers
+{
+    public class CreateHomeworkCommandHelper : IRequestHandler&lt;CreateHomeworkCommand, Result&lt;Homework&gt;&gt;
+    {
+        private readonly IRepository&lt;Homework&gt; repository;
+
+        public CreateHomeworkCommandHelper(IRepository&lt;Homework&gt; repository)
+        {
+            this.repository = repository;
+        }
+
+        public async Task&lt;Result&lt;Homework&gt;&gt; Handle(CreateHomeworkCommand request, CancellationToken cancellationToken)
+        {
+            var reportEntity = HomeworkMapper.Mapper.Map&lt;Homework&gt;(request);
+            if (reportEntity == null)
+            {
+                return Result&lt;Homework&gt;.Failure(System.Net.HttpStatusCode.InternalServerError, &quot;Issue with the mapper&quot;);
+            }
+
+            var newReport = await repository.Add(reportEntity);
+            if (newReport != null)
+            {
+                return Result&lt;Homework&gt;.Success(newReport);
+            }
+            return Result&lt;Homework&gt;.Failure(System.Net.HttpStatusCode.InternalServerError, &quot;Issue&quot;);
+        }
+    }
+
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[14,9,14,77,0],[15,9,15,10,0],[16,13,16,42,0],[17,9,17,10,0],[20,9,20,10,0],[21,13,21,77,0],[22,13,22,38,0],[23,13,23,14,0],[24,17,24,121,0],[27,13,27,64,0],[28,13,28,35,0],[29,13,29,14,0],[30,17,30,60,0],[32,13,32,101,0],[33,9,33,10,0]]);
+    </script>
+  </body>
+</html>

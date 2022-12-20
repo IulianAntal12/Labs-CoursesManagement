@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\Handlers\CreateReportCommandHelper.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using LabsAndCoursesManagement.BusinessLogic.Commands;
+using LabsAndCoursesManagement.BusinessLogic.Mappers;
+using LabsAndCoursesManagement.DataAccess.Repositories;
+using LabsAndCoursesManagement.Models.Helpers;
+using LabsAndCoursesManagement.Models.Models;
+using MediatR;
+
+namespace LabsAndCoursesManagement.BusinessLogic.Handlers
+{
+    public class CreateReportCommandHelper : IRequestHandler&lt;CreateReportCommand, Result&lt;Report&gt;&gt;
+    {
+        private readonly IRepository&lt;Report&gt; repository;
+
+        public CreateReportCommandHelper(IRepository&lt;Report&gt; repository)
+        {
+            this.repository = repository;
+        }
+
+        public async Task&lt;Result&lt;Report&gt;&gt; Handle(CreateReportCommand request, CancellationToken cancellationToken)
+        {
+            var homeworkEntity = ReportMapper.Mapper.Map&lt;Report&gt;(request);
+            if (homeworkEntity == null)
+            {
+                return Result&lt;Report&gt;.Failure(System.Net.HttpStatusCode.InternalServerError, &quot;Issue with the mapper&quot;);
+            }
+
+            var newHomework = await repository.Add(homeworkEntity);
+            if (newHomework != null)
+            {
+                return Result&lt;Report&gt;.Success(newHomework);
+            }
+            return Result&lt;Report&gt;.Failure(System.Net.HttpStatusCode.InternalServerError, &quot;Issue&quot;);
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[14,9,14,73,0],[15,9,15,10,0],[16,13,16,42,0],[17,9,17,10,0],[20,9,20,10,0],[21,13,21,75,0],[22,13,22,40,0],[23,13,23,14,0],[24,17,24,119,0],[27,13,27,68,0],[28,13,28,37,0],[29,13,29,14,0],[30,17,30,60,0],[32,13,32,99,0],[33,9,33,10,0]]);
+    </script>
+  </body>
+</html>

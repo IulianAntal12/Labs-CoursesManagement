@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\Database\DatabaseContext.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using LabsAndCoursesManagement.Models.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace LabsAndCoursesManagement.DataAccess.Database
+{
+    public class DatabaseContext : DbContext
+    {
+        public DbSet&lt;Lab&gt; Labs =&gt; Set&lt;Lab&gt;();
+        public DbSet&lt;Student&gt; Students =&gt; Set&lt;Student&gt;();
+        public DbSet&lt;Teacher&gt; Teachers =&gt; Set&lt;Teacher&gt;();
+        public DbSet&lt;User&gt; Users =&gt; Set&lt;User&gt;();
+        public DbSet&lt;Report&gt; Reports =&gt; Set&lt;Report&gt;();
+        public DbSet&lt;Homework&gt; Homework =&gt; Set&lt;Homework&gt;();
+
+        public DatabaseContext(DbContextOptions&lt;DatabaseContext&gt; options) : base(options)
+        {
+            this.Database.EnsureCreated();
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity&lt;Lab&gt;()
+                .HasMany(l =&gt; l.Students)
+                .WithMany(student =&gt; student.Labs);
+
+            modelBuilder.Entity&lt;Lab&gt;()
+                .HasOne(lab =&gt; lab.Teacher)
+                .WithMany(teacher =&gt; teacher.Labs)
+                .HasForeignKey(lab =&gt; lab.TeacherId);
+
+            modelBuilder.Entity&lt;User&gt;()
+                .HasOne(u =&gt; u.Student)
+                .WithOne()
+                .HasForeignKey&lt;User&gt;(u =&gt; u.StudentID);
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[8,35,8,45,0],[9,43,9,57,0],[10,43,10,57,0],[11,37,11,48,0],[12,41,12,54,0],[13,44,13,59,0],[15,77,15,90,0],[16,9,16,10,0],[17,13,17,43,0],[18,9,18,10,0],[21,9,21,10,0],[22,13,24,52,0],[26,13,29,54,0],[31,13,34,56,0],[35,9,35,10,0]]);
+    </script>
+  </body>
+</html>

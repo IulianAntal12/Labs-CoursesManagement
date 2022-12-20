@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\Mappers\ReportMapper.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using AutoMapper;
+
+namespace LabsAndCoursesManagement.BusinessLogic.Mappers
+{
+    public class ReportMapper
+    {
+        private static readonly Lazy&lt;IMapper&gt; Lazy =
+            new(() =&gt;
+            {
+                var config = new MapperConfiguration(cfg =&gt;
+                {
+                    cfg.ShouldMapProperty = p =&gt;
+                    p.GetMethod.IsPublic ||
+                    p.GetMethod.IsAssembly;
+                    cfg.AddProfile&lt;ReportMappingProfile&gt;();
+                });
+                var mapper = config.CreateMapper();
+                return mapper;
+            });
+        public static IMapper Mapper =&gt; Lazy.Value;
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[7,9,9,13,0],[9,13,9,14,0],[9,14,10,17,0],[10,17,11,17,0],[11,17,11,18,0],[11,18,12,21,0],[12,21,13,21,0],[13,21,14,43,0],[14,43,14,44,0],[14,44,15,21,0],[15,21,15,60,0],[15,60,16,17,0],[16,17,16,18,0],[16,18,16,20,0],[16,20,17,17,0],[17,17,17,52,0],[17,52,18,17,0],[18,17,18,31,0],[18,31,19,13,0],[19,13,19,14,0],[19,14,19,16,0],[20,41,20,51,0]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.API.IntegrationTests\Setup\Utilities.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using LabsAndCoursesManagement.BusinessLogic.Mappers;
+using LabsAndCoursesManagement.DataAccess.Database;
+using LabsAndCoursesManagement.Models.Dtos;
+using LabsAndCoursesManagement.Models.Models;
+
+namespace LabsAndCoursesManagement.API.IntegrationTests.Setup
+{
+    public class Utilities
+    {
+        public static Guid SeedTeachers(DatabaseContext context)
+        {
+            AutoMapperBuilder autoMapperBuilder = new();
+            var mapper = autoMapperBuilder.Build();
+            var dto = new CreateTeacherDto
+            {
+                FullName = &quot;Mr. Cinnamon&quot;,
+                Email = &quot;cinnamon@gmail.com&quot;,
+                Role = &quot;Lecturer&quot;,
+                PhoneNumber = &quot;0756789456&quot;,
+                Cabinet = &quot;C210&quot;
+            };
+            var teacher = mapper.Map&lt;CreateTeacherDto, Teacher&gt;(dto);
+            context.Teachers.Add(teacher);
+            context.SaveChanges();
+            return teacher.Id;
+        }
+
+        public static List&lt;Guid&gt; SeedLabs(DatabaseContext context)
+        {
+            var teacherId = SeedTeachers(context);
+            AutoMapperBuilder autoMapperBuilder = new();
+            var mapper = autoMapperBuilder.Build();
+            var labIds = new List&lt;Guid&gt;();
+            for (var studentIndex = 0; studentIndex &lt; 2; studentIndex++)
+            {
+                var dto = new CreateLabDto
+                {
+                    Name = &quot;Maths&quot;,
+                    Group = &quot;B4&quot;,
+                    Year = 1,
+                    Semester = 1,
+                    Description = &quot;Just maths&quot;,
+                    TeacherId = teacherId,
+                };
+                var lab = mapper.Map&lt;CreateLabDto, Lab&gt;(dto);
+                context.Labs.Add(lab);
+                context.SaveChanges();
+                labIds.Add(lab.Id);
+            }
+            return labIds;
+        }
+
+        public static List&lt;Guid&gt; SeedStudents(DatabaseContext context)
+        {
+            AutoMapperBuilder autoMapperBuilder = new();
+            var mapper = autoMapperBuilder.Build();
+            var studentIds = new List&lt;Guid&gt;();
+            for (var studentIndex = 0; studentIndex &lt; 2; studentIndex++) 
+            {
+                var dto = new CreateStudentDto
+                {
+                    FullName = &quot;George Smoc&quot;,
+                    Email = &quot;george.smoc13@gmail.com&quot;,
+                    Year = 3,
+                    IdentificationNumber = &quot;123456789RSL123456&quot;,
+                    Group = &quot;B4&quot;
+                };
+                var student = mapper.Map&lt;CreateStudentDto, Student&gt;(dto);
+                context.Students.Add(student);
+                context.SaveChanges();
+                studentIds.Add(student.Id);
+            }
+            return studentIds;
+        }
+    }
+}
+
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[11,9,11,10,0],[12,13,12,57,0],[13,13,13,52,0],[14,13,21,15,0],[22,13,22,70,0],[23,13,23,43,0],[24,13,24,35,0],[25,13,25,31,0],[26,9,26,10,0],[29,9,29,10,0],[30,13,30,51,0],[31,13,31,57,0],[32,13,32,52,0],[33,13,33,43,0],[34,18,34,38,0],[34,40,34,56,0],[34,58,34,72,0],[35,13,35,14,0],[36,17,44,19,0],[45,17,45,62,0],[46,17,46,39,0],[47,17,47,39,0],[48,17,48,36,0],[49,13,49,14,0],[50,13,50,27,0],[51,9,51,10,0],[54,9,54,10,0],[55,13,55,57,0],[56,13,56,52,0],[57,13,57,47,0],[58,18,58,38,0],[58,40,58,56,0],[58,58,58,72,0],[59,13,59,14,0],[60,17,67,19,0],[68,17,68,74,0],[69,17,69,47,0],[70,17,70,39,0],[71,17,71,44,0],[72,13,72,14,0],[73,13,73,31,0],[74,9,74,10,0]]);
+    </script>
+  </body>
+</html>

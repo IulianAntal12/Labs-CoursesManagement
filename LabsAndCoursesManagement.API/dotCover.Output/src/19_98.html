@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.Models\Models\Lab.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+namespace LabsAndCoursesManagement.Models.Models
+{
+    public class Lab
+    {
+        public Lab()
+        {
+            Id = Guid.NewGuid();
+        }
+
+        public Guid Id { get; private set; }
+
+        public string Name { get; private set; }
+
+        public string Group { get; private set; }
+
+        public string Description { get; private set; }
+
+        public int Year { get; private set; }
+
+        public int Semester { get; private set; }
+
+        public Teacher Teacher { get; private set; }
+
+        public Guid TeacherId { get; private set; }
+
+        public List&lt;Student&gt; Students { get; private set; } = new List&lt;Student&gt;();
+
+        public void EnrollTeacher(Teacher teacher)
+        {
+            Teacher = teacher;
+            TeacherId = teacher.Id;
+        }
+
+        public void EnrollStudent(Student student)
+        {
+            Students.Add(student);
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[5,9,5,21,1],[6,9,6,10,1],[7,13,7,33,1],[8,9,8,10,1],[10,26,10,30,0],[10,31,10,43,1],[12,30,12,34,0],[12,35,12,47,1],[14,31,14,35,0],[14,36,14,48,1],[16,37,16,41,0],[16,42,16,54,1],[18,27,18,31,0],[18,32,18,44,1],[20,31,20,35,0],[20,36,20,48,1],[22,34,22,38,1],[22,39,22,51,1],[24,33,24,37,1],[24,38,24,50,1],[26,41,26,45,1],[26,46,26,58,0],[26,63,26,82,1],[29,9,29,10,1],[30,13,30,31,1],[31,13,31,36,1],[32,9,32,10,1],[35,9,35,10,1],[36,13,36,35,1],[37,9,37,10,1]]);
+    </script>
+  </body>
+</html>

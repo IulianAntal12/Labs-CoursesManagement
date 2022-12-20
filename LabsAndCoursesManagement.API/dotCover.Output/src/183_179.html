@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\Services\UserService.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using LabsAndCoursesManagement.BusinessLogic.Base;
+using LabsAndCoursesManagement.BusinessLogic.Interfaces;
+using LabsAndCoursesManagement.DataAccess.Repositories;
+using LabsAndCoursesManagement.DataAccess.Repositories.GenericRepositories;
+using LabsAndCoursesManagement.Models.Helpers;
+using LabsAndCoursesManagement.Models.Models;
+using LabsAndCoursesManagement.WebAPI.Dtos;
+using System.Net;
+
+namespace LabsAndCoursesManagement.BusinessLogic.Services;
+
+public class UserService : BaseService&lt;User, UserRegistrationDto&gt;, IUserService
+{
+
+    private readonly IUserRepository userRepository;
+
+    public UserService(IRepository&lt;User&gt; repository, IUserRepository userRepository)
+        : base(repository)
+    {
+        this.userRepository = userRepository;
+    }
+
+    public async Task&lt;Result&lt;User&gt;&gt; RegisterUserAsync(UserRegistrationDto userRegistrationDto)
+    {
+        var user = mapper.Map&lt;User&gt;(userRegistrationDto);
+        var userFromDb = await userRepository.GetByEmail(userRegistrationDto.Email);
+
+        if (userFromDb != null)
+        {
+            return Result&lt;User&gt;.Failure(HttpStatusCode.Conflict, &quot;User has laready been registered&quot;);
+        }
+
+        var createdUser = mapper.Map(userRegistrationDto, user);
+
+        await userRepository.Add(createdUser);
+        await userRepository.SaveChanges();
+
+        return Result&lt;User&gt;.Success(createdUser);
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[18,11,18,27,0],[19,5,19,6,0],[20,9,20,46,0],[21,5,21,6,0],[24,5,24,6,0],[25,9,25,58,0],[26,9,26,85,0],[28,9,28,32,0],[29,9,29,10,0],[30,13,30,102,0],[33,9,33,65,0],[35,9,35,47,0],[36,9,36,44,0],[38,9,38,50,0],[39,5,39,6,0]]);
+    </script>
+  </body>
+</html>

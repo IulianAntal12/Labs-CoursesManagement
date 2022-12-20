@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.Tests\LabTests.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using AutoMapper;
+using LabsAndCoursesManagement.BusinessLogic.Mappers;
+using LabsAndCoursesManagement.Models.Dtos;
+using LabsAndCoursesManagement.Models.Models;
+
+namespace LabsAndCoursesManagement.Tests
+{
+    public class LabTests
+    {
+        private IMapper mapper;
+        private CreateStudentDto studentDto;
+        private Student student;
+        private CreateLabDto labDto;
+        private Lab lab;
+        private CreateTeacherDto teacherDto;
+        private Teacher teacher;
+
+        [SetUp]
+        public void Setup()
+        {
+            mapper = new AutoMapperBuilder().Build();
+
+            studentDto = new CreateStudentDto
+            {
+                FullName = &quot;Test test&quot;,
+                Email = &quot;test@test.test&quot;,
+                Year = 3,
+                IdentificationNumber = &quot;123456789RSL123456&quot;,
+                Group = &quot;B4&quot;,
+            };
+            student = mapper.Map&lt;Student&gt;(studentDto);
+
+            teacherDto = new CreateTeacherDto
+            {
+                FullName = &quot;Test test&quot;,
+                Email = &quot;test@test.test&quot;,
+                Role = &quot;Test&quot;,
+                Cabinet = &quot;Test&quot;,
+                PhoneNumber = &quot;076652123&quot;,
+            };
+            teacher = mapper.Map&lt;Teacher&gt;(teacherDto);
+
+            labDto = new CreateLabDto
+            {
+                Description = &quot;Test&quot;,
+                Name = &quot;Test&quot;,
+                Year = 3,
+                Semester = 1,
+                Group = &quot;B4&quot;
+            };
+            lab = mapper.Map&lt;Lab&gt;(labDto);
+        }
+
+        [Test]
+        public void EnrollTeacher_TeacherShouldNotBeNull_AndTeacherIdShouldNotBeNull()
+        {
+            lab.EnrollTeacher(teacher);
+
+            Assert.Multiple(() =&gt;
+            {
+                Assert.That(teacher.Id, Is.EqualTo(lab.TeacherId));
+                Assert.That(teacher, Is.EqualTo(lab.Teacher));
+            });
+        }
+
+        [Test]
+        public void EnrollStudent_StudentsShouldContainTheStudent()
+        {
+            lab.EnrollStudent(student);
+
+            Assert.Multiple(() =&gt;
+            {
+                Assert.That(lab.Students, Has.Count.EqualTo(1));
+                Assert.That(lab.Students, Does.Contain(student));
+            });
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[20,9,20,10,1],[21,13,21,54,1],[23,13,30,15,1],[31,13,31,55,1],[33,13,40,15,1],[41,13,41,55,1],[43,13,50,15,1],[51,13,51,43,1],[52,9,52,10,1],[56,9,56,10,1],[57,13,57,40,1],[59,13,60,13,1],[60,13,60,14,1],[60,14,61,17,1],[61,17,61,68,1],[61,68,62,17,1],[62,17,62,63,1],[62,63,63,13,1],[63,13,63,14,1],[63,14,63,16,1],[64,9,64,10,1],[68,9,68,10,1],[69,13,69,40,1],[71,13,72,13,1],[72,13,72,14,1],[72,14,73,17,1],[73,17,73,65,1],[73,65,74,17,1],[74,17,74,66,1],[74,66,75,13,1],[75,13,75,14,1],[75,14,75,16,1],[76,9,76,10,1]]);
+    </script>
+  </body>
+</html>

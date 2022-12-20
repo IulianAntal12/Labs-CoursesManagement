@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\Mappers\AutoMapperConfig.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using AutoMapper;
+using AutoMapper.EquivalencyExpression;
+
+namespace LabsAndCoursesManagement.BusinessLogic.Mappers
+{
+    public static class AutoMapperConfig
+    {
+        public static MapperConfiguration Configure()
+        {
+            var config = new MapperConfiguration(cfg =&gt;
+            {
+                cfg.AddProfile(new TeacherMapper());
+                cfg.AddProfile(new UserMapper());
+                cfg.AddProfile(new LabMapper());
+                cfg.AddProfile(new StudentMapper());
+                cfg.AddProfile(new CourseMapper());
+                cfg.AddCollectionMappers();
+            }
+            );
+            return config;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[9,9,9,10,1],[10,13,11,13,1],[11,13,11,14,1],[11,14,12,17,1],[12,17,12,53,1],[12,53,13,17,1],[13,17,13,50,1],[13,50,14,17,1],[14,17,14,49,1],[14,49,15,17,1],[15,17,15,53,1],[15,53,16,17,1],[16,17,16,52,1],[16,52,17,17,1],[17,17,17,44,1],[17,44,18,13,1],[18,13,18,14,1],[18,14,19,15,1],[20,13,20,27,1],[21,9,21,10,1]]);
+    </script>
+  </body>
+</html>

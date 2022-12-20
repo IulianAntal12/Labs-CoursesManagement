@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\Repositories\GenericRepositories\LabRepository.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using LabsAndCoursesManagement.DataAccess.Database;
+using LabsAndCoursesManagement.Models.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace LabsAndCoursesManagement.DataAccess.Repositories.GenericRepositories
+{
+    public class LabRepository : Repository&lt;Lab&gt;
+    {
+        public LabRepository(DatabaseContext context) : base(context)
+        { }
+        public override async Task&lt;Lab?&gt; Add(Lab entity)
+        {
+            var teacher = await context.Teachers.FindAsync(entity.TeacherId);
+            if (teacher == null)
+            {
+                return null;
+            }
+
+            teacher.EnrollToLabs(new List&lt;Lab?&gt;() { entity });
+            await context.AddAsync(entity);
+            await SaveChanges();
+            return entity;
+        }
+
+        public override async Task&lt;IEnumerable&lt;Lab&gt;&gt; All()
+        {
+            return await context.Labs
+                .Include(lab =&gt; lab.Students)
+                .Include(lab =&gt; lab.Teacher)
+                .ToListAsync();
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[9,57,9,70,0],[10,9,10,10,0],[10,11,10,12,0],[12,9,12,10,0],[13,13,13,78,0],[14,13,14,33,0],[15,13,15,14,0],[16,17,16,29,0],[19,13,19,63,0],[20,13,20,44,0],[21,13,21,33,0],[22,13,22,27,0],[23,9,23,10,0],[26,9,26,10,0],[27,13,30,32,0],[31,9,31,10,0]]);
+    </script>
+  </body>
+</html>

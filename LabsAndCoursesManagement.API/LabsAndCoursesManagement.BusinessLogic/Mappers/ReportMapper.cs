@@ -4,6 +4,7 @@ namespace LabsAndCoursesManagement.BusinessLogic.Mappers
 {
     public class ReportMapper
     {
+        protected ReportMapper() { }
         private static readonly Lazy<IMapper> Lazy =
             new(() =>
             {

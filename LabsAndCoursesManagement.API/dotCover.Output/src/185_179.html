@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\Queries\GetAllReportsQueryHandler.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using LabsAndCoursesManagement.DataAccess.Repositories;
+using LabsAndCoursesManagement.Models.Helpers;
+using LabsAndCoursesManagement.Models.Models;
+using MediatR;
+
+namespace LabsAndCoursesManagement.BusinessLogic.Queries
+{
+    public class GetAllReportsQueryHandler : IRequestHandler&lt;GetAllReportsQuery, Result&lt;IEnumerable&lt;Report&gt;&gt;&gt;
+    {
+        private readonly IRepository&lt;Report&gt; repository;
+
+        public GetAllReportsQueryHandler(IRepository&lt;Report&gt; repository)
+        {
+            this.repository = repository;
+        }
+
+        public async Task&lt;Result&lt;IEnumerable&lt;Report&gt;&gt;&gt; Handle(GetAllReportsQuery request, CancellationToken cancellationToken)
+        {
+            return Result&lt;IEnumerable&lt;Report&gt;&gt;.Success(await repository.All());
+        }
+
+
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[12,9,12,73,0],[13,9,13,10,0],[14,13,14,42,0],[15,9,15,10,0],[18,9,18,10,0],[19,13,19,80,0],[20,9,20,10,0]]);
+    </script>
+  </body>
+</html>

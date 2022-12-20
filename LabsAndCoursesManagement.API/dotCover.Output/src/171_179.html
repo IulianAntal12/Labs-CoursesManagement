@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\ConfigureService.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using LabsAndCoursesManagement.BusinessLogic.Interfaces;
+using LabsAndCoursesManagement.BusinessLogic.Services;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
+
+namespace LabsAndCoursesManagement.BusinessLogic
+{
+    public static class ConfigureService
+    {
+        public static IServiceCollection AddApplicationServices
+            (this IServiceCollection services)
+        {
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddFluentValidationAutoValidation();
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
+            services.AddScoped&lt;ICourseService, CourseService&gt;();
+            services.AddScoped&lt;ILabService, LabService&gt;();
+            services.AddScoped&lt;IStudentService, StudentService&gt;();
+            services.AddScoped&lt;ITeacherService, TeacherService&gt;();
+            services.AddScoped&lt;IUserService, UserService&gt;();
+
+            return services;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[15,9,15,10,1],[16,13,16,69,1],[17,13,17,66,1],[18,13,18,58,1],[19,13,19,81,1],[21,13,21,65,1],[22,13,22,59,1],[23,13,23,67,1],[24,13,24,67,1],[25,13,25,61,1],[27,13,27,29,1],[28,9,28,10,1]]);
+    </script>
+  </body>
+</html>

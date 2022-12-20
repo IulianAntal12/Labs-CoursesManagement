@@ -50,7 +50,7 @@ builder.Services.AddVersionedApiExplorer(
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT.Key"])),
         ValidateIssuer = true,
         ValidateAudience = true,
-        ValidateLifetime = false, // TODO: change that later
+        ValidateLifetime = false,
         ValidateIssuerSigningKey = true
     };
 });*/

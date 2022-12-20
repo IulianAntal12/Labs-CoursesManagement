@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.Tests\StudentServiceTests.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using LabsAndCoursesManagement.BusinessLogic.Services;
+using LabsAndCoursesManagement.DataAccess.Repositories;
+using LabsAndCoursesManagement.Models.Models;
+using Moq;
+using LabsAndCoursesManagement.Models.Dtos;
+using FluentAssertions;
+using AutoMapper;
+using LabsAndCoursesManagement.BusinessLogic.Mappers;
+
+namespace LabsAndCoursesManagement.Tests
+{
+    public class StudentServiceTests
+    {
+        private readonly Mock&lt;IRepository&lt;Student&gt;&gt; repository = new();
+        private readonly Mock&lt;IRepository&lt;Lab&gt;&gt; labRepository = new();
+        private StudentService service;
+
+        [SetUp]
+        public void Setup()
+        {
+            service = new StudentService(repository.Object, labRepository.Object);
+        }
+
+        [Test]
+        public async Task When_AddedNewStudent_Then_ShouldHaveIsSuccessTrueInResponse()
+        {
+            // Arrange
+            var studentDto = CreateSUT();
+            // Act
+            //repository.Setup(x =&gt; x.Add(student)).Returns(Task.FromResult(student));
+            var result = await service.Add(studentDto);
+            // Assert 
+            result.IsFailure.Should().BeTrue();
+        }
+
+        //[Test]
+        //public async Task When_AddedNewStudentWithEmptyFullName_Then_ShouldReturnUnprocessableEntity()
+        //{
+        //    // Arrange
+        //    var student = CreateSUT();
+        //    student.FullName = &quot;&quot;;
+        //    // Act
+        //    var result = await service.Add(student);
+        //    // Assert 
+        //    result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
+
+        //[Test]
+        //public async Task When_AddedNewStudentWithTooLongFullName_Then_ShouldReturnUnprocessableEntity()
+        //{
+        //    // Arrange
+        //    var student = CreateSUT();
+        //    student.FullName = string.Concat(Enumerable.Repeat(&quot;Hello&quot;, 100));
+        //    // Act
+        //    var result = await service.Add(student);
+        //    // Assert 
+        //    result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
+
+
+        //[Test]
+        //public async Task When_AddedNewStudentWithInvalidFullName_Then_ShouldReturnUnprocessableEntity()
+        //{
+        //    // Arrange
+        //    var student = CreateSUT();
+        //    student.FullName = &quot;InvalidFullName&quot;;
+        //    // Act
+        //    var result = await service.Add(student);
+        //    // Assert 
+        //    result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
+
+        //[Test]
+        //public async Task When_AddedNewStudentWithEmptyEmail_Then_ShouldReturnUnprocessableEntity()
+        //{
+        //    // Arrange
+        //    var student = CreateSUT();
+        //    student.Email = &quot;&quot;;
+        //    // Act
+        //    var result = await service.Add(student);
+        //    // Assert 
+        //    result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
+
+        //[Test]
+        //public async Task When_AddedNewStudentWithInvalidEmail_Then_ShouldReturnUnprocessableEntity()
+        //{
+        //    // Arrange
+        //    var student = CreateSUT();
+        //    student.Email = &quot;InvalidEmail&quot;;
+        //    // Act
+        //    var result = await service.Add(student);
+        //    // Assert 
+        //    result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
+        //[Test]
+        //public async Task When_AddedNewStudentWithDefaultValueForYear_Then_ShouldReturnUnprocessableEntity()
+        //{
+        //    // Arrange
+        //    var student = CreateSUT();
+        //    student.Year = 0;
+        //    // Act
+        //    var result = await service.Add(student);
+        //    // Assert 
+        //    result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
+        //[Test]
+        //public async Task When_AddedNewStudentWithTooHighValueForYear_Then_ShouldReturnUnprocessableEntity()
+        //{
+        //    // Arrange
+        //    var student = CreateSUT();
+        //    student.Year = 7;
+        //    // Act
+        //    var result = await service.Add(student);
+        //    // Assert 
+        //    result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
+        //[Test]
+        //public async Task When_AddedNewStudentWithEmptyIdentificationNumber_Then_ShouldReturnUnprocessableEntity()
+        //{
+        //    // Arrange
+        //    var student = CreateSUT();
+        //    student.IdentificationNumber = &quot;&quot;;
+        //    // Act
+        //    var result = await service.Add(student);
+        //    // Assert 
+        //    result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
+        //[Test]
+        //public async Task When_AddedNewStudentWithInvalidIdentificationNumber_Then_ShouldReturnUnprocessableEntity()
+        //{
+        //    // Arrange
+        //    var student = CreateSUT();
+        //    student.IdentificationNumber = &quot;InvalidIdentificationNumber&quot;;
+        //    // Act
+        //    var result = await service.Add(student);
+        //    // Assert 
+        //    result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
+        //[Test]
+        //public async Task When_AddedNewStudentWithEmptyGroup_Then_ShouldReturnUnprocessableEntity()
+        //{
+        //    // Arrange
+        //    var student = CreateSUT();
+        //    student.Group = &quot;&quot;;
+        //    // Act
+        //    var result = await service.Add(student);
+        //    // Assert 
+        //    result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
+        //[Test]
+        //public async Task When_AddedNewStudentWithInvalidGroup_Then_ShouldReturnUnprocessableEntity()
+        //{
+        //    // Arrange
+        //    var student = CreateSUT();
+        //    student.Group = &quot;InvalidGroup&quot;;
+        //    // Act
+        //    var result = await service.Add(student);
+        //    // Assert 
+        //    result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
+        private static CreateStudentDto CreateSUT()
+        {
+            return new CreateStudentDto
+            {
+                FullName = &quot;George Smoc&quot;,
+                Email = &quot;george.smoc13@gmail.com&quot;,
+                Year = 1,
+                IdentificationNumber = &quot;123456789RSL123456&quot;,
+                Group = &quot;B4&quot;
+            };
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[14,9,14,72,1],[15,9,15,71,1],[20,9,20,10,1],[21,13,21,83,1],[22,9,22,10,1],[26,9,26,10,1],[28,13,28,42,1],[31,13,31,56,1],[33,13,33,48,1],[34,9,34,10,1],[163,9,163,10,1],[164,13,171,15,1],[172,9,172,10,1]]);
+    </script>
+  </body>
+</html>

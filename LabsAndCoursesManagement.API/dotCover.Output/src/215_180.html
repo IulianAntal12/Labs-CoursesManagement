@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.DataAccess\ConfigureServices.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using LabsAndCoursesManagement.DataAccess.Database;
+using LabsAndCoursesManagement.DataAccess.Repositories;
+using LabsAndCoursesManagement.DataAccess.Repositories.GenericRepositories;
+using LabsAndCoursesManagement.Models.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace LabsAndCoursesManagement.DataAccess
+{
+    public static class ConfigureServices
+    {
+        public static IServiceCollection AddInfrastrutureServices
+            (this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddScoped&lt;IRepository&lt;Course&gt;, CourseRepository&gt;();
+            services.AddScoped&lt;IRepository&lt;Lab&gt;, LabRepository&gt;();
+            services.AddScoped&lt;IRepository&lt;Student&gt;, StudentRepository&gt;();
+            services.AddScoped&lt;IRepository&lt;Teacher&gt;, TeacherRepository&gt;();
+            services.AddScoped&lt;IRepository&lt;Report&gt;, ReportRepository&gt;();
+            services.AddScoped&lt;IRepository&lt;User&gt;, UserRepository&gt;();
+            services.AddScoped&lt;IUserRepository, UserRepository&gt;();
+            services.AddScoped&lt;IRepository&lt;Homework&gt;, HomeworkRepository&gt;();
+
+            services.
+                AddDbContext&lt;DatabaseContext&gt;
+                (m =&gt; m.UseSqlServer(
+                    configuration.GetConnectionString(&quot;LabsAndCoursesDb&quot;)),
+                    ServiceLifetime.Singleton);
+            return services;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[15,9,15,10,1],[16,13,16,73,1],[17,13,17,67,1],[18,13,18,75,1],[19,13,19,75,1],[20,13,20,73,1],[21,13,21,69,1],[22,13,22,67,1],[23,13,23,77,1],[25,13,27,23,1],[27,23,28,75,0],[28,75,29,48,1],[30,13,30,29,1],[31,9,31,10,1]]);
+    </script>
+  </body>
+</html>

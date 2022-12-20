@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.Tests\ResultTests.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using AutoMapper;
+using LabsAndCoursesManagement.BusinessLogic.Mappers;
+using LabsAndCoursesManagement.Models.Dtos;
+using LabsAndCoursesManagement.Models.Helpers;
+using LabsAndCoursesManagement.Models.Models;
+using System.Net;
+
+namespace LabsAndCoursesManagement.Tests
+{
+    public class ResultTests
+    {
+        private IMapper mapper;
+        private CreateTeacherDto teacherDto;
+        private Teacher teacher;
+        private Result&lt;Teacher&gt; result;
+        private HttpStatusCode statusCode = HttpStatusCode.BadRequest;
+
+        [SetUp]
+        public void Setup()
+        {
+            mapper = new AutoMapperBuilder().Build();
+            teacherDto = new CreateTeacherDto
+            {
+                FullName = &quot;Test&quot;,
+                Email = &quot;Test&quot;,
+                Role = &quot;Test&quot;,
+                Cabinet = &quot;Test&quot;,
+                PhoneNumber = &quot;Test&quot;,
+            };
+            teacher = mapper.Map&lt;Teacher&gt;(teacherDto);
+            result = new Result&lt;Teacher&gt;();
+        }
+
+        [Test]
+        public void Success_ResultEntityShouldBeTeacher_AndResultIsSuccessShouldBeTrue()
+        {
+            result = Result&lt;Teacher&gt;.Success(teacher);
+
+            Assert.Multiple(() =&gt;
+            {
+                Assert.That(result.IsSuccess, Is.True);
+                Assert.That(result.Entity, Is.EqualTo(teacher));
+            });
+        }
+
+        [Test]
+        public void SuccessNoEntity_ResultEntityShouldBeNull_AndResultIsSuccessShouldBeTrue()
+        {
+            result = Result&lt;Teacher&gt;.SuccessNoEntity();
+
+            Assert.Multiple(() =&gt;
+            {
+                Assert.That(result.IsSuccess, Is.True);
+                Assert.That(result.Entity, Is.Null);
+            });
+        }
+
+        [Test]
+        public void Failure_ErrorShouldBeError_StatusCodeShouldBe404_AndResultIsFailureShouldBeTrue()
+        {
+            result = Result&lt;Teacher&gt;.Failure(statusCode, &quot;Error&quot;);
+
+            Assert.Multiple(() =&gt;
+            {
+                Assert.That(result.IsFailure, Is.True);
+                Assert.That(result.Error, Is.EqualTo(&quot;Error&quot;));
+                Assert.That(result.StatusCode, Is.EqualTo(statusCode));
+            });
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[16,9,16,71,1],[20,9,20,10,1],[21,13,21,54,1],[22,13,29,15,1],[30,13,30,55,1],[31,13,31,44,1],[32,9,32,10,1],[36,9,36,10,1],[37,13,37,55,1],[39,13,40,13,1],[40,13,40,14,1],[40,14,41,17,1],[41,17,41,56,1],[41,56,42,17,1],[42,17,42,65,1],[42,65,43,13,1],[43,13,43,14,1],[43,14,43,16,1],[44,9,44,10,1],[48,9,48,10,1],[49,13,49,56,1],[51,13,52,13,1],[52,13,52,14,1],[52,14,53,17,1],[53,17,53,56,1],[53,56,54,17,1],[54,17,54,53,1],[54,53,55,13,1],[55,13,55,14,1],[55,14,55,16,1],[56,9,56,10,1],[60,9,60,10,1],[61,13,61,67,1],[63,13,64,13,1],[64,13,64,14,1],[64,14,65,17,1],[65,17,65,56,1],[65,56,66,17,1],[66,17,66,64,1],[66,64,67,17,1],[67,17,67,72,1],[67,72,68,13,1],[68,13,68,14,1],[68,14,68,16,1],[69,9,69,10,1]]);
+    </script>
+  </body>
+</html>

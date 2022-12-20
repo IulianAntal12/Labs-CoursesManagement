@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.Tests\CourseServiceTests.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+﻿using AutoMapper;
+using FluentAssertions;
+using LabsAndCoursesManagement.BusinessLogic.Mappers;
+using LabsAndCoursesManagement.BusinessLogic.Services;
+using LabsAndCoursesManagement.DataAccess.Repositories;
+using LabsAndCoursesManagement.Models.Dtos;
+using LabsAndCoursesManagement.Models.Models;
+using Moq;
+
+namespace LabsAndCoursesManagement.Tests
+{
+    public class CourseServiceTests
+    {
+        private readonly Mock&lt;IRepository&lt;Course&gt;&gt; repository = new();
+        private CourseService service;
+        private IMapper mapper;
+        [SetUp]
+        public void Setup()
+        {
+            service = new CourseService(repository.Object);
+            mapper = new AutoMapperBuilder().Build();
+        }
+
+        [Test]
+        public async Task When_AddedNewCourse_Then_ShouldHaveIsSuccessTrue()
+        {
+            // Arrange
+            var courseDto = CreateSUT();
+            // Act
+            //repository.Setup(x =&gt; x.Add(course)).Returns(Task.FromResult(course));
+            var response = await service.Add(courseDto);
+            // Assert
+            response.IsFailure.Should().BeTrue();
+        }
+        [Test]
+        public async Task When_AddedNewCourseWithEmptyName_Then_ShouldReturnUnprocessableEntity()
+        {
+            // Arrange
+            var course = CreateSUT();
+            course.Name = &quot;&quot;;
+            // Act
+            var response = await service.Add(course);
+            // Assert
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        }
+
+        //    [Test]
+        //    public async Task When_AddedNewCourseWithTooLongName_Then_ShouldReturnUnprocessableEntity()
+        //    {
+        //        // Arrange
+        //        var course = CreateSUT();
+        //        course.Name = string.Concat(Enumerable.Repeat(&quot;Hello&quot;, 100));
+        //        // Act
+        //        var response = await service.Add(course);
+        //        // Assert
+        //        response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //    }
+
+        //    [Test]
+        //    public async Task When_AddedNewCourseWithTooLongDescription_Then_ShouldReturnUnprocessableEntity()
+        //    {
+        //        // Arrange
+        //        var course = CreateSUT();
+        //        course.Description = string.Concat(Enumerable.Repeat(&quot;Hello&quot;, 100));
+        //        // Act
+        //        var response = await service.Add(course);
+        //        // Assert
+        //        response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //    }
+
+        //    [Test]
+        //    public async Task When_AddedNewCourseWithDefaultValueForYear_Then_ShouldReturnUnprocessableEntity()
+        //    {
+        //        // Arrange
+        //        var course = CreateSUT();
+        //        course.Year = 0;
+        //        // Act
+        //        var response = await service.Add(course);
+        //        // Assert
+        //        response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //    }
+
+        //    [Test]
+        //    public async Task When_AddedNewCourseWithTooHighValueForYear_Then_ShouldReturnUnprocessableEntity()
+        //    {
+        //        // Arrange
+        //        var course = CreateSUT();
+        //        course.Year = 7;
+        //        // Act
+        //        var response = await service.Add(course);
+        //        // Assert
+        //        response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //    }
+
+        //    [Test]
+        //    public async Task When_AddedNewCourseWithDefaultValueForSemester_Then_ShouldReturnUnprocessableEntity()
+        //    {
+        //        // Arrange
+        //        var course = CreateSUT();
+        //        course.Semester = 0;
+        //        // Act
+        //        var response = await service.Add(course);
+        //        // Assert
+        //        response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //    }
+
+        //    [Test]
+        //    public async Task When_AddedNewCourseWithTooHighValueForSemester_Then_ShouldReturnUnprocessableEntity()
+        //    {
+        //        // Arrange
+        //        var course = CreateSUT();
+        //        course.Semester = 3;
+        //        // Act
+        //        var response = await service.Add(course);
+        //        // Assert
+        //        response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //    }
+
+        private static CreateCourseDto CreateSUT()
+        {
+            return new CreateCourseDto
+            {
+                Name = &quot;New Name&quot;,
+                Description = &quot;Description&quot;,
+                Semester = 1,
+                Year = 1,
+            };
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[14,9,14,71,1],[19,9,19,10,1],[20,13,20,60,1],[21,13,21,54,1],[22,9,22,10,1],[26,9,26,10,1],[28,13,28,41,1],[31,13,31,57,1],[33,13,33,50,1],[34,9,34,10,1],[37,9,37,10,1],[39,13,39,38,1],[40,13,40,30,1],[42,13,42,54,1],[44,13,44,92,1],[45,9,45,10,0],[120,9,120,10,1],[121,13,127,15,1],[128,9,128,10,1]]);
+    </script>
+  </body>
+</html>

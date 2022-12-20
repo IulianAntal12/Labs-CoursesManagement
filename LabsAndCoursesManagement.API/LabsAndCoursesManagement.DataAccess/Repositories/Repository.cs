@@ -8,7 +8,7 @@ namespace LabsAndCoursesManagement.DataAccess.Repositories
     {
         protected readonly DatabaseContext context;
 
-        public Repository(DatabaseContext context)
+        protected Repository(DatabaseContext context)
         {
             this.context = context;
         }
@@ -76,7 +76,7 @@ namespace LabsAndCoursesManagement.DataAccess.Repositories
         {
             if (context is null || context.Set<T>() is null)
             {
-                throw new ArgumentNullException("Null database");
+                throw new ArgumentNullException();
             }
         }
     }

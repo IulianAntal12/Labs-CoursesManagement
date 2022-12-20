@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.Tests\LabServiceTests.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using LabsAndCoursesManagement.BusinessLogic.Interfaces;
+using LabsAndCoursesManagement.DataAccess.Repositories;
+using LabsAndCoursesManagement.Models.Dtos;
+using LabsAndCoursesManagement.Models.Models;
+using Moq;
+using FluentAssertions;
+using AutoMapper;
+using LabsAndCoursesManagement.BusinessLogic.Mappers;
+
+namespace LabsAndCoursesManagement.Tests
+{
+    public class LabServiceTests
+    {
+        private readonly Mock&lt;IRepository&lt;Lab&gt;&gt; repository = new();
+        private readonly Mock&lt;IRepository&lt;Teacher&gt;&gt; teacherRepository = new();
+        private LabService service;
+        private IMapper mapper;
+
+        [SetUp]
+        public void Setup()
+        {
+            service = new LabService(repository.Object, teacherRepository.Object);
+            mapper = new AutoMapperBuilder().Build();
+        }
+
+        [Test]
+        public async Task When_AddedNewLab_Then_ShouldHaveIsSuccessTrue()
+        {
+            // Arrange
+            var labDto = CreateSUT();
+            // Act
+            //repository.Setup(x =&gt; x.Add(lab)).Returns(Task.FromResult(lab));
+            var response = await service.Add(labDto);
+            // Assert
+            response.IsFailure.Should().BeTrue();
+        }
+
+        //[Test]
+        //public async Task When_AddedNewLabWithEmptyName_Then_ShouldHaveUnprocessableEntityAsResponse()
+        //{
+        //    // Arrange
+        //    var lab = CreateSUT();
+        //    lab.Name = &quot;&quot;;
+        //    // Act
+        //    var response = await service.Add(lab);
+        //    // Assert
+        //    response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
+
+        //[Test]
+        //public async Task When_AddedNewLabWithTooLongName_Then_ShouldHaveUnprocessableEntityAsResponse()
+        //{
+        //    // Arrange
+        //    var lab = CreateSUT();
+        //    lab.Name = string.Concat(Enumerable.Repeat(&quot;Hello&quot;, 100));
+        //    // Act
+        //    var response = await service.Add(lab);
+        //    // Assert
+        //    response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
+        //[Test]
+        //public async Task When_AddedNewLabWithEmptyGroup_Then_ShouldHaveUnprocessableEntityAsResponse()
+        //{
+        //    // Arrange
+        //    var lab = CreateSUT();
+        //    lab.Group = &quot;&quot;;
+        //    // Act
+        //    var response = await service.Add(lab);
+        //    // Assert
+        //    response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
+
+        //[Test]
+        //public async Task When_AddedNewLabWithGroupNotMatchingRegex_Then_ShouldHaveIsFailureTrueInResponse()
+        //{
+        //    // Arrange
+        //    var lab = CreateSUT();
+        //    lab.Group = &quot;B4 best group&quot;;
+        //    // Act
+        //    var response = await service.Add(lab);
+        //    // Assert
+        //    response.IsFailure.Should().BeTrue();
+        //}
+
+        //[Test]
+        //public async Task When_AddedNewLabWithEmptyDescription_Then_ShouldHaveIsSuccessTrueInResponse()
+        //{
+        //    // Arrange
+        //    var lab = CreateSUT();
+        //    lab.Description = &quot;&quot;;
+        //    // Act
+        //    var response = await service.Add(lab);
+        //    // Assert
+        //    response.IsSuccess.Should().BeTrue();
+        //}
+        [Test]
+        public async Task When_AddedNewLabWithEmptyDescription_Then_ShouldHaveIsFailureTrueInResponse()
+        {
+            // Arrange
+            var lab = CreateSUT();
+            lab.Description = &quot;&quot;;
+            // Act
+            var response = await service.Add(lab);
+            // Assert
+            response.IsFailure.Should().BeTrue();
+        }
+
+        //[Test]
+        //public async Task When_AddedNewLabWithTooLongDescription_Then_ShouldHaveUnprocessableEntityAsResponse()
+        //{
+        //    // Arrange
+        //    var lab = CreateSUT();
+        //    lab.Description = string.Concat(Enumerable.Repeat(&quot;Hello&quot;, 100));
+        //    // Act
+        //    var response = await service.Add(lab);
+        //    // Assert
+        //    response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
+
+        //[Test]
+        //public async Task When_AddedNewLabWithDefaultValueForYear_Then_ShouldHaveUnprocessableEntityAsResponse()
+        //{
+        //    // Arrange
+        //    var lab = CreateSUT();
+        //    lab.Year = 0;
+        //    // Act
+        //    var response = await service.Add(lab);
+        //    // Assert
+        //    response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
+
+        //[Test]
+        //public async Task When_AddedNewLabWithTooHighValueForYear_Then_ShouldHaveUnprocessableEntityAsResponse()
+        //{
+        //    // Arrange
+        //    var lab = CreateSUT();
+        //    lab.Year = 7;
+        //    // Act
+        //    var response = await service.Add(lab);
+        //    // Assert
+        //    response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
+
+        //[Test]
+        //public async Task When_AddedNewLabWithDefaultValueForSemester_Then_ShouldHaveUnprocessableEntityAsResponse()
+        //{
+        //    // Arrange
+        //    var lab = CreateSUT();
+        //    lab.Semester = 0;
+        //    // Act
+        //    var response = await service.Add(lab);
+        //    // Assert
+        //    response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
+        //[Test]
+        //public async Task When_AddedNewLabWithTooHighValueForSemester_Then_ShouldHaveUnprocessableEntityAsResponse()
+        //{
+        //    // Arrange
+        //    var lab = CreateSUT();
+        //    lab.Semester = 3;
+        //    // Act
+        //    var response = await service.Add(lab);
+        //    // Assert
+        //    response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
+
+        //[Test]
+        //public async Task When_AddedNewLabWithEmptyTeacherField_Then_ShouldHaveUnprocessableEntityAsResponse()
+        //{
+        //    // Arrange
+        //    var lab = CreateSUT();
+        //    lab.TeacherId = Guid.Empty;
+        //    // Act
+        //    var response = await service.Add(lab);
+        //    // Assert
+        //    response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
+        private static CreateLabDto CreateSUT()
+        {
+            return new CreateLabDto
+            {
+                Name = &quot;New Name&quot;,
+                Group = &quot;A3&quot;,
+                Description = &quot;Description&quot;,
+                Semester = 1,
+                Year = 1,
+                TeacherId = Guid.NewGuid()
+            };
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[14,9,14,68,1],[15,9,15,79,1],[21,9,21,10,1],[22,13,22,83,1],[23,13,23,54,1],[24,9,24,10,1],[28,9,28,10,1],[30,13,30,38,1],[33,13,33,54,1],[35,13,35,50,1],[36,9,36,10,1],[98,9,98,10,1],[100,13,100,35,1],[101,13,101,34,1],[103,13,103,51,1],[105,13,105,50,1],[106,9,106,10,1],[179,9,179,10,1],[180,13,188,15,1],[189,9,189,10,1]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Facultate\.NET course\Labs-CoursesManagement\LabsAndCoursesManagement.API\LabsAndCoursesManagement.BusinessLogic\Validators\CreateStudentDtoValidator.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using FluentValidation;
+using LabsAndCoursesManagement.Models.Dtos;
+
+namespace LabsAndCoursesManagement.BusinessLogic.Validators
+{
+    public class CreateStudentDtoValidator : AbstractValidator&lt;CreateStudentDto&gt;
+    {
+        public CreateStudentDtoValidator()
+        {
+            RuleFor(x =&gt; x.FullName)
+                .NotEmpty()
+                .MaximumLength(50)
+                .Must(BeAValidFullName)
+                .WithMessage(&quot;Please enter first name and last name&quot;);
+            RuleFor(x =&gt; x.Email)
+                .NotEmpty()
+                .Matches(&quot;^[a-z|A-Z|0-9|_|.]+@[a-z]+\\.[a-z]+$&quot;);
+            RuleFor(x =&gt; x.Year)
+                .NotEmpty()
+                .LessThan(7);
+            RuleFor(x =&gt; x.IdentificationNumber)
+                .NotEmpty()
+                .Matches(&quot;^[0-9]{9}[A-Z]{3}[0-9]{6}$&quot;);
+            RuleFor(x =&gt; x.Group)
+                .NotEmpty()
+                .Matches(&quot;^[A|B|X][1-5]$&quot;);
+        }
+
+        private bool BeAValidFullName(string fullName)
+        {
+            string[] fullNameComponents = fullName.Split(&quot; &quot;);
+            if (fullNameComponents.Length &lt; 2)
+                return false;
+            if (fullNameComponents[0].Length &lt; 1 || fullNameComponents[1].Length &lt; 1)
+                return false;
+            return true;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[8,9,8,43,0],[9,9,9,10,0],[10,13,14,71,0],[15,13,17,66,0],[18,13,20,30,0],[21,13,23,56,0],[24,13,26,44,0],[27,9,27,10,0],[30,9,30,10,0],[31,13,31,63,0],[32,13,32,47,0],[33,17,33,30,0],[34,13,34,86,0],[35,17,35,30,0],[36,13,36,25,0],[37,9,37,10,0]]);
+    </script>
+  </body>
+</html>
