@@ -1,7 +1,7 @@
 ﻿using LabsAndCoursesManagement.BusinessLogic.Base;
-using LabsAndCoursesManagement.Models.Models;
 using LabsAndCoursesManagement.Models.Dtos;
 using LabsAndCoursesManagement.Models.Helpers;
+using LabsAndCoursesManagement.Models.Models;
 
 namespace LabsAndCoursesManagement.BusinessLogic.Interfaces
 {

@@ -10,12 +10,13 @@ namespace LabsAndCoursesManagement.DataAccess.Database
         public DbSet<Teacher> Teachers => Set<Teacher>();
         public DbSet<User> Users => Set<User>();
         public DbSet<Report> Reports => Set<Report>();
+        public DbSet<Homework> Homework => Set<Homework>();
 
-        public DatabaseContext(DbContextOptions<DatabaseContext> options): base(options)
+        public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
             this.Database.EnsureCreated();
         }
-        
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Lab>()
@@ -26,18 +27,11 @@ namespace LabsAndCoursesManagement.DataAccess.Database
                 .HasOne(lab => lab.Teacher)
                 .WithMany(teacher => teacher.Labs)
                 .HasForeignKey(lab => lab.TeacherId);
-            
+
             modelBuilder.Entity<User>()
                 .HasOne(u => u.Student)
                 .WithOne()
                 .HasForeignKey<User>(u => u.StudentID);
         }
-        
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-
-        //    optionsBuilder.LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name }, LogLevel.Information)
-        //                  .EnableSensitiveDataLogging();
-        //}
     }
 }

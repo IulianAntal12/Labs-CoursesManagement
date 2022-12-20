@@ -51,7 +51,7 @@ namespace LabsAndCoursesManagement.DataAccess.Repositories
             CheckDatabaseContextStatus();
             var toBeUpdated = await context.Set<T>()
                                            .FindAsync(key);
-            
+
             if (toBeUpdated == null)
             {
                 return null;

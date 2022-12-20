@@ -3,7 +3,7 @@ using LabsAndCoursesManagement.BusinessLogic.Commands;
 
 namespace LabsAndCoursesManagement.BusinessLogic.Validators
 {
-    public class UpdateReportCommandValidator: AbstractValidator<UpdateReportCommand>
+    public class UpdateReportCommandValidator : AbstractValidator<UpdateReportCommand>
     {
         public UpdateReportCommandValidator()
         {

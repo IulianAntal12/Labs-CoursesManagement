@@ -20,7 +20,7 @@ namespace LabsAndCoursesManagement.BusinessLogic.Base
         public async Task<Result<T?>> Add(TDto dto)
         {
             T entity = mapper.Map<T>(dto);
-        
+
             var result = await repository.Add(entity);
             if (result == null)
             {

@@ -14,7 +14,7 @@ public class UserService : BaseService<User, UserRegistrationDTO>, IUserService
 
     private readonly IUserRepository userRepository;
 
-    public UserService(IRepository<User> repository, IUserRepository userRepository) 
+    public UserService(IRepository<User> repository, IUserRepository userRepository)
         : base(repository)
     {
         this.userRepository = userRepository;
@@ -24,14 +24,14 @@ public class UserService : BaseService<User, UserRegistrationDTO>, IUserService
     {
         var user = mapper.Map<User>(userRegistrationDto);
         var userFromDb = await userRepository.GetByEmail(userRegistrationDto.Email);
-        
+
         if (userFromDb != null)
         {
             return Result<User>.Failure(HttpStatusCode.Conflict, "User has laready been registered");
         }
 
-        var createdUser = mapper.Map(userRegistrationDto, user); 
-        
+        var createdUser = mapper.Map(userRegistrationDto, user);
+
         await userRepository.Add(createdUser);
         await userRepository.SaveChanges();
 

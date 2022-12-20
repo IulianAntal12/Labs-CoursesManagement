@@ -55,7 +55,7 @@ builder.Services.AddVersionedApiExplorer(
     };
 });*/
 
-builder.Services.AddAuthorization();    
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -80,4 +80,7 @@ app.MapControllers();
 
 app.Run();
 
-public partial class Program { }
+public partial class Program
+{
+    protected Program() { }
+}

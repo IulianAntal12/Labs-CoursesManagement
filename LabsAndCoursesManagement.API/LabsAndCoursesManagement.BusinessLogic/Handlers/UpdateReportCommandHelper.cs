@@ -17,7 +17,7 @@ namespace LabsAndCoursesManagement.BusinessLogic.Handlers
         }
         public async Task<Result<Report>> Handle(UpdateReportCommand request, CancellationToken cancellationToken)
         {
-            var castedRequest = (CreateReportCommand) request;
+            var castedRequest = (CreateReportCommand)request;
             var reportEntity = ReportMapper.Mapper.Map<Report>(castedRequest);
             if (reportEntity == null)
             {
@@ -25,7 +25,11 @@ namespace LabsAndCoursesManagement.BusinessLogic.Handlers
             }
 
             var newReport = await repository.Update(request.Id, reportEntity);
-            return Result<Report>.Success(newReport);  
+            if (newReport != null)
+            {
+                return Result<Report>.Success(newReport);
+            }
+            return Result<Report>.Failure(System.Net.HttpStatusCode.InternalServerError, "Issue");
         }
     }
 }
