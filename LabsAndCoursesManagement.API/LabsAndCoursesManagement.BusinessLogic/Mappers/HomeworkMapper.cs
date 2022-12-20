@@ -12,7 +12,7 @@ namespace LabsAndCoursesManagement.BusinessLogic.Mappers
                    cfg.ShouldMapProperty = p =>
                    p.GetMethod.IsPublic ||
                    p.GetMethod.IsAssembly;
-                   cfg.AddProfile<ReportMappingProfile>();
+                   cfg.AddProfile<HomeworkMappingProfile>();
                });
                var mapper = config.CreateMapper();
                return mapper;

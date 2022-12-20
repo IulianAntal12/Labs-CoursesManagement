@@ -18,7 +18,7 @@ namespace LabsAndCoursesManagement.BusinessLogic.Handlers
 
         public async Task<Result<Homework>> Handle(CreateHomeworkCommand request, CancellationToken cancellationToken)
         {
-            var reportEntity = ReportMapper.Mapper.Map<Homework>(request);
+            var reportEntity = HomeworkMapper.Mapper.Map<Homework>(request);
             if (reportEntity == null)
             {
                 return Result<Homework>.Failure(System.Net.HttpStatusCode.InternalServerError, "Issue with the mapper");
