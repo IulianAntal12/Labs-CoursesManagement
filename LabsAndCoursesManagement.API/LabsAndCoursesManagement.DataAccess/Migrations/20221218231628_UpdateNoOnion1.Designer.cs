@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LabsAndCoursesManagement.DataAccess.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20221128205101_initialCreation")]
-    partial class initialCreation
+    [Migration("20221218231628_UpdateNoOnion1")]
+    partial class UpdateNoOnion1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -72,6 +72,33 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                     b.HasIndex("TeacherId");
 
                     b.ToTable("Labs");
+                });
+
+            modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.Report", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("EvaluationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("EvaluationType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("StudentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("TeacherId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<double>("Value")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Reports");
                 });
 
             modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.Student", b =>
@@ -200,7 +227,7 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
 
             modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.User", b =>
                 {
-                    b.HasOne("LabsAndCoursesManagement.Models.Models.Student", "Student")
+                    b.HasOne("LabsAndCoursesManagement.Models.Models.Teacher", "Student")
                         .WithOne()
                         .HasForeignKey("LabsAndCoursesManagement.Models.Models.User", "StudentID")
                         .OnDelete(DeleteBehavior.Cascade)

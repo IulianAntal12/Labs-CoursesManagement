@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using LabsAndCoursesManagement.Models.Models;
 
-namespace LabsAndCoursesManagement.BusinessLogic.Services.Validators
+namespace LabsAndCoursesManagement.BusinessLogic.Validators
 {
     public class UserValidator : AbstractValidator<User>
     {

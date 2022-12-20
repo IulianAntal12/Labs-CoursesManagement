@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using FluentValidation;
 using LabsAndCoursesManagement.BusinessLogic.Mappers;
 using LabsAndCoursesManagement.DataAccess.Repositories;
 using LabsAndCoursesManagement.Models.Helpers;
@@ -12,23 +11,16 @@ namespace LabsAndCoursesManagement.BusinessLogic.Base
     {
         protected readonly IMapper mapper;
         protected readonly IRepository<T> repository;
-        protected readonly IValidator<T> validator;
 
-        public BaseService(IRepository<T> repository, IValidator<T?> validator)
+        public BaseService(IRepository<T> repository)
         {
             mapper = new AutoMapperBuilder().Build();
             this.repository = repository;
-            this.validator = validator;
         }
         public async Task<Result<T?>> Add(TDto dto)
         {
             T entity = mapper.Map<T>(dto);
-            var validationResult = await validator.ValidateAsync(entity);
-            if (!validationResult.IsValid) 
-            {
-                return Result<T?>.Failure(HttpStatusCode.UnprocessableEntity, validationResult.Errors[0].ErrorMessage);
-            }
-
+        
             var result = await repository.Add(entity);
             if (result == null)
             {
@@ -69,11 +61,6 @@ namespace LabsAndCoursesManagement.BusinessLogic.Base
         public async Task<Result<T>> Update(Guid id, TDto dto)
         {
             var entity = mapper.Map<T>(dto);
-            var validationResult = await validator.ValidateAsync(entity);
-            if (!validationResult.IsValid)
-            {
-                return Result<T>.Failure(HttpStatusCode.UnprocessableEntity, validationResult.Errors[0].ErrorMessage);
-            }
 
             var response = await repository.Update(id, entity);
             if (response == null)

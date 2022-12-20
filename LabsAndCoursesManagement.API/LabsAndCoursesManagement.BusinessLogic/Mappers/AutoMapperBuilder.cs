@@ -2,7 +2,7 @@
 
 namespace LabsAndCoursesManagement.BusinessLogic.Mappers
 {
-    public class AutoMapperBuilder : IBuilder<IMapper>
+    public class AutoMapperBuilder
     {
         public IMapper Build()
         {

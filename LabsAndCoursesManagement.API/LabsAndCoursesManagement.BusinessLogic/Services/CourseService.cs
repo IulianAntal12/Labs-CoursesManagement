@@ -1,5 +1,4 @@
-﻿using FluentValidation;
-using LabsAndCoursesManagement.BusinessLogic.Base;
+﻿using LabsAndCoursesManagement.BusinessLogic.Base;
 using LabsAndCoursesManagement.BusinessLogic.Interfaces;
 using LabsAndCoursesManagement.DataAccess.Repositories;
 using LabsAndCoursesManagement.Models.Dtos;
@@ -9,7 +8,7 @@ namespace LabsAndCoursesManagement.BusinessLogic.Services
 {
     public class CourseService : BaseService<Course, CreateCourseDto>, ICourseService
     {
-        public CourseService(IRepository<Course> repository, IValidator<Course?> validator) : base(repository, validator)
+        public CourseService(IRepository<Course> repository) : base(repository)
         {
         }
     }

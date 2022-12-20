@@ -1,12 +1,6 @@
-using FluentValidation;
-using LabsAndCoursesManagement.BusinessLogic.Interfaces;
-using LabsAndCoursesManagement.BusinessLogic.Services;
-using LabsAndCoursesManagement.BusinessLogic.Services.Validators;
-using LabsAndCoursesManagement.DataAccess.Database;
-using LabsAndCoursesManagement.DataAccess.Repositories;
-using LabsAndCoursesManagement.DataAccess.Repositories.GenericRepositories;
-using LabsAndCoursesManagement.Models.Models;
-using Microsoft.EntityFrameworkCore;
+using LabsAndCoursesManagement.BusinessLogic;
+using LabsAndCoursesManagement.DataAccess;
+using Microsoft.AspNetCore.Mvc.Versioning;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,38 +10,32 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-//builder.Services.AddScoped<AbstractValidator<Teacher>, TeacherValidator>();
-//builder.Services.AddScoped<AbstractValidator<Course>, CourseValidator>();
-//builder.Services.AddScoped<AbstractValidator<Lab>, LabValidator>();
-//builder.Services.AddScoped<AbstractValidator<Student>, StudentValidator>();
-builder.Services.AddScoped<IValidator<Teacher>, TeacherValidator>();
-builder.Services.AddScoped<IValidator<Course>, CourseValidator>();
-builder.Services.AddScoped<IValidator<Lab>, LabValidator>();
-builder.Services.AddScoped<IValidator<Student>, StudentValidator>();
-builder.Services.AddScoped<IValidator<User>, UserValidator>();
-
-
-builder.Services.AddScoped<DatabaseContext>();
-builder.Services.AddScoped<IRepository<Teacher>, TeacherRepository>();
-builder.Services.AddScoped<IRepository<Lab>, LabRepository>();
-builder.Services.AddScoped<IRepository<Student>, StudentRepository>();
-builder.Services.AddScoped<ITeacherService, TeacherService>();
-builder.Services.AddScoped<IStudentService, StudentService>();
-builder.Services.AddScoped<ILabService, LabService>();
+builder.Services.AddInfrastrutureServices(builder.Configuration);
+builder.Services.AddApplicationServices();
 
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
 );
 
-builder.Services.AddDbContext<DatabaseContext>(
-    options => options.UseSqlServer(
-        builder.Configuration.GetConnectionString("LabsAndCoursesDb"),
-    b => b.MigrationsAssembly(typeof(DatabaseContext).Assembly.FullName))
-    .LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name }, LogLevel.Information)
-        .EnableSensitiveDataLogging()
-    );
+builder.Services.AddApiVersioning(o =>
+{
+    o.AssumeDefaultVersionWhenUnspecified = true;
+    o.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
+    o.ReportApiVersions = true;
+    o.ApiVersionReader = ApiVersionReader.Combine
+        (
+            new QueryStringApiVersionReader("api-version"),
+            new HeaderApiVersionReader("X-version"),
+            new MediaTypeApiVersionReader("ver")
+        );
+});
+builder.Services.AddVersionedApiExplorer(
+    options =>
+    {
+        options.GroupNameFormat = "'v'VVV";
+        options.SubstituteApiVersionInUrl = true;
+    });
 
-builder.Services.AddScoped<IRepository<User>, UserRepository>();
 /*builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

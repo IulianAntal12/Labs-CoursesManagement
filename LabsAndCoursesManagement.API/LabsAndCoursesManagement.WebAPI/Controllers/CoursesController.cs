@@ -4,8 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LabsAndCoursesManagement.WebAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/courses")]
     [ApiController]
+    [ApiVersion("1.0")]
     public class CoursesController : ControllerBase
     {
         private readonly ICourseService service;

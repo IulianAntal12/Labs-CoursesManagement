@@ -1,4 +1,3 @@
-using FluentValidation;
 using LabsAndCoursesManagement.BusinessLogic.Base;
 using LabsAndCoursesManagement.BusinessLogic.Interfaces;
 using LabsAndCoursesManagement.DataAccess.Repositories;
@@ -15,8 +14,8 @@ public class UserService : BaseService<User, UserRegistrationDTO>, IUserService
 
     private readonly IUserRepository userRepository;
 
-    public UserService(IRepository<User> repository, IUserRepository userRepository, IValidator<User?> validator) 
-        : base(repository, validator)
+    public UserService(IRepository<User> repository, IUserRepository userRepository) 
+        : base(repository)
     {
         this.userRepository = userRepository;
     }
