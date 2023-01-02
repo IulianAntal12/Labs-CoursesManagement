@@ -26,7 +26,8 @@ namespace LabsAndCoursesManagement.DataAccess
                 AddDbContext<DatabaseContext>
                 (m => m.UseSqlServer(
                     configuration.GetConnectionString("LabsAndCoursesDb")),
-                    ServiceLifetime.Singleton);
+                    ServiceLifetime.Singleton)
+                ;
             return services;
         }
     }

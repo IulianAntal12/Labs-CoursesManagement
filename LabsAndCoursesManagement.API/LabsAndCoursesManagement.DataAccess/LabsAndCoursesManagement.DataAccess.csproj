@@ -17,11 +17,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Database\" />
+    <Folder Include="Multitenancy\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="Finbuckle.MultiTenant" Version="6.9.1" />
+    <PackageReference Include="Finbuckle.MultiTenant.AspNetCore" Version="6.9.1" />
+    <PackageReference Include="Finbuckle.MultiTenant.EntityFrameworkCore" Version="6.9.1" />
     <PackageReference Include="FluentAssertions" Version="6.8.0" />
     <PackageReference Include="FluentValidation" Version="11.4.0" />
     <PackageReference Include="Microsoft.CodeCoverage" Version="17.4.0" />

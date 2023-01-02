@@ -11,6 +11,7 @@ namespace LabsAndCoursesManagement.DataAccess.Database
         public DbSet<User> Users => Set<User>();
         public DbSet<Report> Reports => Set<Report>();
         public DbSet<Homework> Homework => Set<Homework>();
+        public DbSet<Course> Courses => Set<Course>();
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {

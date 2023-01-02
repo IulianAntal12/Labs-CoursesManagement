@@ -80,6 +80,8 @@ app.MapControllers();
 
 app.Run();
 
+app.UseMultiTenant();
+
 public partial class Program
 {
     protected Program() { }

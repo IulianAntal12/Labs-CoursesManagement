@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using FluentAssertions;
 using LabsAndCoursesManagement.API.IntegrationTests.Setup;
 using LabsAndCoursesManagement.BusinessLogic.Mappers;
 using LabsAndCoursesManagement.DataAccess.Database;
