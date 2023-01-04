@@ -1,6 +1,6 @@
 ﻿namespace LabsAndCoursesManagement.Models.Models
 {
-    public class Lab
+    public class Lab: TenantBase
     {
         public Lab()
         {
@@ -8,7 +8,6 @@
         }
 
         public Guid Id { get; private set; }
-
         public string Name { get; private set; }
 
         public string Group { get; private set; }

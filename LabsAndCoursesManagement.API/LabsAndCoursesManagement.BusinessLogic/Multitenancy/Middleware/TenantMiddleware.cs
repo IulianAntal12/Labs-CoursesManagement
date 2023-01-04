@@ -1,7 +1,7 @@
 ﻿using LabsAndCoursesManagement.DataAccess.Database;
 using Microsoft.AspNetCore.Http;
 
-namespace LabsAndCoursesManagement.BusinessLogic.Middleware
+namespace LabsAndCoursesManagement.BusinessLogic.Multitenancy.Middleware
 {
     internal class TenantMiddleware : IMiddleware
     {
@@ -14,10 +14,11 @@ namespace LabsAndCoursesManagement.BusinessLogic.Middleware
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
             var request = context.Request;
-            if (!string.IsNullOrEmpty(request.ContentType) && request.ContentType.StartsWith("application/json"))
-            {
-                 tenantContext.CurrentTenant = request.Headers["Tenant"].ToString();
-            }
+            //if (!string.IsNullOrEmpty(request.ContentType) && request.ContentType.StartsWith("application/json"))
+            //{
+            //     tenantContext.CurrentTenant = request.Headers["Tenant"].ToString();
+            //}
+            tenantContext.CurrentTenant = "tenant1";
             await next(context);
         }
     }

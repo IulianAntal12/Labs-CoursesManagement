@@ -21,7 +21,7 @@ namespace LabsAndCoursesManagement.DataAccess
             services.AddScoped<IRepository<User>, UserRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IRepository<Homework>, HomeworkRepository>();
-
+            services.AddSingleton<ITenantContext, TenantContext>();
             services.
                 AddDbContext<DatabaseContext>
                 (m => m.UseSqlServer(

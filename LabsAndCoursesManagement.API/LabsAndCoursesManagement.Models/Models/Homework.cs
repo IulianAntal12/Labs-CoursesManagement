@@ -1,6 +1,6 @@
 ﻿namespace LabsAndCoursesManagement.Models.Models
 {
-    public class Homework
+    public class Homework: TenantBase
     {
         public Guid Id { get; private set; }
 

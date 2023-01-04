@@ -1,6 +1,6 @@
 ﻿namespace LabsAndCoursesManagement.Models.Models
 {
-    public class Report
+    public class Report: TenantBase
     {
         public Guid Id { get; private set; }
 
