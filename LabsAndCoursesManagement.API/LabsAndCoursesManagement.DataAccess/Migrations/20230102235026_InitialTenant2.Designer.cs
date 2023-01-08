@@ -4,6 +4,7 @@ using LabsAndCoursesManagement.DataAccess.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LabsAndCoursesManagement.DataAccess.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20230102235026_InitialTenant2")]
+    partial class InitialTenant2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,10 +57,6 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                     b.Property<int>("Semester")
                         .HasColumnType("int");
 
-                    b.Property<string>("Tenant")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("Year")
                         .HasColumnType("int");
 
@@ -76,10 +75,6 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                         .HasColumnType("float");
 
                     b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tenant")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -115,10 +110,6 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                     b.Property<Guid>("TeacherId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Tenant")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("Year")
                         .HasColumnType("int");
 
@@ -148,10 +139,6 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                     b.Property<Guid>("TeacherId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Tenant")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<double>("Value")
                         .HasColumnType("float");
 
@@ -179,10 +166,6 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("IdentificationNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tenant")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -223,10 +206,6 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Tenant")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CourseId");
@@ -258,10 +237,6 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
 
                     b.Property<Guid>("StudentID")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Tenant")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Year")
                         .IsRequired()

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LabsAndCoursesManagement.DataAccess.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20221220132655_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20230102235311_InitialTenant3")]
+    partial class InitialTenant3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,6 +38,31 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                     b.HasIndex("StudentsId");
 
                     b.ToTable("LabStudent");
+                });
+
+            modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.Course", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Semester")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Courses");
                 });
 
             modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.Homework", b =>
@@ -162,6 +187,9 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("CourseId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -179,6 +207,8 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CourseId");
 
                     b.ToTable("Teachers");
                 });
@@ -246,6 +276,13 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                     b.Navigation("Teacher");
                 });
 
+            modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.Teacher", b =>
+                {
+                    b.HasOne("LabsAndCoursesManagement.Models.Models.Course", null)
+                        .WithMany("Students")
+                        .HasForeignKey("CourseId");
+                });
+
             modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.User", b =>
                 {
                     b.HasOne("LabsAndCoursesManagement.Models.Models.Teacher", "Student")
@@ -255,6 +292,11 @@ namespace LabsAndCoursesManagement.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.Course", b =>
+                {
+                    b.Navigation("Students");
                 });
 
             modelBuilder.Entity("LabsAndCoursesManagement.Models.Models.Teacher", b =>

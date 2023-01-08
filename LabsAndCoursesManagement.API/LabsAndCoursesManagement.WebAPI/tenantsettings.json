@@ -1,0 +1,10 @@
+﻿[
+  {
+    "Name": "tenant1",
+    "FinalGradeFormula": "special formula",
+  },
+  {
+    "Name": "tenant2",
+    "FinalGradeFormula": "special formula"
+  }
+]

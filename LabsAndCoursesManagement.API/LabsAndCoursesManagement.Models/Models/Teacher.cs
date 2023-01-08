@@ -1,6 +1,6 @@
 ﻿namespace LabsAndCoursesManagement.Models.Models
 {
-    public class Teacher
+    public class Teacher: TenantBase
     {
         public Teacher()
         {

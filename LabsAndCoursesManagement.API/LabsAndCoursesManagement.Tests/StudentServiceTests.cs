@@ -4,8 +4,6 @@ using LabsAndCoursesManagement.Models.Models;
 using Moq;
 using LabsAndCoursesManagement.Models.Dtos;
 using FluentAssertions;
-using AutoMapper;
-using LabsAndCoursesManagement.BusinessLogic.Mappers;
 
 namespace LabsAndCoursesManagement.Tests
 {
