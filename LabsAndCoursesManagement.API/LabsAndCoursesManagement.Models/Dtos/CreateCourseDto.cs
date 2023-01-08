@@ -12,6 +12,5 @@ namespace LabsAndCoursesManagement.Models.Dtos
 
         public int Semester { get; set; }
 
-        public ICollection<Teacher> Students { get; set; }
     }
 }
