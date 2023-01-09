@@ -12,6 +12,5 @@
 
         public int Semester { get; private set; }
 
-        public ICollection<Teacher> Students { get; private set; }
     }
 }

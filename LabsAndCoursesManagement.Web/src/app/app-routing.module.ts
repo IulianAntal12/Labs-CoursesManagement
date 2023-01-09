@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CatalogComponent } from './features/catalog/catalog.component';
-import { ContactsComponent } from './features/contacts/contacts.component';
 import { CoursesComponent } from './features/courses/courses.component';
 import { HomeworksComponent } from './features/homeworks/homeworks.component';
 import { LoginFormComponent } from './features/login-form/login-form.component';
@@ -44,10 +43,6 @@ const routes: Routes = [
       {
         path: 'Teachers',
         component: TeachersComponent
-      },
-      {
-        path: 'Contacts',
-        component: ContactsComponent
       },
       {
         path: 'Courses',
