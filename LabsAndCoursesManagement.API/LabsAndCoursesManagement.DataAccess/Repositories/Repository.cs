@@ -1,4 +1,5 @@
-﻿using LabsAndCoursesManagement.DataAccess.Database;
+﻿using Finbuckle.MultiTenant;
+using LabsAndCoursesManagement.DataAccess.Database;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -63,8 +64,20 @@ namespace LabsAndCoursesManagement.DataAccess.Repositories
             {
                 return null;
             }
-
             keyMethodInfo.Invoke(entity, new object[] { key });
+
+
+            MethodInfo? tenantMethodInfo = entityType.GetMethod("set_Tenant", BindingFlags.Public | BindingFlags.Instance);
+            MethodInfo? getMethodInfo = entityType.GetMethod("get_Tenant", BindingFlags.Public | BindingFlags.Instance);
+            
+            if (tenantMethodInfo == null)
+            {
+                return null;
+            }
+            string tenant = (string) getMethodInfo.Invoke(toBeUpdated, new object[] { });
+            tenantMethodInfo.Invoke(entity, new object[] { tenant });
+
+
             context.Entry(toBeUpdated)
                 .CurrentValues
                 .SetValues(entity);
