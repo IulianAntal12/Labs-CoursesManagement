@@ -10,6 +10,10 @@ import { AddEditLabsComponent } from './add-edit-labs/add-edit-labs.component';
 import { AddEditTeachersComponent } from './add-edit-teachers/add-edit-teachers.component';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { CoursesComponent } from './courses/courses.component';
+import { HomeworksComponent } from './homeworks/homeworks.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 
 @NgModule({
@@ -20,7 +24,11 @@ import { FormBuilder } from '@angular/forms';
     CatalogTabComponent,
     TeachersComponent,
     AddEditLabsComponent,
-    AddEditTeachersComponent
+    AddEditTeachersComponent,
+    WelcomePageComponent,
+    CoursesComponent,
+    HomeworksComponent,
+    ContactsComponent
   ],
   imports: [
     CommonModule,

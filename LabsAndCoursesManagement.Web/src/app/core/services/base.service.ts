@@ -30,11 +30,11 @@ export class BaseService {
   }
 
   private getCompleteUrlWithId(url: string, id: string) {
-    return `${environment.apiUrl}/api/${url}/${id}`;
+    return `${environment.apiUrl}/api/v1/${url}/${id}`;
   }
 
   private getCompleteUrl(url: string) {
-    return `${environment.apiUrl}/api/${url}`;
+    return `${environment.apiUrl}/api/v1/${url}`;
   }
 
   private buildHeaders(): HttpHeaders {
