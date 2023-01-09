@@ -9,7 +9,9 @@ import { BaseService } from './base.service';
 export class TenantService {
   tenant: Tenant;
   endpoint = 'Tenants'
+
   constructor(private readonly baseService: BaseService) {}
+  
   getConfig(): Observable<Tenant> {
     return this.baseService.get(`${this.endpoint}`)
   }

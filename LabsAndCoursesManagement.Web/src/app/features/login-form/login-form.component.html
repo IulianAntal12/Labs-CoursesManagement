@@ -1,18 +1,18 @@
 <form class="form-container" [formGroup]="loginFormGroup" (submit)="submit()">
   <p>Login</p>
   <mat-form-field appearance="fill">
-    <mat-label>Enter your email:</mat-label>
+    <mat-label>Enter the username:</mat-label>
     <input
       matInput
-      placeholder="example@example.com"
-      formControlName="email"
+      placeholder="Username"
+      formControlName="username"
       required
       maxlength="50"
     />
   </mat-form-field>
 
-  <mat-form-field appearance="fill" hintLabel="Min. 10 chars">
-    <mat-label>Enter your password:</mat-label>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter the password:</mat-label>
     <input
       matInput
       [type]="hide ? 'password' : 'text'"
@@ -33,15 +33,3 @@
     Login<mat-icon style="margin-left: 4px">send</mat-icon>
   </button>
 </form>
-<div class="register-container">
-  <p>You don't have an account yet?</p>
-  <button
-    color="accent"
-    mat-button
-    class="register-btn"
-    (click)="goToRegister()"
-    routerLink="/register"
-  >
-    Register now to join your class!
-  </button>
-</div>

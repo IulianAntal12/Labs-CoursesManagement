@@ -13,7 +13,8 @@ import { FormBuilder } from '@angular/forms';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { CoursesComponent } from './courses/courses.component';
 import { HomeworksComponent } from './homeworks/homeworks.component';
-import { ContactsComponent } from './contacts/contacts.component';
+import { CoursesTabComponent } from './courses/courses-tab/courses-tab.component';
+import { HomeworkTabComponent } from './homeworks/homework-tab/homework-tab.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { ContactsComponent } from './contacts/contacts.component';
     WelcomePageComponent,
     CoursesComponent,
     HomeworksComponent,
-    ContactsComponent
+    CoursesTabComponent,
+    HomeworkTabComponent
   ],
   imports: [
     CommonModule,

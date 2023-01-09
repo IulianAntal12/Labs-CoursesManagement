@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Course } from 'src/app/core/models/course.model';
+import { CoursesService } from 'src/app/core/services/course.service';
 
 @Component({
   selector: 'app-courses',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoursesComponent implements OnInit {
 
-  constructor() { }
-
+  courses: Course[] = [];
+  coursesIndex: string[] = [];
+  constructor(private readonly coursesService: CoursesService) {}
+  
   ngOnInit(): void {
+    this.coursesService.getCourses().subscribe((data: Course[]) => {
+      for (const course of data) {
+        this.courses.push(course);
+        this.coursesIndex.push(`Week ${data.indexOf(course) + 1}`)
+      }
+    });
   }
 
 }

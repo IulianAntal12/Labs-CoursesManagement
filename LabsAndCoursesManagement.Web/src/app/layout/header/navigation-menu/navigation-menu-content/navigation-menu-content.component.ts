@@ -35,9 +35,4 @@ export class NavigationMenuContentComponent {
     this.router.navigateByUrl('Dashboard/Teachers');
     this.drawerToggle.emit();
   }
-
-  goToContacts(): void {
-    this.router.navigateByUrl('Dashboard/Contacts');
-    this.drawerToggle.emit();
-  }
 }
