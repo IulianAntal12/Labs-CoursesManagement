@@ -13,12 +13,12 @@ namespace LabsAndCoursesManagement.BusinessLogic.Multitenancy.Middleware
         }
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
-            var request = context.Request;
+            //var request = context.Request;
             //if (!string.IsNullOrEmpty(request.ContentType) && request.ContentType.StartsWith("application/json"))
             //{
-            //     tenantContext.CurrentTenant = request.Headers["Tenant"].ToString();
+            //    tenantContext.CurrentTenant = request.Headers["Tenant"].ToString();
             //}
-            tenantContext.CurrentTenant = "tenant1";
+            tenantContext.CurrentTenant = TenantResolver.GetCurrentTenant().Name;
             await next(context);
         }
     }

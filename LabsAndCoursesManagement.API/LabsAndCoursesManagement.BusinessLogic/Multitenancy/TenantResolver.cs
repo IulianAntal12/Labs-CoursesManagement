@@ -16,5 +16,10 @@ namespace LabsAndCoursesManagement.BusinessLogic.Multitenancy
         {
             return tenants.FirstOrDefault(t => t.Name == tenantName, null);
         }
+
+        public static TenantSettings GetCurrentTenant()
+        {
+            return tenants[0];
+        }
     }
 }
