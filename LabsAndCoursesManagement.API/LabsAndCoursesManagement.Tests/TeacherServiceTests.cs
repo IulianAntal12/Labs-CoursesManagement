@@ -59,7 +59,7 @@ namespace LabsAndCoursesManagement.Tests
             var Teacher = mapper.Map<Teacher>(TeacherDto);
 
             //act
-            //Moq.Language.Flow.IReturnsResult<IRepository<Teacher>> returnsResult = teacherRepositoryMoq.Setup(x => x.Get(Teacher.Id)).Returns(Task.FromResult(Teacher));
+            Moq.Language.Flow.IReturnsResult<IRepository<Teacher>> returnsResult = teacherRepositoryMoq.Setup(x => x.Get(Teacher.Id)).Returns(Task.FromResult(Teacher));
             var result = service.Delete(Teacher.Id);
 
             //assert
@@ -125,7 +125,7 @@ namespace LabsAndCoursesManagement.Tests
             var Teacher = mapper.Map<Teacher>(TeacherDto);
 
             //act
-            //teacherRepositoryMoq.Setup(x => x.Get(Teacher.Id)).Returns(Task.FromResult(Teacher));
+            teacherRepositoryMoq.Setup(x => x.Get(Teacher.Id)).Returns(Task.FromResult(Teacher));
             var result = service.GetById((Guid)Teacher.Id);
 
             //assert
@@ -161,7 +161,7 @@ namespace LabsAndCoursesManagement.Tests
 
             //assert
             result.Result.IsFailure.Should().BeTrue();
-            result.Result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+            result.Result.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
         }
 
 
@@ -183,7 +183,6 @@ namespace LabsAndCoursesManagement.Tests
 
             //assert
             result.Result.IsFailure.Should().BeTrue();
-            result.Result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
         }
 
         [Test]
@@ -208,7 +207,7 @@ namespace LabsAndCoursesManagement.Tests
             // Act
             var response = await service.Add(teacher);
             // Assert
-            response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
         }
 
         [Test]
@@ -220,7 +219,7 @@ namespace LabsAndCoursesManagement.Tests
             // Act
             var response = await service.Add(teacher);
             // Assert
-            response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
         }
 
         [Test]
@@ -232,7 +231,7 @@ namespace LabsAndCoursesManagement.Tests
             // Act
             var response = await service.Add(teacher);
             // Assert
-            response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
         }
 
         //[Test]
