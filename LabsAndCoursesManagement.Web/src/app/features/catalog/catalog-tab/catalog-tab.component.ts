@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { Student } from 'src/app/core/models/student.model';
 import { StudentsService } from 'src/app/core/services/students.service';
 import { environment } from 'src/environments/environment';
-import { AddGradeDialogComponent } from '../../dialogs/add-grade-dialog/add-grade-dialog.component';
 import { ViewGradesDialogComponent } from '../../dialogs/view-grades-dialog/view-grades-dialog.component';
 
 @Component({
@@ -26,10 +25,6 @@ export class CatalogTabComponent implements OnInit{
 
   openGradesDialog(): void {
     this.dialog.open(ViewGradesDialogComponent);
-  }
-
-  openAddGradeDialog(): void {
-    this.dialog.open(AddGradeDialogComponent);
   }
 
   deleteStudent(student: Student): void {

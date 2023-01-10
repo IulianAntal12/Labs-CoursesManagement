@@ -18,7 +18,6 @@ import { HomeworkTabComponent } from './homeworks/homework-tab/homework-tab.comp
 import { AddEditCoursesComponent } from './add-edit-courses/add-edit-courses.component';
 import { AddEditHomeworksComponent } from './add-edit-homeworks/add-edit-homeworks.component';
 import { ViewGradesDialogComponent } from './dialogs/view-grades-dialog/view-grades-dialog.component';
-import { AddGradeDialogComponent } from './dialogs/add-grade-dialog/add-grade-dialog.component';
 import { AddEditStudentsComponent } from './add-edit-students/add-edit-students.component';
 
 @NgModule({
@@ -38,7 +37,6 @@ import { AddEditStudentsComponent } from './add-edit-students/add-edit-students.
     AddEditCoursesComponent,
     AddEditHomeworksComponent,
     ViewGradesDialogComponent,
-    AddGradeDialogComponent,
     AddEditStudentsComponent
   ],
   imports: [

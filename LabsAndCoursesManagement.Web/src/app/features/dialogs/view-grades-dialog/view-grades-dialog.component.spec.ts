@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TenantService } from 'src/app/core/services/tenant.service';
 
 import { ViewGradesDialogComponent } from './view-grades-dialog.component';
 
@@ -8,6 +10,7 @@ describe('ViewGradesDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientModule, TenantService],
       declarations: [ ViewGradesDialogComponent ]
     })
     .compileComponents();

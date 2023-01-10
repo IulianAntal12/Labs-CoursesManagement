@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeworkTabComponent } from './homework-tab.component';
@@ -8,6 +9,7 @@ describe('HomeworkTabComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientModule],
       declarations: [ HomeworkTabComponent ]
     })
     .compileComponents();
