@@ -25,138 +25,138 @@ namespace LabsAndCoursesManagement.Tests
             // Arrange
             var studentDto = CreateSUT();
             // Act
-            //repository.Setup(x => x.Add(student)).Returns(Task.FromResult(student));
+            repository.Setup(x => x.Add(It.IsAny<Student>())).Returns(Task.FromResult((Student?) new Student()));
             var result = await service.Add(studentDto);
             // Assert 
-            result.IsFailure.Should().BeTrue();
+            result.IsSuccess.Should().BeTrue();
         }
 
-        //[Test]
-        //public async Task When_AddedNewStudentWithEmptyFullName_Then_ShouldReturnUnprocessableEntity()
-        //{
-        //    // Arrange
-        //    var student = CreateSUT();
-        //    student.FullName = "";
-        //    // Act
-        //    var result = await service.Add(student);
-        //    // Assert 
-        //    result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
-        //}
+        [Test]
+        public async Task When_AddedNewStudentWithEmptyFullName_Then_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var student = CreateSUT();
+            student.FullName = "";
+            // Act
+            var result = await service.Add(student);
+            // Assert 
+            result.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
+        }
 
-        //[Test]
-        //public async Task When_AddedNewStudentWithTooLongFullName_Then_ShouldReturnUnprocessableEntity()
-        //{
-        //    // Arrange
-        //    var student = CreateSUT();
-        //    student.FullName = string.Concat(Enumerable.Repeat("Hello", 100));
-        //    // Act
-        //    var result = await service.Add(student);
-        //    // Assert 
-        //    result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
-        //}
+        [Test]
+        public async Task When_AddedNewStudentWithTooLongFullName_Then_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var student = CreateSUT();
+            student.FullName = string.Concat(Enumerable.Repeat("Hello", 100));
+            // Act
+            var result = await service.Add(student);
+            // Assert 
+            result.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
+        }
 
 
-        //[Test]
-        //public async Task When_AddedNewStudentWithInvalidFullName_Then_ShouldReturnUnprocessableEntity()
-        //{
-        //    // Arrange
-        //    var student = CreateSUT();
-        //    student.FullName = "InvalidFullName";
-        //    // Act
-        //    var result = await service.Add(student);
-        //    // Assert 
-        //    result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
-        //}
+        [Test]
+        public async Task When_AddedNewStudentWithInvalidFullName_Then_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var student = CreateSUT();
+            student.FullName = "InvalidFullName";
+            // Act
+            var result = await service.Add(student);
+            // Assert 
+            result.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
+        }
 
-        //[Test]
-        //public async Task When_AddedNewStudentWithEmptyEmail_Then_ShouldReturnUnprocessableEntity()
-        //{
-        //    // Arrange
-        //    var student = CreateSUT();
-        //    student.Email = "";
-        //    // Act
-        //    var result = await service.Add(student);
-        //    // Assert 
-        //    result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
-        //}
+        [Test]
+        public async Task When_AddedNewStudentWithEmptyEmail_Then_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var student = CreateSUT();
+            student.Email = "";
+            // Act
+            var result = await service.Add(student);
+            // Assert 
+            result.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
+        }
 
-        //[Test]
-        //public async Task When_AddedNewStudentWithInvalidEmail_Then_ShouldReturnUnprocessableEntity()
-        //{
-        //    // Arrange
-        //    var student = CreateSUT();
-        //    student.Email = "InvalidEmail";
-        //    // Act
-        //    var result = await service.Add(student);
-        //    // Assert 
-        //    result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
-        //}
-        //[Test]
-        //public async Task When_AddedNewStudentWithDefaultValueForYear_Then_ShouldReturnUnprocessableEntity()
-        //{
-        //    // Arrange
-        //    var student = CreateSUT();
-        //    student.Year = 0;
-        //    // Act
-        //    var result = await service.Add(student);
-        //    // Assert 
-        //    result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
-        //}
-        //[Test]
-        //public async Task When_AddedNewStudentWithTooHighValueForYear_Then_ShouldReturnUnprocessableEntity()
-        //{
-        //    // Arrange
-        //    var student = CreateSUT();
-        //    student.Year = 7;
-        //    // Act
-        //    var result = await service.Add(student);
-        //    // Assert 
-        //    result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
-        //}
-        //[Test]
-        //public async Task When_AddedNewStudentWithEmptyIdentificationNumber_Then_ShouldReturnUnprocessableEntity()
-        //{
-        //    // Arrange
-        //    var student = CreateSUT();
-        //    student.IdentificationNumber = "";
-        //    // Act
-        //    var result = await service.Add(student);
-        //    // Assert 
-        //    result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
-        //}
-        //[Test]
-        //public async Task When_AddedNewStudentWithInvalidIdentificationNumber_Then_ShouldReturnUnprocessableEntity()
-        //{
-        //    // Arrange
-        //    var student = CreateSUT();
-        //    student.IdentificationNumber = "InvalidIdentificationNumber";
-        //    // Act
-        //    var result = await service.Add(student);
-        //    // Assert 
-        //    result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
-        //}
-        //[Test]
-        //public async Task When_AddedNewStudentWithEmptyGroup_Then_ShouldReturnUnprocessableEntity()
-        //{
-        //    // Arrange
-        //    var student = CreateSUT();
-        //    student.Group = "";
-        //    // Act
-        //    var result = await service.Add(student);
-        //    // Assert 
-        //    result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
-        //}
-        //[Test]
-        //public async Task When_AddedNewStudentWithInvalidGroup_Then_ShouldReturnUnprocessableEntity()
-        //{
-        //    // Arrange
-        //    var student = CreateSUT();
-        //    student.Group = "InvalidGroup";
-        //    // Act
-        //    var result = await service.Add(student);
-        //    // Assert 
-        //    result.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
-        //}
+        [Test]
+        public async Task When_AddedNewStudentWithInvalidEmail_Then_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var student = CreateSUT();
+            student.Email = "InvalidEmail";
+            // Act
+            var result = await service.Add(student);
+            // Assert 
+            result.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
+        }
+        [Test]
+        public async Task When_AddedNewStudentWithDefaultValueForYear_Then_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var student = CreateSUT();
+            student.Year = 0;
+            // Act
+            var result = await service.Add(student);
+            // Assert 
+            result.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
+        }
+        [Test]
+        public async Task When_AddedNewStudentWithTooHighValueForYear_Then_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var student = CreateSUT();
+            student.Year = 7;
+            // Act
+            var result = await service.Add(student);
+            // Assert 
+            result.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
+        }
+        [Test]
+        public async Task When_AddedNewStudentWithEmptyIdentificationNumber_Then_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var student = CreateSUT();
+            student.IdentificationNumber = "";
+            // Act
+            var result = await service.Add(student);
+            // Assert 
+            result.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
+        }
+        [Test]
+        public async Task When_AddedNewStudentWithInvalidIdentificationNumber_Then_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var student = CreateSUT();
+            student.IdentificationNumber = "InvalidIdentificationNumber";
+            // Act
+            var result = await service.Add(student);
+            // Assert 
+            result.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
+        }
+        [Test]
+        public async Task When_AddedNewStudentWithEmptyGroup_Then_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var student = CreateSUT();
+            student.Group = "";
+            // Act
+            var result = await service.Add(student);
+            // Assert 
+            result.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
+        }
+        [Test]
+        public async Task When_AddedNewStudentWithInvalidGroup_Then_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var student = CreateSUT();
+            student.Group = "InvalidGroup";
+            // Act
+            var result = await service.Add(student);
+            // Assert 
+            result.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
+        }
         private static CreateStudentDto CreateSUT()
         {
             return new CreateStudentDto
