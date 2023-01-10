@@ -31,7 +31,7 @@ namespace LabsAndCoursesManagement.Tests
             response.IsSuccess.Should().BeTrue();
         }
         [Test]
-        public async Task When_AddedNewCourseWithEmptyName_Then_ShouldReturnUnprocessableEntity()
+        public async Task When_AddedNewCourseWithEmptyName_Then_ShouldReturnBadRequest()
         {
             // Arrange
             var course = CreateSUT();
@@ -39,7 +39,7 @@ namespace LabsAndCoursesManagement.Tests
             // Act
             var response = await service.Add(course);
             // Assert
-            response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
         }
 
         [Test]
@@ -54,65 +54,65 @@ namespace LabsAndCoursesManagement.Tests
             response.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
         }
 
-        //    [Test]
-        //    public async Task When_AddedNewCourseWithTooLongDescription_Then_ShouldReturnUnprocessableEntity()
-        //    {
-        //        // Arrange
-        //        var course = CreateSUT();
-        //        course.Description = string.Concat(Enumerable.Repeat("Hello", 100));
-        //        // Act
-        //        var response = await service.Add(course);
-        //        // Assert
-        //        response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
-        //    }
+        [Test]
+        public async Task When_AddedNewCourseWithTooLongDescription_Then_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var course = CreateSUT();
+            course.Description = string.Concat(Enumerable.Repeat("Hello", 100));
+            // Act
+            var response = await service.Add(course);
+            // Assert
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
+        }
 
-        //    [Test]
-        //    public async Task When_AddedNewCourseWithDefaultValueForYear_Then_ShouldReturnUnprocessableEntity()
-        //    {
-        //        // Arrange
-        //        var course = CreateSUT();
-        //        course.Year = 0;
-        //        // Act
-        //        var response = await service.Add(course);
-        //        // Assert
-        //        response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
-        //    }
+        [Test]
+        public async Task When_AddedNewCourseWithDefaultValueForYear_Then_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var course = CreateSUT();
+            course.Year = 0;
+            // Act
+            var response = await service.Add(course);
+            // Assert
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
+        }
 
-        //    [Test]
-        //    public async Task When_AddedNewCourseWithTooHighValueForYear_Then_ShouldReturnUnprocessableEntity()
-        //    {
-        //        // Arrange
-        //        var course = CreateSUT();
-        //        course.Year = 7;
-        //        // Act
-        //        var response = await service.Add(course);
-        //        // Assert
-        //        response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
-        //    }
+            [Test]
+            public async Task When_AddedNewCourseWithTooHighValueForYear_Then_ShouldReturnBadRequest()
+            {
+                // Arrange
+                var course = CreateSUT();
+                course.Year = 7;
+                // Act
+                var response = await service.Add(course);
+                // Assert
+                response.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
+            }
 
-        //    [Test]
-        //    public async Task When_AddedNewCourseWithDefaultValueForSemester_Then_ShouldReturnUnprocessableEntity()
-        //    {
-        //        // Arrange
-        //        var course = CreateSUT();
-        //        course.Semester = 0;
-        //        // Act
-        //        var response = await service.Add(course);
-        //        // Assert
-        //        response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
-        //    }
+            [Test]
+            public async Task When_AddedNewCourseWithDefaultValueForSemester_Then_ShouldReturnBadRequest()
+            {
+                // Arrange
+                var course = CreateSUT();
+                course.Semester = 0;
+                // Act
+                var response = await service.Add(course);
+                // Assert
+                response.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
+            }
 
-        //[Test]
-        //public async Task When_AddedNewCourseWithTooHighValueForSemester_Then_ShouldReturnUnprocessableEntity()
-        //{
-        //    // Arrange
-        //    var course = CreateSUT();
-        //    course.Semester = 3;
-        //    // Act
-        //    var response = await service.Add(course);
-        //    // Assert
-        //    response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
-        //}
+        [Test]
+        public async Task When_AddedNewCourseWithTooHighValueForSemester_Then_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var course = CreateSUT();
+            course.Semester = 3;
+            // Act
+            var response = await service.Add(course);
+            // Assert
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
+        }
 
         private static CreateCourseDto CreateSUT()
         {
