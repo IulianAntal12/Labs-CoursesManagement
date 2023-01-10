@@ -4,8 +4,6 @@ using LabsAndCoursesManagement.Models.Dtos;
 using LabsAndCoursesManagement.Models.Models;
 using Moq;
 using FluentAssertions;
-using AutoMapper;
-using LabsAndCoursesManagement.BusinessLogic.Mappers;
 
 namespace LabsAndCoursesManagement.Tests
 {
@@ -19,7 +17,6 @@ namespace LabsAndCoursesManagement.Tests
         public void Setup()
         {
             service = new LabService(repository.Object, teacherRepository.Object);
-            // mapper = new AutoMapperBuilder().Build();
         }
 
         [Test]
