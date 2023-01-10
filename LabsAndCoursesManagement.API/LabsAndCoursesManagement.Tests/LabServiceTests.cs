@@ -14,7 +14,6 @@ namespace LabsAndCoursesManagement.Tests
         private readonly Mock<IRepository<Lab>> repository = new();
         private readonly Mock<IRepository<Teacher>> teacherRepository = new();
         private LabService service;
-        private IMapper mapper;
 
         [SetUp]
         public void Setup()
