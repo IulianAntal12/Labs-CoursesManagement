@@ -1,6 +1,4 @@
-﻿using LabsAndCoursesManagement.Models.Models;
-
-namespace LabsAndCoursesManagement.Models.Dtos
+﻿namespace LabsAndCoursesManagement.Models.Dtos
 {
     public class CreateCourseDto
     {

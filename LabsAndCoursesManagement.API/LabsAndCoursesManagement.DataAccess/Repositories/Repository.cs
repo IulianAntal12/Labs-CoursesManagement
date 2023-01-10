@@ -1,5 +1,4 @@
-﻿using Finbuckle.MultiTenant;
-using LabsAndCoursesManagement.DataAccess.Database;
+﻿using LabsAndCoursesManagement.DataAccess.Database;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 

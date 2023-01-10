@@ -1,9 +1,8 @@
-﻿﻿using AutoMapper;
-using FluentAssertions;
-using LabsAndCoursesManagement.BusinessLogic.Mappers;
+﻿using FluentAssertions;
 using LabsAndCoursesManagement.BusinessLogic.Services;
 using LabsAndCoursesManagement.DataAccess.Repositories;
 using LabsAndCoursesManagement.Models.Dtos;
+using LabsAndCoursesManagement.Models.Helpers;
 using LabsAndCoursesManagement.Models.Models;
 using Moq;
 
@@ -13,12 +12,11 @@ namespace LabsAndCoursesManagement.Tests
     {
         private readonly Mock<IRepository<Course>> repository = new();
         private CourseService service;
-        private IMapper mapper;
         [SetUp]
         public void Setup()
         {
             service = new CourseService(repository.Object);
-            mapper = new AutoMapperBuilder().Build();
+            
         }
 
         [Test]
@@ -27,10 +25,10 @@ namespace LabsAndCoursesManagement.Tests
             // Arrange
             var courseDto = CreateSUT();
             // Act
-            //repository.Setup(x => x.Add(course)).Returns(Task.FromResult(course));
+            repository.Setup(x => x.Add(It.IsAny<Course>())).Returns(Task.FromResult((Course?) new Course()));
             var response = await service.Add(courseDto);
             // Assert
-            response.IsFailure.Should().BeTrue();
+            response.IsSuccess.Should().BeTrue();
         }
         [Test]
         public async Task When_AddedNewCourseWithEmptyName_Then_ShouldReturnUnprocessableEntity()
@@ -44,17 +42,17 @@ namespace LabsAndCoursesManagement.Tests
             response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
         }
 
-        //    [Test]
-        //    public async Task When_AddedNewCourseWithTooLongName_Then_ShouldReturnUnprocessableEntity()
-        //    {
-        //        // Arrange
-        //        var course = CreateSUT();
-        //        course.Name = string.Concat(Enumerable.Repeat("Hello", 100));
-        //        // Act
-        //        var response = await service.Add(course);
-        //        // Assert
-        //        response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
-        //    }
+        [Test]
+        public async Task When_AddedNewCourseWithTooLongName_Then_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var course = CreateSUT();
+            course.Name = string.Concat(Enumerable.Repeat("Hello", 100));
+            // Act
+            var response = await service.Add(course);
+            // Assert
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
+        }
 
         //    [Test]
         //    public async Task When_AddedNewCourseWithTooLongDescription_Then_ShouldReturnUnprocessableEntity()
@@ -104,17 +102,17 @@ namespace LabsAndCoursesManagement.Tests
         //        response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
         //    }
 
-        //    [Test]
-        //    public async Task When_AddedNewCourseWithTooHighValueForSemester_Then_ShouldReturnUnprocessableEntity()
-        //    {
-        //        // Arrange
-        //        var course = CreateSUT();
-        //        course.Semester = 3;
-        //        // Act
-        //        var response = await service.Add(course);
-        //        // Assert
-        //        response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
-        //    }
+        //[Test]
+        //public async Task When_AddedNewCourseWithTooHighValueForSemester_Then_ShouldReturnUnprocessableEntity()
+        //{
+        //    // Arrange
+        //    var course = CreateSUT();
+        //    course.Semester = 3;
+        //    // Act
+        //    var response = await service.Add(course);
+        //    // Assert
+        //    response.StatusCode.Should().Be(System.Net.HttpStatusCode.UnprocessableEntity);
+        //}
 
         private static CreateCourseDto CreateSUT()
         {
