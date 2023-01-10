@@ -15,7 +15,10 @@ import { CoursesComponent } from './courses/courses.component';
 import { HomeworksComponent } from './homeworks/homeworks.component';
 import { CoursesTabComponent } from './courses/courses-tab/courses-tab.component';
 import { HomeworkTabComponent } from './homeworks/homework-tab/homework-tab.component';
-
+import { AddEditCoursesComponent } from './add-edit-courses/add-edit-courses.component';
+import { AddEditHomeworksComponent } from './add-edit-homeworks/add-edit-homeworks.component';
+import { ViewGradesDialogComponent } from './dialogs/view-grades-dialog/view-grades-dialog.component';
+import { AddEditStudentsComponent } from './add-edit-students/add-edit-students.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,11 @@ import { HomeworkTabComponent } from './homeworks/homework-tab/homework-tab.comp
     CoursesComponent,
     HomeworksComponent,
     CoursesTabComponent,
-    HomeworkTabComponent
+    HomeworkTabComponent,
+    AddEditCoursesComponent,
+    AddEditHomeworksComponent,
+    ViewGradesDialogComponent,
+    AddEditStudentsComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +49,9 @@ import { HomeworkTabComponent } from './homeworks/homework-tab/homework-tab.comp
     CatalogComponent,
     TeachersComponent,
     AddEditLabsComponent,
-    AddEditTeachersComponent
+    AddEditTeachersComponent,
+    AddEditCoursesComponent,
+    AddEditHomeworksComponent
   ],
   providers: [HttpClient, FormBuilder]
 })

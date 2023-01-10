@@ -1,20 +1,20 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WelcomePageComponent } from './welcome-page.component';
+import { AddEditHomeworksComponent } from './add-edit-homeworks.component';
 
-describe('WelcomePageComponent', () => {
-  let component: WelcomePageComponent;
-  let fixture: ComponentFixture<WelcomePageComponent>;
+describe('AddEditHomeworksComponent', () => {
+  let component: AddEditHomeworksComponent;
+  let fixture: ComponentFixture<AddEditHomeworksComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientModule],
-      declarations: [ WelcomePageComponent ]
+      declarations: [ AddEditHomeworksComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(WelcomePageComponent);
+    fixture = TestBed.createComponent(AddEditHomeworksComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

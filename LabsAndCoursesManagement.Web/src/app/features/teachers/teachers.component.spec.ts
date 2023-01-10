@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TenantService } from 'src/app/core/services/tenant.service';
 import { TeachersComponent } from './teachers.component';
 
 describe('TeachersComponent', () => {
@@ -9,7 +10,7 @@ describe('TeachersComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, HttpClientModule],
+      imports: [ReactiveFormsModule, HttpClientModule, TenantService],
       declarations: [
         TeachersComponent
       ],
