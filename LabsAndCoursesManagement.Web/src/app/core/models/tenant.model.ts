@@ -5,4 +5,5 @@ export interface Tenant {
     adminContact: string;
     credits: string;
     password: string;
+    numberOfYears: string;
 }

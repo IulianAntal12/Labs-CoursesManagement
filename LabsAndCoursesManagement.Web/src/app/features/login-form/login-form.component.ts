@@ -9,6 +9,7 @@ import { TenantService } from 'src/app/core/services/tenant.service';
 import { BaseConfigurationComponent } from 'src/app/shared/base-config/baseComponent.component';
 import * as shajs from 'sha.js';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login-form',
@@ -36,6 +37,7 @@ export class LoginFormComponent extends BaseConfigurationComponent implements On
     if (hashedPassword === this.tenant.password && this.tenant.name === username) {
       this.router.navigateByUrl('Dashboard');
     }
+    environment.isAdminOn = true;
   }
 
 }

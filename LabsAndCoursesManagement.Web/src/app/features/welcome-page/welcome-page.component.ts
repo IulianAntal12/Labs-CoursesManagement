@@ -9,7 +9,8 @@ import { BaseConfigurationComponent } from 'src/app/shared/base-config/baseCompo
 })
 export class WelcomePageComponent extends BaseConfigurationComponent {
   courseTitle: string;
-  welcomePageText = `Welcome to ${this.tenant.courseTitle} Course Website!\n Here you can see the courses, labs, homeworks and your grades!`;
+  welcomePageText = `Welcome to ${this.tenant.courseTitle} Course Website!\n Here you can see the courses, labs, homeworks and your grades!
+  This course has ${this.tenant.credits} credits. Final grade formula is ${this.tenant.finalGradeFormula}!`;
   tiles: Tile[] = [
     {text: this.welcomePageText, cols: 2, rows: 4},
     {text: '', cols: 2, rows: 1},

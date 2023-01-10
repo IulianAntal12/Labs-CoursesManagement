@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddEditCoursesComponent } from './features/add-edit-courses/add-edit-courses.component';
+import { AddEditHomeworksComponent } from './features/add-edit-homeworks/add-edit-homeworks.component';
+import { AddEditLabsComponent } from './features/add-edit-labs/add-edit-labs.component';
+import { AddEditStudentsComponent } from './features/add-edit-students/add-edit-students.component';
+import { AddEditTeachersComponent } from './features/add-edit-teachers/add-edit-teachers.component';
 import { CatalogComponent } from './features/catalog/catalog.component';
 import { CoursesComponent } from './features/courses/courses.component';
 import { HomeworksComponent } from './features/homeworks/homeworks.component';
@@ -51,6 +56,26 @@ const routes: Routes = [
       {
         path: 'Homeworks',
         component: HomeworksComponent
+      },
+      {
+        path: 'AddEditTeachers',
+        component: AddEditTeachersComponent
+      },
+      {
+        path: 'AddEditLabs',
+        component: AddEditLabsComponent
+      },
+      {
+        path: 'AddEditHomeworks',
+        component: AddEditHomeworksComponent
+      },
+      {
+        path: 'AddEditCourses',
+        component: AddEditCoursesComponent
+      },
+      {
+        path: 'AddEditStudents',
+        component: AddEditStudentsComponent
       }
     ]
   }
